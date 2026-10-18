@@ -1,0 +1,30 @@
+{
+  "tracking_audit": {
+    "meta_pixel": {
+      "installed": true,
+      "pixel_id": "84729103847192",
+      "status": "ACTIVE",
+      "emq_score": 6.2,
+      "browser_event_firing": true
+    },
+    "meta_capi": {
+      "installed": true,
+      "endpoint": "gateway.apexstore.uz",
+      "status": "ACTIVE",
+      "event_id_deduplication": false,
+      "critical_risk": "Pixel va CAPI ikkalasi ham xaridni yubormoqda, lekin event_id bir xil emas. Meta hisobotlarida ~15% buyurtmalar ikki marta qayd etilmoqda (double counting).",
+      "hashing_compliance": true
+    },
+    "google_enhanced_conversions": {
+      "status": "ACTIVE",
+      "ga4_linked": true,
+      "primary_action": "Purchase"
+    },
+    "telegram_bot_telemetry": {
+      "crm_webhook_active": true,
+      "utm_tagging_present": false,
+      "latency_seconds": 18,
+      "critical_risk": "Bot javob tezligi 18 soniya (ideal: <5 soniya). Kutish sababli mijozlarning 35% botni tark etmoqda."
+    }
+  }
+}

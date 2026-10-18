@@ -1,0 +1,65 @@
+name: Tyrion CI (Doctor, TyrionShield, Eval Suite, MCP & 109 Unit Tests)
+
+on:
+  push:
+    branches: [main, master]
+    tags: ["v*"]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Verify (${{ matrix.os }}, Python ${{ matrix.python-version }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python-version: ["3.11", "3.12"]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install PyYAML for strict frontmatter validation
+        run: python -m pip install pyyaml
+
+      - name: Run TyrionShield 5-Layer Security & Governance Audit
+        run: python tools/tyrion-shield.py scan
+
+      - name: Run Vault Audit & Delivery Gate (100 Wiki Notes, 0 Orphans)
+        run: python tools/vault-audit.py . --gate
+
+      - name: Verify Skill Registry (62 Skills ↔ 36 Agents)
+        run: python tools/skill-search.py check
+
+      - name: Verify Continuous Learning Instincts Registry
+        run: python tools/instincts.py check
+
+      - name: Verify Catalog & Command Mirror Parity
+        run: |
+          python tools/catalog.py check
+          python tools/catalog.py drift
+
+      - name: Run Behavioral & Deterministic Eval Suite (10/10 Scenarios)
+        run: python tools/skill-eval.py
+
+      - name: Verify Native STDIO MCP Server & Multi-Harness Exporter
+        run: |
+          python tools/tyrion-mcp-server.py --list-tools
+          python tools/harness-export.py --target all --dry-run
+
+      - name: Run Full Unit Test Suite (109 Tests)
+        run: python -m unittest discover -s tests -t . -v
+
+      - name: Run System Doctor (--quick)
+        run: python tools/doctor.py --quick

@@ -1,0 +1,42 @@
+{
+  "name": "tyrion",
+  "version": "4.0.0",
+  "description": "Tyrion v4.0 — The Ultimate Single-Root ECC Paid Media & Targetology Operating System. 36 specialist agents, 62 skills, 100 atomic knowledge notes, 8 niche playbooks, 5 context modes, 18 slash commands, Native STDIO MCP Server, Meta Ads Audience & Breakdown Effect Studio, CAPI v22 Builder, Multi-Harness Exporter (Cursor/Windsurf/Claude), and Visual Studio.",
+  "author": {
+    "name": "Salohiddin",
+    "url": "https://github.com/salohiddinayydigital-sudo"
+  },
+  "homepage": "https://github.com/salohiddinayydigital-sudo/tyrion-vault",
+  "repository": "https://github.com/salohiddinayydigital-sudo/tyrion-vault",
+  "license": "MIT",
+  "keywords": [
+    "marketing",
+    "advertising",
+    "media-buying",
+    "meta-ads",
+    "google-ads",
+    "tiktok-ads",
+    "telegram-ads",
+    "tracking",
+    "creative-strategy",
+    "copywriting"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Tyrion",
+    "shortDescription": "36 marketing agents, 62 skills, 98 wiki notes, 8 playbooks & Meta Ads Audience/Creative Studio.",
+    "longDescription": "Tyrion v4.0 — The Ultimate Single-Root ECC Paid Media & Targetology Operating System. 36 specialist agents, 62 skills, 100 atomic knowledge notes, 8 niche playbooks, 5 context modes, 18 slash commands, Native STDIO MCP Server, Meta Ads Audience & Breakdown Effect Studio, CAPI v22 Builder, Multi-Harness Exporter (Cursor/Windsurf/Claude), and Visual Studio.",
+    "category": "Marketing",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "brandColor": "#7C3AED",
+    "defaultPrompt": [
+      "Follow 00-manba: never state ad metrics or benchmarks without a verified source.",
+      "Follow 40-xavfsizlik-va-hisob: all ad account mutations require explicit user confirmation, Spend-Guard verification, and a rollback plan.",
+      "Follow 50-topshirish-dod & 70-charter-baseline: deliverables must be actionable files in outputs/ with concrete numbers, Prompt Defense Baseline, and zero hallucinated findings."
+    ]
+  }
+}

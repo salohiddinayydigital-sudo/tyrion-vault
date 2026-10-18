@@ -1,0 +1,40 @@
+{
+  "name": "tyrion-ai",
+  "version": "4.0.0",
+  "description": "The advertising & marketing operating system for AI coding agents (ECC-grade architecture)",
+  "main": "plugin.json",
+  "scripts": {
+    "status": "python3 tools/tyrion.py status",
+    "test": "python3 -m unittest discover tests -v",
+    "doctor": "python3 tools/doctor.py",
+    "shield": "python3 tools/tyrion-shield.py scan",
+    "audience": "python3 tools/meta-audience.py",
+    "creative": "python3 tools/creative-matrix.py",
+    "client": "python3 tools/client-workspace.py",
+    "instincts": "python3 tools/instincts.py check",
+    "vault-audit": "python3 tools/vault-audit.py --gate",
+    "catalog:check": "python3 tools/catalog.py check",
+    "catalog:build": "python3 tools/catalog.py build",
+    "catalog:sync": "python3 tools/catalog.py sync-mirrors && python3 tools/catalog.py sync-claims",
+    "skills:check": "python3 tools/skill-search.py check"
+  },
+  "keywords": [
+    "marketing",
+    "advertising",
+    "media-buying",
+    "meta-ads",
+    "google-ads",
+    "tiktok-ads",
+    "telegram-ads",
+    "ai-agents",
+    "claude-code",
+    "antigravity",
+    "ecc"
+  ],
+  "author": "Salohiddin",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/salohiddinayydigital-sudo/tyrion-vault.git"
+  }
+}

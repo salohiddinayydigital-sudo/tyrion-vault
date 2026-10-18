@@ -1,0 +1,52 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "py -3 \"hooks/tyrion-hook.py\" brief",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "py -3 \"hooks/tyrion-hook.py\" guard --warn-only --quiet",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit|write_file|edit_file|create_file|replace_file_content",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "py -3 \"hooks/tyrion-hook.py\" ingest --warn-only --quiet",
+            "timeout": 60
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "py -3 \"hooks/tyrion-hook.py\" dod --warn-only",
+            "timeout": 180
+          }
+        ]
+      }
+    ]
+  }
+}

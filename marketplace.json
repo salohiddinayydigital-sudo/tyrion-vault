@@ -1,0 +1,34 @@
+{
+  "name": "tyrion",
+  "owner": {
+    "name": "Salohiddin",
+    "url": "https://github.com/salohiddinayydigital-sudo"
+  },
+  "metadata": {
+    "description": "The advertising & marketing operating system for AI coding agents — 35 specialist agents, 60 platform and marketing skills, 88 knowledge notes, Spend-Guard, TyrionShield, and continuous learning instincts.",
+    "version": "2.1.0"
+  },
+  "plugins": [
+    {
+      "name": "tyrion",
+      "source": "./",
+      "description": "Tyrion v3.0 — Single-Root ECC-Grade Paid Media & Targetology OS (36 agents, 62 skills, 98 wiki notes, 8 playbooks, 5 context modes, 16 slash commands).",
+      "version": "4.0.0",
+      "category": "marketing",
+      "keywords": [
+        "marketing",
+        "advertising",
+        "media-buying",
+        "meta-ads",
+        "google-ads",
+        "tiktok-ads",
+        "telegram-ads",
+        "audit",
+        "creative-strategy",
+        "copywriting",
+        "growth",
+        "ecc"
+      ]
+    }
+  ]
+}

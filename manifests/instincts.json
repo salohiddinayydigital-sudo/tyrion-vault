@@ -1,0 +1,87 @@
+{
+  "schema": "tyrion-instincts/v1",
+  "updated": "2026-10-17",
+  "instincts": [
+    {
+      "id": "meta-asc-existing-cap-25",
+      "domain": "meta",
+      "trigger": "Advantage+ Shopping (ASC) kampaniyasi yoqilganda yoki audit qilinganda",
+      "action": "Existing Customer Budget Cap ko'rsatkichini 25-30% qilib cheklang, aks holda algoritm byudjetni issiq retargeting bazasiga sarflab yuboradi.",
+      "evidence": "wiki/meta-kampaniya-tuzilmalari.md",
+      "confidence": 5,
+      "created": "2026-09-11"
+    },
+    {
+      "id": "meta-155-learning-volume",
+      "domain": "meta",
+      "trigger": "Meta Ads ad set byudjeti va soni rejalashtirilganda",
+      "action": "Har bir ad set haftasiga kamida 50 ta konversiya olishi uchun kunlik byudjet >= (Target CPA * 50 / 7) bo'lsin; 48 soatda byudjetni >20% oshirmang.",
+      "evidence": "wiki/learning-phase-qoidalari.md",
+      "confidence": 5,
+      "created": "2026-09-11"
+    },
+    {
+      "id": "google-pmax-brand-exclusion",
+      "domain": "google",
+      "trigger": "Google Ads Performance Max (PMax) kampaniyasi qidiruv (Search) bilan birga ishlaganda",
+      "action": "Account-level Brand Exclusions ro'yxatini yoqing, aks holda PMax brend qidiruv trafigini o'zlashtirib ROAS'ni sun'iy ko'rsatadi.",
+      "evidence": "wiki/google-ads-avtomatlashtirish.md",
+      "confidence": 5,
+      "created": "2026-09-11"
+    },
+    {
+      "id": "telegram-160-char-one-emoji",
+      "domain": "telegram",
+      "trigger": "Telegram Ads rasmiy auksioni uchun reklama matni yozilganda",
+      "action": "Matn qat'iy <=160 belgi, ko'pi bilan 1 ta kontekstga mos emoji va ALL CAPS so'zlarsiz bo'lsin; bot havolasida ?start=utm_source_campaign_angle bo'lsin.",
+      "evidence": "wiki/telegram-ads-platformasi.md",
+      "confidence": 5,
+      "created": "2026-09-16"
+    },
+    {
+      "id": "capi-event-id-dedup",
+      "domain": "tracking",
+      "trigger": "Meta Pixel va Server CAPI birgalikda ishlatilganda",
+      "action": "Browser va Server hodisalari bir xil event_id bilan deduplikatsiya qilinishi va EMQ >= 7.0 bo'lishi shart.",
+      "evidence": "wiki/akkaunt-audit-xatolari.md",
+      "confidence": 5,
+      "created": "2026-09-13"
+    },
+    {
+      "id": "uz-three-language-native-copy",
+      "domain": "kreativ",
+      "trigger": "O'zbekiston bozori uchun reklama matni va kreativ tayyorlanganda",
+      "action": "O'zbek (lotin), Kirill va Rus tillarida matnni to'g'ridan-to'g'ri tarjima qilmasdan, har bir segment tilida alohida yozing va ad setlarni til bo'yicha ajrating.",
+      "evidence": "rules/30-ozbekiston-konteksti.md",
+      "confidence": 5,
+      "created": "2026-09-16"
+    },
+    {
+      "id": "kreativ-ftir-fatigue-radar",
+      "domain": "kreativ",
+      "trigger": "Reklama kreativining charchashi (creative fatigue) tekshirilganda",
+      "action": "First-Time Impression Ratio (FTIR) < 60% ga tushsa va Frequency > 2.8 bo'lsa, kreativ charchagan hisoblanadi — yangi burchak (angle) kiriting.",
+      "evidence": "wiki/kreativ-hit-rate.md",
+      "confidence": 4,
+      "created": "2026-09-16"
+    },
+    {
+      "id": "yaml-json-forward-slash-paths",
+      "domain": "tizim",
+      "trigger": "YAML frontmatter yoki JSON sozlamalarda fayl yo'li yozilganda",
+      "action": "Hech qachon qo'shtirnoq ichida Windows backslash (D:\\tyrion) ishlatmang (\\t TAB belgisiga aylanib faylni buzadi); har doim D:/tyrion yozing.",
+      "evidence": "CLAUDE.md",
+      "confidence": 5,
+      "created": "2026-09-16"
+    },
+    {
+      "id": "meta-audience-exclusion-and-geosplit",
+      "domain": "meta",
+      "trigger": "Meta Ads auditoriyasi (TOF/MOF/BOF) yoki O'zbekiston bo'yicha kampaniya qurilganda",
+      "action": "Toshkent va viloyatlarni alohida kampaniyaga ajrating, UZ/RU tillarni alohida ad set qiling, TOF dan Purchase_180d va LeadForm_90d ni Exclude qiling hamda Overlap <= 20% bo'lishini meta-audience.py bilan tekshiring.",
+      "evidence": "wiki/meta-auditoriya-arxitekturasi.md",
+      "confidence": 5,
+      "created": "2026-10-17"
+    }
+  ]
+}

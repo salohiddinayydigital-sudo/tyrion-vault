@@ -1,0 +1,34 @@
+{
+  "account_id": "google_ads_482_910_3301",
+  "currency": "USD",
+  "window_days": 30,
+  "summary": {
+    "total_spend": 1980.00,
+    "total_clicks": 1100,
+    "avg_cpc": 1.80,
+    "conversions": 111,
+    "avg_cpa": 17.84,
+    "conversion_rate_pct": 10.09,
+    "roas": 1.57
+  },
+  "search_terms_audit": {
+    "high_intent_converting_terms": [
+      { "query": "erkaklar kiyimi toshkent sotib olish", "match_type": "EXACT", "clicks": 210, "spend": 378.00, "conversions": 38, "cpa": 9.95, "cvr_pct": 18.1 },
+      { "query": "premium charm kurtka narxi", "match_type": "PHRASE", "clicks": 145, "spend": 261.00, "conversions": 24, "cpa": 10.88, "cvr_pct": 16.5 },
+      { "query": "klassik erkaklar kostyumi do'koni", "match_type": "PHRASE", "clicks": 180, "spend": 324.00, "conversions": 26, "cpa": 12.46, "cvr_pct": 14.4 }
+    ],
+    "wasteful_search_terms": [
+      { "query": "bepul kiyim andozasi pdf", "match_type": "BROAD", "clicks": 85, "spend": 153.00, "conversions": 0, "action": "ADD_NEGATIVE_EXACT" },
+      { "query": "ikkinchi qo'l kiyimlar optom", "match_type": "BROAD", "clicks": 92, "spend": 165.60, "conversions": 0, "action": "ADD_NEGATIVE_PHRASE" },
+      { "query": "kurtka qanday tikiladi video dars", "match_type": "BROAD", "clicks": 54, "spend": 97.20, "conversions": 0, "action": "ADD_NEGATIVE_PHRASE" },
+      { "query": "arzon kiyim tushda ko'rsa nima bo'ladi", "match_type": "BROAD", "clicks": 35, "spend": 63.00, "conversions": 0, "action": "ADD_NEGATIVE_BROAD" }
+    ],
+    "negative_waste_summary": {
+      "total_wasted_clicks": 266,
+      "total_wasted_spend": 478.80,
+      "wasted_spend_share_pct": 24.18,
+      "projected_monthly_savings": 478.80,
+      "recommendation": "45 ta aniqlangan salbiy kalit so'zlarni account-level ro'yxatiga qo'shish va tejalgan $478.80 ni High-Intent EXACT guruhlariga yo'naltirish."
+    }
+  }
+}
