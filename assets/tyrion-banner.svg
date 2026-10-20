@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" width="100%" height="320">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16"/>
+      <stop offset="50%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="50%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="320" rx="18" fill="url(#bg)" stroke="#312e81" stroke-width="2"/>
+  <rect x="40" y="36" width="160" height="32" rx="16" fill="#2e1065" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="120" y="57" fill="#ddd6fe" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" text-anchor="middle">ECC v5.0 SINGLE-ROOT</text>
+  <text x="40" y="122" fill="#f8fafc" font-family="system-ui, -apple-system, sans-serif" font-size="48" font-weight="800">TYRION — AI PAID MEDIA OS</text>
+  <text x="40" y="162" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="500">Meta Andromeda 2 · Google Coliseum · Telegram Ads · CAPI v22 · Native MCP Server</text>
+  <rect x="40" y="188" width="1120" height="3" fill="url(#accent)" rx="1.5"/>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" font-weight="600">
+    <rect x="40" y="216" width="170" height="68" rx="10" fill="#131b2e" stroke="#334155"/>
+    <text x="125" y="245" fill="#a78bfa" text-anchor="middle" font-size="22" font-weight="800">36</text>
+    <text x="125" y="268" fill="#cbd5e1" text-anchor="middle">Specialist Agents</text>
+
+    <rect x="230" y="216" width="170" height="68" rx="10" fill="#131b2e" stroke="#334155"/>
+    <text x="315" y="245" fill="#38bdf8" text-anchor="middle" font-size="22" font-weight="800">62</text>
+    <text x="315" y="268" fill="#cbd5e1" text-anchor="middle">Platform Skills</text>
+
+    <rect x="420" y="216" width="170" height="68" rx="10" fill="#131b2e" stroke="#334155"/>
+    <text x="505" y="245" fill="#34d399" text-anchor="middle" font-size="22" font-weight="800">100</text>
+    <text x="505" y="268" fill="#cbd5e1" text-anchor="middle">Atomic Wiki Notes</text>
+
+    <rect x="610" y="216" width="170" height="68" rx="10" fill="#131b2e" stroke="#334155"/>
+    <text x="695" y="245" fill="#fbbf24" text-anchor="middle" font-size="22" font-weight="800">8 + 5</text>
+    <text x="695" y="268" fill="#cbd5e1" text-anchor="middle">Playbooks &amp; Modes</text>
+
+    <rect x="800" y="216" width="170" height="68" rx="10" fill="#131b2e" stroke="#334155"/>
+    <text x="885" y="245" fill="#f472b6" text-anchor="middle" font-size="22" font-weight="800">7 MCP</text>
+    <text x="885" y="268" fill="#cbd5e1" text-anchor="middle">Zero-Token Tools</text>
+
+    <rect x="990" y="216" width="170" height="68" rx="10" fill="#131b2e" stroke="#10b981"/>
+    <text x="1075" y="245" fill="#10b981" text-anchor="middle" font-size="22" font-weight="800">109/109</text>
+    <text x="1075" y="268" fill="#cbd5e1" text-anchor="middle">Tests &amp; Shield OK</text>
+  </g>
+</svg>

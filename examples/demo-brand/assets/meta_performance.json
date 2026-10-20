@@ -1,0 +1,49 @@
+{
+  "account_id": "act_88291048201",
+  "currency": "USD",
+  "window_days": 30,
+  "summary": {
+    "total_spend": 3480.50,
+    "total_impressions": 482900,
+    "total_clicks": 9180,
+    "avg_ctr": 1.90,
+    "total_purchases": 245,
+    "avg_cpa": 14.20,
+    "total_revenue": 6787.00,
+    "roas": 1.95
+  },
+  "campaigns": [
+    {
+      "campaign_id": "cmp_01",
+      "name": "BOF_Prospecting_Interests_Split",
+      "type": "ABO",
+      "status": "ACTIVE",
+      "spend": 2610.00,
+      "ad_sets_count": 8,
+      "learning_status": "LEARNING_LIMITED",
+      "purchases": 178,
+      "cpa": 14.66,
+      "roas": 1.88,
+      "ftir_pct": 54.2,
+      "avg_frequency": 3.12,
+      "fatigue_flag": true,
+      "finding": "Ad setlar haddan tashqari ko'p (8 ta). Har bir ad set haftasiga o'rtacha 15 ta xarid olmoqda (50 tadan ancha kam). Kreativ charchash (FTIR < 60%, Freq > 3.0)."
+    },
+    {
+      "campaign_id": "cmp_02",
+      "name": "ASC_Advantage_Shopping",
+      "type": "ASC",
+      "status": "ACTIVE",
+      "spend": 870.50,
+      "ad_sets_count": 1,
+      "learning_status": "LEARNING",
+      "purchases": 67,
+      "cpa": 12.99,
+      "roas": 2.15,
+      "ftir_pct": 72.0,
+      "avg_frequency": 1.85,
+      "fatigue_flag": false,
+      "finding": "Yaxshi ishlayapti, lekin CBO ga qaraganda kam byudjet berilgan (25%)."
+    }
+  ]
+}

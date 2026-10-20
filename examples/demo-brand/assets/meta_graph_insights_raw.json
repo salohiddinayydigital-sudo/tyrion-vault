@@ -1,0 +1,63 @@
+{
+  "account_id": "act_99800112233",
+  "data": [
+    {
+      "campaign_id": "120210001",
+      "campaign_name": "TOF_Andromeda_CBO_Uzbekistan",
+      "adset_id": "120220001",
+      "adset_name": "L1_Broad_UZ_22_54",
+      "spend": "240.50",
+      "impressions": "75156",
+      "reach": "48200",
+      "frequency": "1.56",
+      "inline_link_clicks": "1120",
+      "actions": [
+        {"action_type": "link_click", "value": "1120"},
+        {"action_type": "lead", "value": "24"},
+        {"action_type": "purchase", "value": "22"}
+      ],
+      "action_values": [
+        {"action_type": "purchase", "value": "880.00"}
+      ],
+      "date_start": "2026-10-13",
+      "date_stop": "2026-10-20"
+    },
+    {
+      "campaign_id": "120210001",
+      "campaign_name": "TOF_Andromeda_CBO_Uzbekistan",
+      "adset_id": "120220002",
+      "adset_name": "L2_Narrow_Luxury_Stack",
+      "spend": "68.00",
+      "impressions": "11200",
+      "reach": "3100",
+      "frequency": "3.61",
+      "inline_link_clicks": "64",
+      "actions": [
+        {"action_type": "link_click", "value": "64"}
+      ],
+      "action_values": [],
+      "date_start": "2026-10-13",
+      "date_stop": "2026-10-20"
+    },
+    {
+      "campaign_id": "120210002",
+      "campaign_name": "MOF_BOF_Retargeting_Tashkent",
+      "adset_id": "120220003",
+      "adset_name": "W1_Hot_Intent_7d",
+      "spend": "95.00",
+      "impressions": "21400",
+      "reach": "6800",
+      "frequency": "3.15",
+      "inline_link_clicks": "390",
+      "actions": [
+        {"action_type": "link_click", "value": "390"},
+        {"action_type": "offsite_conversion.fb_pixel_purchase", "value": "11"}
+      ],
+      "action_values": [
+        {"action_type": "offsite_conversion.fb_pixel_purchase", "value": "495.00"}
+      ],
+      "date_start": "2026-10-13",
+      "date_stop": "2026-10-20"
+    }
+  ]
+}

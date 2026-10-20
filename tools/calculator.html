@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tyrion v5.0 — AI Paid Media & Meta Ads Visual Studio</title>
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card: #131b2e;
+      --border: #23304d;
+      --accent: #7c3aed;
+      --accent2: #10b981;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
+    body { background: var(--bg); color: var(--text); padding: 24px; line-height: 1.5; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 16px; margin-bottom: 24px; }
+    .badge { background: rgba(124, 58, 237, 0.2); border: 1px solid var(--accent); color: #c4b5fd; padding: 4px 12px; border-radius: 999px; font-size: 13px; font-weight: 600; }
+    .tabs { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 24px; }
+    .tab-btn { background: var(--card); color: var(--muted); border: 1px solid var(--border); padding: 10px 18px; border-radius: 10px; cursor: pointer; font-weight: 600; transition: 0.2s; }
+    .tab-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+    .panel { display: none; background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px; }
+    .panel.active { display: block; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 20px; }
+    label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+    input, select { width: 100%; padding: 10px 12px; background: #080c14; border: 1px solid var(--border); color: var(--text); border-radius: 8px; font-size: 14px; }
+    button.run { background: var(--accent2); color: #052e16; border: none; padding: 11px 22px; border-radius: 8px; font-weight: 700; cursor: pointer; margin-bottom: 18px; }
+    .out-box { background: #080c14; border: 1px solid var(--border); border-radius: 10px; padding: 18px; white-space: pre-wrap; font-family: ui-monospace, monospace; font-size: 13.5px; color: #e2e8f0; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div>
+      <h1>🧠 Tyrion v5.0 — Paid Media & Meta Ads Studio</h1>
+      <p style="color:var(--muted);font-size:14px;">Single-Root ECC Architecture · 0-Token Deterministic Engine · O'zbekiston & Global Bozor</p>
+    </div>
+    <span class="badge">v5.0 ECC Ultimate</span>
+  </header>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('aud')">1. Meta 4-Layer Auditoriya</button>
+    <button class="tab-btn" onclick="showTab('bd')">2. Breakdown Effect & Overlap</button>
+    <button class="tab-btn" onclick="showTab('econ')">3. Unit-Iqtisodiyot & Nasiya</button>
+    <button class="tab-btn" onclick="showTab('creo')">4. Andromeda 3x3 Kreativ & Hook</button>
+    <button class="tab-btn" onclick="showTab('utm')">5. Telegram Bot UTM & CAPI EMQ</button>
+  </div>
+
+  <div id="aud" class="panel active">
+    <h2 style="margin-bottom:14px;">🎯 Meta Ads 4-Qatlamli Auditoriya & Exclusion Arxitektori</h2>
+    <div class="grid">
+      <div><label>Nisha (Yo'nalish)</label>
+        <select id="a_niche">
+          <option value="real-estate">Ko'chmas mulk (Novostroyka)</option>
+          <option value="edtech">Ta'lim / Kurslar / Xususiy Maktab</option>
+          <option value="ecom">E-Commerce / Kiyim / Texnika</option>
+          <option value="medical">Tibbiyot Klinika / Stomatologiya</option>
+          <option value="b2b">B2B Xizmatlar / Agentlik</option>
+        </select>
+      </div>
+      <div><label>Kunlik Byudjet ($ USD)</label><input type="number" id="a_budget" value="120" /></div>
+      <div><label>Geografiya</label>
+        <select id="a_geo">
+          <option value="tashkent">Toshkent shahri (Yuqori CPM/Chek)</option>
+          <option value="regions">Viloyatlar (Keng qamrov)</option>
+          <option value="uzbekistan">Butun O'zbekiston (Alohida Ad Set)</option>
+        </select>
+      </div>
+    </div>
+    <button class="run" onclick="calcAudience()">Arxitekturani Qurish</button>
+    <div id="a_out" class="out-box"></div>
+  </div>
+
+  <div id="bd" class="panel">
+    <h2 style="margin-bottom:14px;">📉 Meta "Breakdown Effect" (Marginal vs Average CPA) va Overlap Tekshiruvi</h2>
+    <div class="grid">
+      <div><label>Placement A (masalan: IG Reels) Sarf ($)</label><input type="number" id="b_sa" value="750" /></div>
+      <div><label>Placement A Konversiya soni</label><input type="number" id="b_ca" value="50" /></div>
+      <div><label>Placement B (masalan: FB Feed) Sarf ($)</label><input type="number" id="b_sb" value="150" /></div>
+      <div><label>Placement B Konversiya soni</label><input type="number" id="b_cb" value="12" /></div>
+    </div>
+    <button class="run" onclick="calcBreakdown()">Breakdown Effect'ni Tekshirish</button>
+    <div id="b_out" class="out-box"></div>
+  </div>
+
+  <div id="econ" class="panel">
+    <h2 style="margin-bottom:14px;">💰 Unit-Iqtisodiyot, Break-Even ROAS va Uzum/Alif Nasiya Kalkulyatori</h2>
+    <div class="grid">
+      <div><label>Mahsulot Sotuv Narxi ($ USD)</label><input type="number" id="e_price" value="180" /></div>
+      <div><label>Tannarx / COGS ($ USD)</label><input type="number" id="e_cogs" value="90" /></div>
+      <div><label>Yetkazib berish va To'lov komissiyasi ($)</label><input type="number" id="e_ship" value="10" /></div>
+      <div><label>Oylik Reklama Byudjeti ($ USD)</label><input type="number" id="e_budget" value="3000" /></div>
+    </div>
+    <button class="run" onclick="calcEcon()">Hisoblash</button>
+    <div id="e_out" class="out-box"></div>
+  </div>
+
+  <div id="creo" class="panel">
+    <h2 style="margin-bottom:14px;">🎨 Andromeda 2 (3x3) Kreativ Matritsa va 3 Tilli Hook Generator</h2>
+    <div class="grid">
+      <div><label>Mahsulot yoki Taklif (Offer)</label><input type="text" id="c_offer" value="3 oyda IELTS 7.0 shartnoma kafolati bilan" /></div>
+      <div><label>Chek ($ USD)</label><input type="number" id="c_price" value="250" /></div>
+    </div>
+    <button class="run" onclick="calcCreo()">Matritsa va Hooklarni Yaratish</button>
+    <div id="c_out" class="out-box"></div>
+  </div>
+
+  <div id="utm" class="panel">
+    <h2 style="margin-bottom:14px;">📡 Telegram Bot (&lt;=64 belgi) Deep-Link va Meta Dinamik UTM Generator</h2>
+    <div class="grid">
+      <div><label>Landing URL</label><input type="text" id="u_url" value="https://brand.uz/offer" /></div>
+      <div><label>Kampaniya Slugi</label><input type="text" id="u_camp" value="kuzgi_qabul_2026" /></div>
+      <div><label>Telegram Bot Username</label><input type="text" id="u_bot" value="brand_uz_bot" /></div>
+    </div>
+    <button class="run" onclick="calcUtm()">UTM va Bot Havolasini Yaratish</button>
+    <div id="u_out" class="out-box"></div>
+  </div>
+</div>
+
+<script>
+function showTab(id) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+function calcAudience() {
+  const n = document.getElementById('a_niche').value;
+  const b = parseFloat(document.getElementById('a_budget').value || 100);
+  const g = document.getElementById('a_geo').value;
+  document.getElementById('a_out').textContent =
+`[1] L1: BROAD ANDROMEDA (50% = $${(b*0.5).toFixed(2)}/kun)
+    • Targeting : Yosh + Jins + Geo (${g}), qiziqishsiz (algoritm kreativning 3 soniyasidan topadi)
+    • Exclusions: Purchase_180d, Qualified_Lead_30d, Active_DM_14d
+
+[2] L2: HIGH-INTENT & SOLVENTNOST STACK (25% = $${(b*0.25).toFixed(2)}/kun)
+    • Targeting : ${n.toUpperCase()} asosiy qiziqishlar + Frequent International Travelers + iPhone 14/15/16 Pro + Business Page Admins
+    • Exclusions: Purchase_180d, Qualified_Lead_30d, IG_FB_Engagers_30d
+
+[3] L3: VALUE-BASED LOOKALIKE 1%–2% (15% = $${(b*0.15).toFixed(2)}/kun)
+    • Targeting : CRM LTV mijozlar bazasidan 1% (92,000 kishi) va 1-2% Lookalike
+    • Exclusions: Purchase_180d, Qualified_Lead_30d
+
+[4] L4: HOT & WARM RETARGETING (10% = $${(b*0.10).toFixed(2)}/kun)
+    • Targeting : Video_50pct_14d + IG_DM_30d + Website_AddToCart_14d + TG_Bot_Started_7d
+    • Exclusions: Purchase_180d, Qualified_Lead_7d`;
+}
+function calcBreakdown() {
+  const sa = parseFloat(document.getElementById('b_sa').value || 1);
+  const ca = parseInt(document.getElementById('b_ca').value || 1);
+  const sb = parseFloat(document.getElementById('b_sb').value || 1);
+  const cb = parseInt(document.getElementById('b_cb').value || 1);
+  const cpaA = (sa / ca).toFixed(2), cpaB = (sb / cb).toFixed(2);
+  const blended = ((sa + sb) / (ca + cb)).toFixed(2);
+  const shareA = ((sa / (sa + sb)) * 100).toFixed(1);
+  const trap = (shareA >= 65 && parseFloat(cpaA) > parseFloat(cpaB));
+  document.getElementById('b_out').textContent =
+`Umumiy (Blended) CPA: $${blended}
+• Placement A: Sarf $${sa} (${shareA}%), Konversiya ${ca} ta -> O'rtacha CPA: $${cpaA}
+• Placement B: Sarf $${sb} (${(100-shareA).toFixed(1)}%), Konversiya ${cb} ta -> O'rtacha CPA: $${cpaB}
+
+XULOSA: ${trap ? "⚠️ DIQQAT — META BREAKDOWN EFFECT TUZOG'I ANIQLANDI! Placement A byudjetning " + shareA + "% qismini tortib asosiy hajmni beryapti. Placement B da o'rtacha CPA pastroq ko'rinishining sababi — u yerdagi arzon inventar tugagan. Placement A ni o'chirsangiz, umumiy CPA $" + blended + " dan ~$" + (blended*1.38).toFixed(2) + " ga yomonlashadi!" : "✅ Segmentlar muvozanatda."}`;
+}
+function calcEcon() {
+  const p = parseFloat(document.getElementById('e_price').value || 100);
+  const c = parseFloat(document.getElementById('e_cogs').value || 40);
+  const s = parseFloat(document.getElementById('e_ship').value || 5);
+  const b = parseFloat(document.getElementById('e_budget').value || 1500);
+  const margin = p - c - s;
+  const roas = (p / Math.max(margin, 1)).toFixed(2);
+  const uzs12 = Math.round((p * 12800) / 12).toLocaleString();
+  document.getElementById('e_out').textContent =
+`• Sof Marja (1 birlikdan): $${margin.toFixed(2)} (${((margin/p)*100).toFixed(1)}%)
+• Break-Even CPA (Zararsizlik nuqtasi): $${margin.toFixed(2)}
+• Break-Even ROAS: ${roas}x
+• Target CPA (50% sof foyda qolishi uchun): $${(margin*0.5).toFixed(2)}
+• Uzum / Alif Nasiya Narx Ankori (12 oy): Oyiga ~${uzs12} so'mdan
+• 70/20/10 Byudjet Taqsimoti: Scaling $${(b*0.7).toFixed(0)} | 1-5-5 Sandbox $${(b*0.2).toFixed(0)} | Retargeting $${(b*0.1).toFixed(0)}`;
+}
+function calcCreo() {
+  const o = document.getElementById('c_offer').value;
+  document.getElementById('c_out').textContent =
+`3 TILLI 3-SONIYALIK HOOKLAR:
+[UZ Lotin]  1) "${o} haqida 90% odam bilmaydigan 1 ta xato..."
+            2) "Pulingizni befoyda tajribalarga sovurmang: ${o}"
+[UZ Kirill] 1) "${o} — натижа бўлмаса пулингизни қайтарамиз!"
+[Rus tili]  1) "3 главные ошибки, из-за которых вы переплачиваете: ${o}"
+
+3x3 ANDROMEDA MATRITSA:
+• C01: Og'riq/Xato x Ekspert Face-to-Camera (9:16 Reels)
+• C02: Og'riq/Xato x Jonli Demo/UGC sinov (9:16 Reels)
+• C03: Real Keys/Isbot x Oldin/Keyin (Before/After) tahlil
+• C04: Noyob Mexanizm + Nasiya x 4:5 Statik Taqqoslash (Biz vs Eski usul)`;
+}
+function calcUtm() {
+  const u = document.getElementById('u_url').value;
+  const c = document.getElementById('u_camp').value.replace(/[^a-zA-Z0-9_-]/g, '_').slice(0, 24);
+  const bot = document.getElementById('u_bot').value.replace('@', '');
+  const payload = `me_${c}_ad01`.slice(0, 64);
+  document.getElementById('u_out').textContent =
+`Meta Dinamik UTM URL:
+${u}?utm_source=ig_fb&utm_medium=paid_social&utm_campaign={{campaign.name}}&utm_content={{adset.name}}__{{ad.name}}&utm_term={{placement}}
+
+Telegram Bot Deep-Link (Uzunligi: ${payload.length}/64 belgi — XAVFSIZ):
+https://t.me/${bot}?start=${payload}`;
+}
+calcAudience(); calcBreakdown(); calcEcon(); calcCreo(); calcUtm();
+</script>
+</body>
+</html>

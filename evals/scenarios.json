@@ -1,0 +1,89 @@
+{
+  "schema": "tyrion-evals/v5.0",
+  "scenarios": [
+    {
+      "id": "E01_skill_route_motion",
+      "type": "skill_route",
+      "agent": "video-editor",
+      "query": "kinetik tipografiya animatsion reels yasab ber",
+      "expected": "video-motion-graphics"
+    },
+    {
+      "id": "E02_skill_route_edit",
+      "type": "skill_route",
+      "agent": "video-editor",
+      "query": "mijoz yuborgan videoni kesib subtitr qo'shib montaj qil",
+      "expected": "video-editing"
+    },
+    {
+      "id": "E03_skill_route_meta_aud",
+      "type": "skill_route",
+      "agent": "meta-audience-architect",
+      "query": "meta ads 4 qatlamli auditoriya overlap va exclusion qur",
+      "expected": "ads-meta-audience"
+    },
+    {
+      "id": "E04_breakdown_effect_trap",
+      "type": "breakdown",
+      "seg_a_spend": 800,
+      "seg_a_conv": 50,
+      "seg_b_spend": 120,
+      "seg_b_conv": 10,
+      "expected_trap": true
+    },
+    {
+      "id": "E05_spend_guard_block_50pct",
+      "type": "spend_guard",
+      "current": 100.0,
+      "proposed": 150.0,
+      "max_cap": 500.0,
+      "expected_pass": false
+    },
+    {
+      "id": "E06_spend_guard_allow_15pct",
+      "type": "spend_guard",
+      "current": 100.0,
+      "proposed": 115.0,
+      "max_cap": 500.0,
+      "expected_pass": true
+    },
+    {
+      "id": "E07_capi_emq_high",
+      "type": "capi_emq",
+      "phone": "+998901234567",
+      "email": "lead@brand.uz",
+      "min_emq": 8.0
+    },
+    {
+      "id": "E08_tg_utm_64char_limit",
+      "type": "tg_utm",
+      "campaign": "super_long_campaign_name_for_uzbekistan_real_estate_2026_test",
+      "max_len": 64
+    },
+    {
+      "id": "E09_meta_diagnose_hook",
+      "type": "diagnose",
+      "cpm": 3.2,
+      "ctr": 0.55,
+      "lp_cvr": 14.0,
+      "expected_stage": "HOOK_AND_CREATIVE_STOP_RATE"
+    },
+    {
+      "id": "E10_mcp_protocol_tools",
+      "type": "mcp_list",
+      "min_tools": 7
+    },
+    {
+      "id": "E11_detailed_targeting_no_hallucination",
+      "type": "detailed_targeting_guard",
+      "product": "Klassik erkaklar kostyumi",
+      "niche": "ecom",
+      "expected_status": "API_UNAVAILABLE"
+    },
+    {
+      "id": "E12_mcp_detailed_targeting_registered",
+      "type": "mcp_tool_present",
+      "tool_name": "tyrion_meta_detailed_targeting"
+    }
+  ]
+}

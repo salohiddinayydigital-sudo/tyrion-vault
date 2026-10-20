@@ -1,0 +1,33 @@
+# Secrets & Environment (NEVER COMMIT)
+.env
+*.env
+!.env.example
+*.pem
+*.key
+*credentials*.json
+*secret*
+
+# Python & OS caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.DS_Store
+Thumbs.db
+
+# Editor & Local Harness Backups
+.obsidian/
+.smart-env/
+*.bak
+archive/mirror-sync-*/
+
+# Local Workspace & Heavy Media Renders
+tmp/
+output/
+claude-ads-main/outputs/*/
+claude-ads-main/journal/*.md
+!claude-ads-main/journal/README.md
+!claude-ads-main/journal/_SHABLON.md
+claude-ads-main/.claude-ads/runs/

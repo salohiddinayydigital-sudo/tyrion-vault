@@ -1,0 +1,27 @@
+---
+name: meta-kampaniya-tuzilmalari
+description: "Meta kampaniya tuzilmalari katalogi — ABO, CBO, 1-1-1, 1-5-5, ASC, testing+scaling split, duplication, Omni; tuzilma operatsiyadan keyin keladi"
+tags: [meta-ads, kampaniya, scaling]
+source: "vedio bilimlar/youtubedagilar/Every Meta Ads Campaign Structure Explained in 10 minutes.md (https://www.youtube.com/watch?v=qmcAZdCaI9A)"
+updated: 2026-09-11
+---
+
+# Meta kampaniya tuzilmalari (ABO → Omni)
+
+> Bog'lanishlar: [[learning-phase-qoidalari]] · [[andromeda-scalability-signal]] · [[content-is-targeting]] · [[meta-ads-sozlamalari]] · [[kreativ-sikl]]
+
+## Mazmun
+- **ABO** (ad set budget optimization): byudjet har ad setga qo'lda qo'yiladi, Meta pulni qayta taqsimlay olmaydi. Joyi — **izolyatsiya**: kichik custom audience'ga (masalan cart abandoners) kafolatlangan spend — CBO kattaroq auditoriyani arzonroq deb ularga och qoldiradi; va toza creative test (har conceptga teng byudjet, algoritmik imtiyoz yo'q). Narxi — certainty optimizatsiya o'rniga; endi default emas, maxsus vosita.
+- **CBO** (Advantage Campaign Budget): bitta byudjet kampaniya darajasida, Meta real vaqtda taqsimlaydi. Tipik CBO'da ad setlarning **20%** byudjetning **80%**ini yeydi — bu adolatli test emas, g'alabaga urinish. Scaling uchun ajoyib, testing uchun qattiq: 5 yangi sinovlanmagan ad set bo'lsa byudjetning 95%i bittasiga ketishi mumkin, yutqazganlar haqida foydali data qolmaydi. Guard rail: ad set minimum spend. Six-figure/kun hisoblar scaling spendini CBO orqali yuritadi.
+- **1-1-1** (1 kampaniya, 1 ad set, 20+ ad): iOS 14'dan keyingi signal konsolidatsiyasi strukturasi. Shifti: 10–15 tadan ko'p ad yuklansa Meta 2–3 g'olibni tanlaydi, qolganlari impression olmaydi; g'oliblar charchaganda zaxira iliq bo'lmaydi — hisob to'xtaydi. Meta'ning o'z ma'lumoti: 25 creative'li bitta ad set — 5 ad set × 5 creative'ga qaraganda **17% ko'p konversiya, 16% arzon**.
+- **1-5-5** (1 kampaniya, 5 ad set, har birida 5 ad): 2026'da jiddiy media buyerlarning strukturasi. Ad set = bitta core concept test, ichidagi adlar = variation test (turli hook, ochilish satrlari, formatlar) — conceptga 5 urinish. Sweet spot: **$1,000–$20,000/kun**; segmentatsiya yetarli, ad set hajmi learning'dan chiqishga yetarli. CBO ustida ishlatsa — byudjet eng arzon konvertlayotgan conceptga oqadi. Tuzoq: over-segmentatsiya (1-10-10, 1-25-5) → byudjet ingichka, hamma doim learning'da. Andromeda ostida amaliy chegara: **3–5 ad set**.
+- **ASC** (Advantage+ Shopping Campaign): tuzilmani Meta o'zi quradi — 20–50 creative yuklanadi, daily budget va existing customer budget cap qo'yiladi, qolganini (targeting, placement, bid) Meta hal qiladi. Meta'ning ichki ma'lumoti: manual kampaniyalarga qaraganda **17% arzon CPA**. Toza conversion data, existing customer ro'yxati va real product catalog bo'lsa yaxshi ishlaydi, yetishmasa qulaydi. Cap'siz byudjetning 40–50%i mavjud xaridorlarga retargeting'ga ketadi — ROAS chiroyli ko'rinadi, new customer acquisition falokat bo'ladi; boshlang'ich cap ~**25–30%**. Hajm chegarasi: **50 purchase/hafta** — pastida manual qolish, yuqorisida parallel test.
+- **Testing + scaling split:** bir kampaniya faqat yangi creative test uchun ($100–200/kun, har hafta yangi adlar), ikkinchi kampaniya g'oliblarni scale qiladi (ko'pincha CBO). Test kampaniyasi — zavod, scaling kampaniyasi — tarqatish liniyasi. Sinovlanmagan adni scaling kampaniyaga tashlash learning phase'ni doimiy reset qiladi. Oyiga **20+ yangi ad** testlaydigan brendlar 10 tadan kam testlaydiganlarga qaraganda ~**65% yuqori ROAS** ko'radi. **Migration tax:** g'olib scaling'ga ko'chirilganda bir necha kun pasayadi; post ID duplication social proof'ni saqlaydi.
+- **Duplication (vertical scaling):** g'olib ad set byudjetini katta sakrash bilan oshirish o'rniga aynan nusxasi yangi byudjet bilan ishga tushiriladi ($200/kun g'olib × 2–5 nusxa = $1,000/kun, learning reset bo'lmaydi) — Meta har nusxani auksionda yangi entity deb ko'radi, original momentum'ni saqlaydi, nusxalar proven creative bilan o'z learning'ini boshlaydi. Kamchilik: auction overlap — o'zingizga raqobat, auditoriya maydalangach CPM ko'tariladi.
+- **Omni / konsolidatsiyalangan hisob:** 1 kampaniya, 1 ad set, 20–50 creative, broad targeting, Advantage+ yoqilgan — retargeting/prospekting/test ajratmasi yo'q. Andromeda'da **creative o'zi targeting**: Meta hook, vizual, voiceover'ni o'qiydi va kimga ko'rsatishni shunga qarab hal qiladi → qancha divers creative, shuncha ko'p xaridor turi (→ [[content-is-targeting]]). Faqat proven creative volume va toza signal data bo'lganda ishlaydi — 3 ta adli boshlovchi byudjetni bir haftada yondiradi.
+- CBO'da spend olmayotgan, ammo sifatiga ishonchli adlarni alohida **zombie campaign**ga (o'lik adlar bitta ad setda) chiqarish — tipik holda yana ~20% g'olib ajraladi.
+- Asosiy tamoyil: trend uchun tuzilma tanlanmaydi — hisobdagi **haqiqiy cheklovni** hal qiladigan tuzilma tanlanadi; **struktura operatsiyadan keyin keladi**, teskarisi emas. Kreativ qaysi tuzilmaga ham boqishi kerak → [[kreativ-sikl]] · asosiy sozlamalar → [[meta-ads-sozlamalari]]
+
+## Manba
+- vedio bilimlar/youtubedagilar/Every Meta Ads Campaign Structure Explained in 10 minutes.md — Eric | Ecom Explained, 2026-05-20, https://www.youtube.com/watch?v=qmcAZdCaI9A
+- vedio bilimlar/youtubedagilar/Learn 97% of Meta Ads in Under 19 minutes.md — Sabri Suby, 2026-06-13, https://www.youtube.com/watch?v=NTmWqnPIb2s (zombie campaign)

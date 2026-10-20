@@ -1,0 +1,7 @@
+# LOG — O'zgarishlar tarixi
+
+| Sana | Nima qilindi | Natija |
+|---|---|---|
+| 2026-10-20 | **Tyrion v5.0 Calibrated & Live-Telemetry Overhaul:** `meta-audience.py` dagi 3 ta kod xatosi (dead code, `--no-telegram-bot`, `0` trafikda sun'iy 100/500/1000 retargeting floor) tuzatildi; Overlap chegarasi `20%` ga birxillashtirildi; Saturation va CPA hisobiga ishonchlilik intervallari hamda taxminlar izohi (`model_disclosure`) qo'shildi; `meta-targeting-engine.py` (6-statusli Detailed Targeting Accuracy Engine) va `meta-insights-sync.py` (Meta Graph API v26.0 Insights) yaratildi; `tyrion-shield.py` ga `tests/` skani va AST dead-code tekshiruvi qo'shildi; barcha fayllar `v5.0.0` (36 agent, 62 skill, 100 wiki, 18 buyruq, 29 asbob) ga sinxronlandi | `doctor.py` 0 xato · `tyrion-shield.py` 6/6 toza · 136/136 unit-test (+1 live smoke) OK · 12/12 eval OK |
+| 2026-10-18 | **Tyrion v4.0 Single-Root ECC Overhaul:** `claude-ads-main/`, `vedio bilimlar/`, `HERMES.md`, `raw/`, `audits/`, `archive/` olib tashlandi; 36 agent, 62 skill, 100 wiki qayd, 9 playbook (`playbooks/`), 6 kontekst (`contexts/`), 18 buyruq va `tyrion.py`, `meta-audience.py` (7 modul), `creative-matrix.py`, `client-workspace.py` yagona ildizga birlashtirildi | `doctor.py` 0 xato · `tyrion-shield.py` 5/5 toza · 95+ unit-test OK |
+| 2026-10-17 | **Tyrion v2.1 GitHub Release & Meta Audience Engine:** `meta-audience.py`, `tyrion-shield.py`, `instincts.py`, `70-charter-baseline.md` yaratildi | 78/78 test o'tdi |
