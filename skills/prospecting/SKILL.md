@@ -1,9 +1,38 @@
 ---
 name: prospecting
 description: When the user wants to find, qualify, and build a list of prospects to reach out to — across B2B SaaS, general B2B, or local small businesses. Also use when the user mentions "prospecting," "build a prospect list," "find prospects," "find leads," "lead gen list," "find SaaS companies that," "find B2B companies," "find local businesses," "ICP-fit accounts," "who should we go after," "outbound list," "target account list," "find clients near me," "businesses without websites," "prospect research," "qualified leads," "find my first customers," "early adopters," "design partners," "beta users," or "who has this problem." Use this for the list-building and qualification phase. For writing the outbound copy after the list is built, see cold-email. For deep competitive research on specific accounts, see competitor-profiling.
-metadata:
-  version: 1.1.0
+triggers:
+- b2b lidlar
+- outbound
+- cold outreach
+- b2b prospecting
+- лидогенерация b2b
+- поиск клиентов b2b
+aliases:
+- b2b-prospecting
+- outbound
+- lead-gen-b2b
+domains:
+- research
+- b2b
+- prospecting
+platforms:
+- linkedin
+- telegram
+- web
 attached_agents: [research-worker]
+related_skills:
+- ads-linkedin
+- customer-research
+references:
+- skills/prospecting/references/b2b-prospecting.md
+- skills/prospecting/references/local-prospecting.md
+- skills/prospecting/references/demand-signals.md
+- skills/prospecting/references/compliance.md
+- skills/prospecting/references/data-sources.md
+- skills/prospecting/references/saas-prospecting.md
+risk_level: low
+output_contract: B2B Account & Signal-Based Prospecting Playbook with compliant outreach sequences
 ---
 
 # Prospecting

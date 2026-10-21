@@ -1,7 +1,34 @@
 ---
 name: ads-telegram
-description: "Audit, plan, draft, and optimize Telegram Ads campaigns across ads.telegram.org and Fragment. Covers channel targeting, 160-character copywriting formulas, CPM bidding, bot conversational funnels, server-side webhooks, and policy compliance."
+description: Audit, plan, draft, and optimize Telegram Ads campaigns across ads.telegram.org and Fragment. Covers channel targeting, 160-character copywriting formulas, CPM bidding, bot conversational funnels, server-side webhooks, and policy compliance.
+triggers:
+- telegram ads
+- telegram reklama
+- tg ads
+- telegram bot voronka
+- cpm telegram
+- телеграм реклама
+- телеграм эдс
+- телеграм бот воронка
+aliases:
+- tg-ads
+- telegram-funnel
+- telegram-sponsored
+domains:
+- audit
+- paid-media
+- telegram
+platforms:
+- telegram
 attached_agents: [audit-telegram]
+related_skills:
+- uzbekistan-market-intel
+- ads-plan
+- copywriting
+references:
+- skills/ads/references/telegram-audit.md
+risk_level: low
+output_contract: Telegram Ads audit & funnel architecture (160-char copy compliance, <=64-byte start= UTM, Bot -> CRM CVR)
 ---
 
 # Telegram Ads Operating Playbook

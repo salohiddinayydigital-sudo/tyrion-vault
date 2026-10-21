@@ -1,7 +1,35 @@
 ---
 name: ads-dna
-description: "Extract a public-safe brand and offer profile for paid advertising from an authorized website and operator input. Triggers on: brand DNA, brand profile, brand identity, brand style, brand colors, brand voice, visual identity, style guide, website brand analysis."
+description: 'Extract a public-safe brand and offer profile for paid advertising from an authorized website and operator input. Triggers on: brand DNA, brand profile, brand identity, brand style, brand colors, brand voice, visual identity, style guide, website brand analysis.'
+triggers:
+- brand dna
+- brend ovozi
+- brand voice
+- icp
+- ideal mijoz
+- brand positioning
+- бренд днк
+- голос бренда
+- брендинг
+aliases:
+- brand-dna
+- voice-profile
+- brand-intake
+domains:
+- strategy
+- positioning
+- branding
+platforms:
+- multi-platform
 attached_agents: [creative-strategist, positioning-strategist]
+related_skills:
+- product-marketing
+- offers
+- customer-research
+references:
+- skills/ads/references/voice-to-style.md
+risk_level: low
+output_contract: Brand DNA profile (ICP, Value Proposition, Proof Points, Tone Constraints, and Forbidden Claims)
 ---
 
 # Brand and Offer Profile

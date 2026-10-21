@@ -1,7 +1,26 @@
 ---
 name: ads-snapchat
-description: "Audit Snapchat Ads measurement, Snap Pixel and Conversions API, mobile and app campaigns, creative, AR and catalog formats, audiences, budgets, brand safety, and reporting. Use for Snapchat Ads, Snap Ads, Snap Pixel, Snapchat Conversions API, AR Lens ads, app-install campaigns, or Snapchat dynamic product ads."
+description: Audit Snapchat Ads measurement, Snap Pixel and Conversions API, mobile and app campaigns, creative, AR and catalog formats, audiences, budgets, brand safety, and reporting. Use for Snapchat Ads, Snap Ads, Snap Pixel, Snapchat Conversions API, AR Lens ads, app-install campaigns, or Snapchat dynamic product ads.
+triggers:
+- snapchat ads
+- snap pixel
+- story ads snapchat
+- снапчат реклама
+aliases:
+- snapchat
+- snap-ads
+domains:
+- audit
+- paid-media
+platforms:
+- snapchat
 attached_agents: [audit-snapchat]
+related_skills:
+- ads-audit
+references:
+- skills/ads/references/snapchat-audit.md
+risk_level: low
+output_contract: Schema-valid Snapchat Ads audit findings JSON
 ---
 
 # Snapchat Ads Audit

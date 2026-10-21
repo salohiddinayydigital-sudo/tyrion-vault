@@ -1,7 +1,26 @@
 ---
 name: ads-pinterest
-description: "Audit Pinterest Ads measurement, Pinterest Tag and Conversions API, catalog and shopping readiness, visual creative, audiences, Performance+ intent, budgets, brand safety, and reporting. Use for Pinterest Ads, promoted Pins, shopping ads, catalog sales, Pinterest Tag, Pinterest Conversions API, or Pinterest Performance+."
+description: Audit Pinterest Ads measurement, Pinterest Tag and Conversions API, catalog and shopping readiness, visual creative, audiences, Performance+ intent, budgets, brand safety, and reporting. Use for Pinterest Ads, promoted Pins, shopping ads, catalog sales, Pinterest Tag, Pinterest Conversions API, or Pinterest Performance+.
+triggers:
+- pinterest ads
+- promoted pins
+- pinterest shopping
+- пинтерест реклама
+aliases:
+- pinterest
+- promoted-pins
+domains:
+- audit
+- paid-media
+platforms:
+- pinterest
 attached_agents: [audit-pinterest]
+related_skills:
+- ads-audit
+references:
+- skills/ads/references/pinterest-audit.md
+risk_level: low
+output_contract: Schema-valid Pinterest Ads audit findings JSON
 ---
 
 # Pinterest Ads Audit

@@ -1,7 +1,26 @@
 ---
 name: tyrion
-description: "Tyrion v5.0 Master Operating System loader — operator xotirasi (MEMORY.md), O'zbekiston bozori konteksti, 8 nisha playbook, 5 kontekst rejimi va 0-token CLI dvigatellariga yagona kirish nuqtasi. Use when initializing a marketing session or routing complex multi-channel tasks."
+description: Tyrion v5.0 Master Operating System loader — operator xotirasi (MEMORY.md), O'zbekiston bozori konteksti, 8 nisha playbook, 5 kontekst rejimi va 0-token CLI dvigatellariga yagona kirish nuqtasi. Use when initializing a marketing session or routing complex multi-channel tasks.
 standalone: true
+triggers:
+- tyrion
+- tizim holati
+- system status
+- tyrion os
+aliases:
+- tyrion-os
+- master-router
+domains:
+- orchestration
+- system
+platforms:
+- multi-platform
+related_skills:
+- ads
+- uzbekistan-market-intel
+references: []
+risk_level: low
+output_contract: Tyrion OS system status and autonomous orchestration routing plan
 ---
 
 # Tyrion v5.0 — Paid Media & Targetology OS Loader

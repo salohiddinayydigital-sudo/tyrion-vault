@@ -1,8 +1,27 @@
 ---
 name: orch-weekly-review
 description: Orchestrate weekly client account performance review, cross-channel attribution reconciliation (Blended ROAS & Net Cash), creative fatigue checks, due bet settlements, and structured reporting.
-tags: [orchestration, weekly-review, attribution, roas, fatigue, reporting]
 standalone: true
+triggers:
+- haftalik tahlil
+- weekly review
+- haftalik sarhisob
+- еженедельный разбор
+aliases:
+- weekly-review
+domains:
+- orchestration
+- reporting
+- optimization
+platforms:
+- multi-platform
+related_skills:
+- ads-report
+- ads-monitor
+- ads-optimize
+references: []
+risk_level: low
+output_contract: Weekly cross-channel performance review and Kill/Keep/Scale action queue
 ---
 
 # 📊 Orchestrator Recipe: Weekly Account Review & Bet Settlement

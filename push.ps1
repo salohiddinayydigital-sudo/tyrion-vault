@@ -23,7 +23,7 @@ Write-Host "[2/5] Bilim qatlami va Katalog sinxronligi tekshiruvi..." -Foregroun
 & $pyCmd tools\catalog.py check
 & $pyCmd tools\catalog.py drift
 
-Write-Host "[3/5] Eval Suite (12/12 stsenariy) tekshiruvi..." -ForegroundColor White
+Write-Host "[3/5] Eval Suite (24/24 stsenariy) tekshiruvi..." -ForegroundColor White
 & $pyCmd tools\skill-eval.py
 
 Write-Host "[4/5] Doctor salomatlik tekshiruvi..." -ForegroundColor White

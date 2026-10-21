@@ -1,9 +1,39 @@
 ---
 name: content-strategy
 description: When the user wants to plan a content strategy, decide what content to create, or figure out what topics to cover. Also use when the user mentions "content strategy," "what should I write about," "content ideas," "blog strategy," "topic clusters," "content planning," "editorial calendar," "content marketing," "content roadmap," "what content should I create," "blog topics," "content pillars," or "I don't know what to write." Use this whenever someone needs help deciding what content to produce, not just writing it. For writing individual pieces, see copywriting. For SEO-specific audits, see seo-audit. For social media content specifically, see social.
-metadata:
-  version: 2.1.1
+triggers:
+- kontent strategiya
+- content strategy
+- kontent reja
+- rubrikator
+- content pillars
+- контент стратегия
+- контент план
+- контент режа
+aliases:
+- content-plan
+- editorial-calendar
+- content-pillars
+domains:
+- content
+- strategy
+- social
+platforms:
+- instagram
+- telegram
+- youtube
+- web
+- multi-platform
 attached_agents: [content-planner]
+related_skills:
+- social
+- reels-scripting
+- copywriting
+references:
+- skills/content-strategy/references/content-distribution.md
+- skills/content-strategy/references/headless-cms.md
+risk_level: low
+output_contract: 30-day Content Pillar & Funnel Distribution Calendar (TOF/MOF/BOF)
 ---
 
 # Content Strategy

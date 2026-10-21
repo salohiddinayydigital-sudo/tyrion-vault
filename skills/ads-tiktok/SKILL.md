@@ -1,7 +1,31 @@
 ---
 name: ads-tiktok
-description: "Audit TikTok Ads measurement, Pixel and Events API, mobile-first creative, audiences, Smart+, Shop and commerce campaigns, bidding, budgets, pacing, attribution, and policy. Use for TikTok Ads, TikTok Pixel, Events API, Smart+, TikTok Shop Ads, GMV Max, Spark Ads, or TikTok campaign optimization."
+description: Audit TikTok Ads measurement, Pixel and Events API, mobile-first creative, audiences, Smart+, Shop and commerce campaigns, bidding, budgets, pacing, attribution, and policy. Use for TikTok Ads, TikTok Pixel, Events API, Smart+, TikTok Shop Ads, GMV Max, Spark Ads, or TikTok campaign optimization.
+triggers:
+- tiktok ads
+- spark ads
+- tiktok pixel
+- tiktok events api
+- тикток реклама
+- тикток таргет
+aliases:
+- tiktok
+- spark-ads
+domains:
+- audit
+- paid-media
+- video
+platforms:
+- tiktok
 attached_agents: [audit-tiktok]
+related_skills:
+- reels-scripting
+- ads-creative
+references:
+- skills/ads/references/tiktok-audit.md
+- skills/ads/references/tiktok-creative-specs.md
+risk_level: low
+output_contract: Schema-valid TikTok Ads audit findings JSON covering Spark Ads, Events API, and 2-second hook retention
 ---
 
 # TikTok Ads Audit

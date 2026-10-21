@@ -46,6 +46,9 @@ Tyrion v5.0 barcha hisob-kitob, auditoriya loyihalash, jonli Meta Ads telemetriy
 # Tizimning umumiy holati va buyruqlar menyusi
 python3 tools/tyrion.py status
 
+# Universal Auto-Router: oddiy tildagi vazifadan agent, skill va workflow'ni avtomatik tanlash
+python3 tools/tyrion.py route "Meta reklamamdan kelayotgan lidlar sifatsiz, sababini top"
+
 # Butun tizim sog'lig'ini tekshirish (14 qatlam)
 python3 tools/tyrion.py doctor
 
@@ -64,7 +67,7 @@ python3 tools/meta-audience.py architect --niche real-estate --daily-budget 150 
 # 2) 8 nisha bo'yicha qiziqishlar + O'zbekiston Solventnost filtrlari + Graph API v26.0 qidiruvi
 python3 tools/meta-audience.py interests --niche edu
 python3 tools/meta-audience.py interests --niche ecom --query "shopping" --live
-python3 tools/meta-targeting-engine.py --niche real-estate --query "interyer" --query "новостройки" --ad-account-id act_123456789
+python3 tools/meta-targeting-engine.py search --niche real-estate --query "interyer" --query "новостройки" --account-id act_123456789
 
 # 3) Static Pool Overlap (<20% yagona chegara qoidasi) va Live Auction Overlap farqi
 python3 tools/meta-audience.py overlap --size-a 180000 --size-b 120000 --shared 25000

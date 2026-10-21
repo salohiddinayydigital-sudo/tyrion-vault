@@ -1,35 +1,51 @@
 ---
 name: video-editing
-description: >
-  Foydalanuvchi bergan videoni professional edit va montaj qilish: ingest triage (VFR, HDR,
-  aylanish, ovoz), paper edit → EDL cut list, ritm va kesish intizomi (beat, j-cut/l-cut,
-  dead-air), vertikal 9:16 reframe, shot matching va rang, ovoz tozalash va miks (−14 LUFS),
-  subtitr (o'zbek-lotin/kirill/rus), eksport va yetkazish manifesti. Ishlatiladi: "shu videoni
-  montaj qil", "videomni edit qil", "kesib ber", "montaj qilib ber", "reels qilib ber",
-  "edit this video", "montage", "cut this video", "bergan videomni tahrirla".
+description: 'Foydalanuvchi bergan videoni professional edit va montaj qilish: ingest triage (VFR, HDR, aylanish, ovoz), paper edit → EDL cut list, ritm va kesish intizomi (beat, j-cut/l-cut, dead-air), vertikal 9:16 reframe, shot matching va rang, ovoz tozalash va miks (−14 LUFS), subtitr (o''zbek-lotin/kirill/rus), eksport va yetkazish manifesti. Ishlatiladi: "shu videoni montaj qil", "videomni edit qil", "kesib ber", "montaj qilib ber", "reels qilib ber", "edit this video", "montage", "cut this video", "bergan videomni tahrirla".'
 triggers:
-  - montaj
-  - montaj qil
-  - montaj qilib ber
-  - edit qil
-  - video edit
-  - kesib ber
-  - kesish
-  - tahrirla
-  - reels qilib ber
-  - edit this video
-  - montage
-  - cut this video
-  - reframe
-  - subtitr
-  - dead air
-  - EDL
-  - bergan video
-  - videomni
-  - xom material
+- montaj
+- montaj qil
+- montaj qilib ber
+- edit qil
+- video edit
+- kesib ber
+- kesish
+- tahrirla
+- reels qilib ber
+- edit this video
+- montage
+- cut this video
+- reframe
+- subtitr
+- dead air
+- EDL
+- bergan video
+- videomni
+- xom material
+- видео монтаж
+- смонтировать видео
+aliases:
+- montage
+- video-cut
+- subtitles
+- edl
+domains:
+- video
+- creative
+- production
+platforms:
+- instagram
+- tiktok
+- youtube
+- meta
 attached_agents: [video-editor]
-source: "ffmpeg 8.1.2 + Python 3.13 real sinovlari (2026-09-21); wiki/video-kreativ-tizimi.md; local/ozbekiston-konteksti.md"
-updated: 2026-09-21
+related_skills:
+- video-motion-graphics
+- reels-scripting
+references:
+- skills/video-editing/references/code-recipes.md
+- skills/video-editing/references/qa-checklist.md
+risk_level: low
+output_contract: EDL cut list, 9:16 reframe spec, -14 LUFS audio mix, subtitle timing, and QA checklist
 ---
 
 # Video edit va montaj — professional daraja

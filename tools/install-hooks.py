@@ -97,7 +97,7 @@ def sync_commands(target_root: Path, dry_run: bool) -> list[str]:
         target = destination / path.name
         # Bayt-aniq taqqoslash: `write_text` Windows'da \n ni \r\n ga aylantirib,
         # nusxani "farqli" qilib ko'rsatardi (drift noto'g'ri signali).
-        if target.is_file() and target.read_bytes() == path.read_bytes():
+        if target.is_file() and target.read_bytes().replace(b'\r\n', b'\n') == path.read_bytes().replace(b'\r\n', b'\n'):
             continue
         changed.append(f"commands/{path.name}")
         if not dry_run:

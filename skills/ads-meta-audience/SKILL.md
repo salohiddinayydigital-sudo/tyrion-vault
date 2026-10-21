@@ -1,7 +1,41 @@
 ---
 name: ads-meta-audience
-description: "Design, audit, and optimize Meta Ads audience architecture for Andromeda 2 and Uzbekistan/global markets — 4-layer funnel, Detailed Targeting Accuracy Engine (6-status official API verification), Exclusion matrices, static vs auction overlap math, and audience saturation sensitivity modeling. Use when working with Meta Ads targeting, interests, behaviors, audiences, retargeting, lookalikes, exclusions, or audience fatigue."
+description: Design, audit, and optimize Meta Ads audience architecture for Andromeda 2 and Uzbekistan/global markets — 4-layer funnel, Detailed Targeting Accuracy Engine (6-status official API verification), Exclusion matrices, static vs auction overlap math, and audience saturation sensitivity modeling. Use when working with Meta Ads targeting, interests, behaviors, audiences, retargeting, lookalikes, exclusions, or audience fatigue.
+triggers:
+- detalniy targeting
+- detailed targeting
+- meta auditoriya
+- interest qidirish
+- overlap
+- saturation
+- lookalike
+- retargeting
+- solventnost
+- детальный таргетинг
+- интересы мета
+- аудитория танлаш
+aliases:
+- detailed-targeting
+- meta-targeting
+- audience-architect
+- lal
+- retargeting
+domains:
+- audience
+- targeting
+- meta
+platforms:
+- meta
 attached_agents: [audit-meta, campaign-ideator, creative-strategist, meta-audience-architect]
+related_skills:
+- ads-meta
+- uzbekistan-market-intel
+- ads-creative
+references:
+- skills/ads/references/meta-audit.md
+- docs/DETAILED-TARGETING-ACCURACY.md
+risk_level: low
+output_contract: 4-Layer Meta Audience Architecture + 6-Status Verified Detailed Targeting Report (Zero Hallucinations)
 ---
 
 # 🎯 Meta Ads Audience Architecture & Detailed Targeting Accuracy Skill

@@ -1,7 +1,40 @@
 ---
 name: ads-creative
-description: "Audit paid-ad copy, images, video, hooks, concepts, format coverage, platform-native fit, message match, creative fatigue, accessibility, and policy across supported platforms. Use for creative audit, ad creative, creative fatigue, creative diversity, ad copy review, video review, image review, or production priorities."
+description: Audit paid-ad copy, images, video, hooks, concepts, format coverage, platform-native fit, message match, creative fatigue, accessibility, and policy across supported platforms. Use for creative audit, ad creative, creative fatigue, creative diversity, ad copy review, video review, image review, or production priorities.
+triggers:
+- kreativ
+- creative strategy
+- kreativ charchoq
+- creative fatigue
+- hook rate
+- hold rate
+- andromeda kreativ
+- креативы
+- креативная стратегия
+- креатив
+aliases:
+- creative-audit
+- hook-rate
+- andromeda-creative
+domains:
+- creative
+- audit
+- strategy
+platforms:
+- meta
+- tiktok
+- youtube
+- multi-platform
 attached_agents: [audit-creative, creative-strategist, format-adapter]
+related_skills:
+- ads-test
+- marketing-psychology
+- reels-scripting
+references:
+- skills/ads/references/meta-creative-specs.md
+- skills/ads/references/creative-source-registry.md
+risk_level: low
+output_contract: 3x3 Angle x Format creative matrix, hook/hold diagnostics, and refresh roadmap
 ---
 
 # Creative Audit

@@ -1,8 +1,29 @@
 ---
 name: orch-creative-sprint
 description: Orchestrate a complete creative strategy sprint from avatar/angle ideation to ad copy, reels scripts, visual briefs, and video editing specs. Delegates each phase to creative-strategist, copy-writer, reels-scriptwriter, visual-designer, and video-editor with policy compliance.
-tags: [orchestration, creative, copywriting, video, reels, design, sprint]
 standalone: true
+triggers:
+- kreativ sprint
+- creative sprint
+- haftalik kreativ
+- креативный спринт
+aliases:
+- creative-sprint
+domains:
+- orchestration
+- creative
+platforms:
+- meta
+- tiktok
+- youtube
+- multi-platform
+related_skills:
+- ads-creative
+- reels-scripting
+- copywriting
+references: []
+risk_level: low
+output_contract: Coordinated creative sprint batch (Angles, Scripts, Copy, Visual Specs)
 ---
 
 # 🎨 Orchestrator Recipe: Creative Strategy & Production Sprint

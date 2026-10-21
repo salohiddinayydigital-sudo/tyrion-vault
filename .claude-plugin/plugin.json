@@ -2,7 +2,7 @@
   "name": "tyrion",
   "displayName": "Tyrion",
   "version": "5.0.0",
-  "description": "Tyrion v5.0 — The Calibrated Single-Root ECC Paid Media & Targetology Operating System. 36 specialist agents, 62 skills, 100 atomic knowledge notes, 9 playbooks, 6 context modes, 18 slash commands, 29 deterministic CLI tools, Native STDIO MCP Server (9 tools), Detailed Targeting Accuracy Engine (6-Status Verification), Live Meta Ads Graph API v26.0 Insights Sync, Breakdown Effect Studio, CAPI v26.0 Builder, Multi-Harness Exporter, and Visual Studio.",
+  "description": "Tyrion v5.0 — The Calibrated Single-Root ECC Paid Media & Targetology Operating System. 36 specialist agents, 62 skills, 100 atomic knowledge notes, 9 playbooks, 6 context modes, 18 slash commands, 29 deterministic CLI tools, Universal Auto-Router, Native STDIO MCP Server (10 tools), Detailed Targeting Accuracy Engine (6-Status Verification), Live Meta Ads Graph API v26.0 Insights Sync, Breakdown Effect Studio, CAPI v26.0 Builder, Multi-Harness Exporter, and Visual Studio.",
   "author": {
     "name": "Salohiddin",
     "url": "https://github.com/salohiddinayydigital-sudo"
@@ -75,7 +75,7 @@
   "interface": {
     "displayName": "Tyrion",
     "shortDescription": "36 marketing agents, 62 skills, 100 wiki notes, 9 playbooks, 18 commands, 29 CLI tools & Meta Graph API v26.0 Studio.",
-    "longDescription": "Tyrion v5.0 — The Calibrated Single-Root ECC Paid Media & Targetology Operating System. 36 specialist agents, 62 skills, 100 atomic knowledge notes, 9 playbooks, 6 context modes, 18 slash commands, 29 deterministic CLI tools, Native STDIO MCP Server (9 tools), Detailed Targeting Accuracy Engine (6-Status Verification), Live Meta Ads Graph API v26.0 Insights Sync, Breakdown Effect Studio, CAPI v26.0 Builder, Multi-Harness Exporter, and Visual Studio.",
+    "longDescription": "Tyrion v5.0 — The Calibrated Single-Root ECC Paid Media & Targetology Operating System. 36 specialist agents, 62 skills, 100 atomic knowledge notes, 9 playbooks, 6 context modes, 18 slash commands, 29 deterministic CLI tools, Universal Auto-Router, Native STDIO MCP Server (10 tools), Detailed Targeting Accuracy Engine (6-Status Verification), Live Meta Ads Graph API v26.0 Insights Sync, Breakdown Effect Studio, CAPI v26.0 Builder, Multi-Harness Exporter, and Visual Studio.",
     "category": "Marketing",
     "capabilities": [
       "Interactive",

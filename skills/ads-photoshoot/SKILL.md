@@ -1,7 +1,33 @@
 ---
 name: ads-photoshoot
-description: "Generate rights-cleared paid-ad product photography variants from an authorized source image and validated brand profile. Triggers on: product photo, product photography, virtual photoshoot, photoshoot, enhance product image, studio shot, lifestyle shot, lifestyle product image, floating product image, ingredient shot."
+description: 'Generate rights-cleared paid-ad product photography variants from an authorized source image and validated brand profile. Triggers on: product photo, product photography, virtual photoshoot, photoshoot, enhance product image, studio shot, lifestyle shot, lifestyle product image, floating product image, ingredient shot.'
+triggers:
+- mahsulot fotosessiyasi
+- product photoshoot
+- ai photoshoot
+- ' mahsulot rasmi'
+- предметная съемка
+- фотосессия товара
+aliases:
+- product-photo
+- photoshoot-brief
+domains:
+- creative
+- design
+- ecommerce
+platforms:
+- meta
+- instagram
+- ecommerce
+- multi-platform
 attached_agents: [visual-designer]
+related_skills:
+- ads-generate
+- web-design-guidelines
+references:
+- skills/ads/references/image-providers.md
+risk_level: low
+output_contract: Shot list, lighting/composition brief, and placement aspect-ratio specs
 ---
 
 # Product Photography Variants

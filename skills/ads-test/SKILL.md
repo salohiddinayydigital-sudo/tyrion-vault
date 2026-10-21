@@ -1,7 +1,37 @@
 ---
 name: ads-test
-description: "Design and evaluate paid-ad experiments with hypotheses, randomization units, sample-size and duration assumptions, guardrails, platform experiment tools, analysis, and decision rules. Use for A/B test, split test, experiment design, hypothesis, statistical significance, sample size, test duration, or experiment readout."
+description: Design and evaluate paid-ad experiments with hypotheses, randomization units, sample-size and duration assumptions, guardrails, platform experiment tools, analysis, and decision rules. Use for A/B test, split test, experiment design, hypothesis, statistical significance, sample size, test duration, or experiment readout.
+triggers:
+- a/b test
+- split test
+- eksperiment
+- gipoteza sinovi
+- creative test
+- а/б тест
+- сплит тест
+- гипотеза
+aliases:
+- ab-test
+- experiment
+- split-test
+domains:
+- testing
+- creative
+- analytics
+platforms:
+- meta
+- google
+- tiktok
+- multi-platform
 attached_agents: [audit-creative, creative-strategist]
+related_skills:
+- ads-creative
+- ads-math
+- cro
+references:
+- skills/ads/references/scoring-system.md
+risk_level: low
+output_contract: Falsifiable A/B test protocol (Hypothesis, Primary Metric, Minimum Sample Size, Duration, Kill Rule)
 ---
 
 # Paid Media Experiment

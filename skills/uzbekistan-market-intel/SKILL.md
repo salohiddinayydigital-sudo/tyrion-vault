@@ -1,7 +1,41 @@
 ---
 name: uzbekistan-market-intel
-description: "O'zbekiston raqamli reklama bozori intellekti — Toshkent va viloyatlar auditoriya segmentatsiyasi, 3 tilli (O'zbek lotin, kirill, rus) mentalitet, Telegram Bot/ManyChat/AmoCRM voronkasi, Payme/Click/Uzum Nasiya psixologiyasi va to'lov qobiliyati (solventnost) filtrlari. Use when planning, auditing, or writing ads for Uzbekistan businesses."
+description: O'zbekiston raqamli reklama bozori intellekti — Toshkent va viloyatlar auditoriya segmentatsiyasi, 3 tilli (O'zbek lotin, kirill, rus) mentalitet, Telegram Bot/ManyChat/AmoCRM voronkasi, Payme/Click/Uzum Nasiya psixologiyasi va to'lov qobiliyati (solventnost) filtrlari. Use when planning, auditing, or writing ads for Uzbekistan businesses.
+triggers:
+- o'zbekiston bozori
+- toshkent
+- viloyatlar
+- uzum nasiya
+- alif nasiya
+- payme
+- click
+- telegram bot voronka
+- узбекистан рынок
+- ташкент реклама
+- ўзбекистон бозори
+aliases:
+- uz-market
+- tashkent
+- solventnost-uz
+- nasiya
+domains:
+- market-intel
+- audience
+- copywriting
+- strategy
+platforms:
+- meta
+- telegram
+- google
+- instagram
 attached_agents: [audit-meta, audit-telegram, campaign-ideator, copy-writer, meta-audience-architect]
+related_skills:
+- ads-meta-audience
+- ads-telegram
+- copywriting
+references: []
+risk_level: low
+output_contract: Uzbekistan market localization overlays (Tashkent vs Regions split, UZ/RU language isolation, Nasiya payment anchors, TG Bot + AmoCRM funnel)
 ---
 
 # Uzbekistan Market Intelligence (`uzbekistan-market-intel`)

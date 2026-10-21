@@ -5,6 +5,12 @@ All notable changes to **Tyrion** are documented in this file.
 ## [5.0.0] - 2026-10-20 — Calibrated Recommendation Engine, Live Meta Insights Sync & Single-Source Parity
 
 ### Added
+- **Universal Auto-Router & Autonomous Agent Orchestrator (`tools/skill-search.py`, `tools/tyrion.py route`, MCP `tyrion_universal_router`)**:
+  - Automatic natural-language task routing across Uzbek Latin, Uzbek Cyrillic, Russian, and English without manual `/skill-search` or `/agent` selection.
+  - Enriched metadata across all 62 skills and 36 agents (`triggers`, `aliases`, `domains`, `platforms`, `related_skills`, `references`, `risk_level`, `output_contract`, `authority_boundary`).
+  - Session-cached disk loading (`SessionContextCache`), dynamic mid-task re-routing (`--reroute-with`), universal conductor fallback, and Spend-Guard mutation gate.
+- **Detailed Targeting Pagination, Payload & Cache Hardening (`tools/meta-targeting-engine.py`, `tools/catalog.py`)**:
+  - Per-query `pages_fetched`, `is_truncated`, and `results_count` diagnostics; explicit truncation disclosures; separation of `MALFORMED_ITEM_PAYLOAD` from genuine `NOT_FOUND`; context-isolated cache keys (`special_ad_category`, `country`, `objective`, `language`, `locale`, `ad_account_id`, `api_version`, `api_base_url`); and CRLF-resilient SHA-256 in `catalog.py`.
 - **Detailed Targeting Accuracy Engine (`tools/meta-targeting-engine.py`, `docs/DETAILED-TARGETING-ACCURACY.md` & MCP `tyrion_meta_detailed_targeting`)**:
   - Zero-hallucination 6-status verification system (`VERIFIED_AVAILABLE`, `FOUND_NOT_VALIDATED`, `UNAVAILABLE_OR_CONSOLIDATED`, `RELATED_UNVERIFIED`, `NOT_FOUND`, `API_UNAVAILABLE`).
   - Multi-endpoint Meta Marketing API v26.0 integration (`/search?type=adinterest`, `/{ad-account-id}/targetingsearch`, `/{ad-account-id}/targetingsuggestions`, `/{ad-account-id}/targetingvalidation`) with `paging.next` pagination, `(id, type)` deduplication, multilingual query expansion (`uz_latin`, `uz_cyrillic`, `ru`, `en`), and TTL cache validation.

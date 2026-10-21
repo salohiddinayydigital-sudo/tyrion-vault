@@ -1,7 +1,31 @@
 ---
 name: ads-linkedin
-description: "Audit LinkedIn Ads measurement, Insight Tag and conversions, professional audiences, lead generation, ABM, creative, bidding, budgets, pacing, automation, and policy. Use for LinkedIn Ads, Campaign Manager, Insight Tag, Lead Gen Forms, Thought Leader Ads, ABM campaigns, or B2B paid media."
+description: Audit LinkedIn Ads measurement, Insight Tag and conversions, professional audiences, lead generation, ABM, creative, bidding, budgets, pacing, automation, and policy. Use for LinkedIn Ads, Campaign Manager, Insight Tag, Lead Gen Forms, Thought Leader Ads, ABM campaigns, or B2B paid media.
+triggers:
+- linkedin ads
+- b2b linkedin
+- sponsored content
+- inmail
+- lead gen forms linkedin
+- линкедин реклама
+aliases:
+- linkedin
+- b2b-ads
+domains:
+- audit
+- paid-media
+- b2b
+platforms:
+- linkedin
 attached_agents: [audit-linkedin]
+related_skills:
+- prospecting
+- ads-audit
+references:
+- skills/ads/references/linkedin-audit.md
+- skills/ads/references/linkedin-creative-specs.md
+risk_level: low
+output_contract: Schema-valid LinkedIn Ads audit findings JSON covering B2B targeting, Insight Tag, and bid floors
 ---
 
 # LinkedIn Ads Audit

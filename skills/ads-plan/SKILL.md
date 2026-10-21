@@ -1,7 +1,37 @@
 ---
 name: ads-plan
-description: "Create a professional paid-advertising strategy covering objectives, economics, platform selection, campaign architecture, audiences, budget, creative, measurement, experiments, governance, rollout, and reporting. Use for ad plan, media plan, PPC strategy, paid-social strategy, campaign architecture, advertising roadmap, or channel planning."
+description: Create a professional paid-advertising strategy covering objectives, economics, platform selection, campaign architecture, audiences, budget, creative, measurement, experiments, governance, rollout, and reporting. Use for ad plan, media plan, PPC strategy, paid-social strategy, campaign architecture, advertising roadmap, or channel planning.
+triggers:
+- marketing strategiya
+- media plan
+- to'liq marketing strategiyasi
+- kampaniya rejasi
+- voronka loyihalash
+- маркетинговая стратегия
+- медиаплан
+- маркетинг стратегияси
+aliases:
+- media-plan
+- marketing-strategy
+- funnel-plan
+domains:
+- strategy
+- planning
+- funnel
+platforms:
+- multi-platform
 attached_agents: [campaign-ideator, content-planner, launch-planner]
+related_skills:
+- ads-budget
+- ads-meta-audience
+- product-marketing
+- offers
+- uzbekistan-market-intel
+references:
+- skills/ads/references/thinking-framework.md
+- skills/ads/references/budget-allocation.md
+risk_level: medium
+output_contract: End-to-end Paid Media & Funnel Strategy Plan (Channel Mix, Audience Layers, Creative Matrix, Unit Economics, KPIs)
 ---
 
 # Paid Media Plan

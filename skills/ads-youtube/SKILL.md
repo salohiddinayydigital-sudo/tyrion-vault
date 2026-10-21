@@ -1,7 +1,33 @@
 ---
 name: ads-youtube
-description: "Audit YouTube Ads campaign setup, video and Demand Gen inventory, Shorts, in-stream, CTV, creative, audiences, brand safety, bidding, and measurement. Use for YouTube Ads, video ads, pre-roll, bumper ads, skippable in-stream, Shorts ads, Demand Gen, VAC migration, CTV, or YouTube campaign optimization."
+description: Audit YouTube Ads campaign setup, video and Demand Gen inventory, Shorts, in-stream, CTV, creative, audiences, brand safety, bidding, and measurement. Use for YouTube Ads, video ads, pre-roll, bumper ads, skippable in-stream, Shorts ads, Demand Gen, VAC migration, CTV, or YouTube campaign optimization.
+triggers:
+- youtube ads
+- video action campaign
+- demand gen
+- in-stream ads
+- youtube shorts ads
+- ютуб реклама
+aliases:
+- youtube
+- demand-gen
+- trueview
+domains:
+- audit
+- paid-media
+- video
+platforms:
+- youtube
+- google
 attached_agents: [audit-youtube]
+related_skills:
+- ads-google
+- video-editing
+references:
+- skills/ads/references/youtube-audit.md
+- skills/ads/references/youtube-creative-specs.md
+risk_level: low
+output_contract: Schema-valid YouTube Ads audit findings JSON covering ABCD creative framework and view-through attribution
 ---
 
 # YouTube Ads Audit

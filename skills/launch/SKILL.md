@@ -1,9 +1,33 @@
 ---
 name: launch
-description: "When the user wants to plan a product launch, feature announcement, or release strategy. Also use when the user mentions 'launch,' 'Product Hunt,' 'feature release,' 'announcement,' 'go-to-market,' 'beta launch,' 'early access,' 'waitlist,' 'product update,' 'how do I launch this,' 'launch checklist,' 'GTM plan,' or 'we're about to ship.' Use this whenever someone is preparing to release something publicly. For ongoing marketing after launch, see marketing-ideas. For the offer being launched (bonuses, guarantees, scarcity, naming), see offers."
-metadata:
-  version: 2.0.2
+description: When the user wants to plan a product launch, feature announcement, or release strategy. Also use when the user mentions 'launch,' 'Product Hunt,' 'feature release,' 'announcement,' 'go-to-market,' 'beta launch,' 'early access,' 'waitlist,' 'product update,' 'how do I launch this,' 'launch checklist,' 'GTM plan,' or 'we're about to ship.' Use this whenever someone is preparing to release something publicly. For ongoing marketing after launch, see marketing-ideas. For the offer being launched (bonuses, guarantees, scarcity, naming), see offers.
+triggers:
+- go to market
+- gtm plan
+- mahsulot chiqarish
+- kurs launch
+- progrev
+- ochiq eshiklar kuni
+- запуск продукта
+- прогрев
+- янги лойиҳа запуски
+aliases:
+- gtm
+- product-launch
+- warmup-launch
+domains:
+- launch
+- strategy
+platforms:
+- multi-platform
 attached_agents: [launch-planner]
+related_skills:
+- ads-launch
+- ads-plan
+- offers
+references: []
+risk_level: medium
+output_contract: Phased Go-To-Market & Warmup Launch Timeline with channel milestones and KPI gates
 ---
 
 # Launch Strategy

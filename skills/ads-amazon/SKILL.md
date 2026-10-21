@@ -1,7 +1,33 @@
 ---
 name: ads-amazon
-description: "Audit Amazon Ads profiles, regions, Sponsored Products, Sponsored Brands, Sponsored Display, DSP, portfolios, targeting, search terms, retail readiness, creative, budgets, ACOS, TACOS, reporting, and policy. Use for Amazon Ads, sponsored ads, Amazon PPC, ACOS, TACOS, ASIN advertising, Amazon DSP, or retail-media optimization."
+description: Audit Amazon Ads profiles, regions, Sponsored Products, Sponsored Brands, Sponsored Display, DSP, portfolios, targeting, search terms, retail readiness, creative, budgets, ACOS, TACOS, reporting, and policy. Use for Amazon Ads, sponsored ads, Amazon PPC, ACOS, TACOS, ASIN advertising, Amazon DSP, or retail-media optimization.
+triggers:
+- amazon ads
+- sponsored products
+- sponsored brands
+- amazon dsp
+- acos
+- tacos
+- амазон реклама
+- amazon savdo
+aliases:
+- amazon
+- sponsored-products
+- acos
+domains:
+- audit
+- paid-media
+- ecommerce
+platforms:
+- amazon
 attached_agents: [audit-amazon]
+related_skills:
+- ads-audit
+- ads-budget
+references:
+- skills/ads/references/amazon-audit.md
+risk_level: low
+output_contract: Schema-valid Amazon Ads audit findings JSON with ACOS/TACOS and listing readiness controls
 ---
 
 # Amazon Ads Audit

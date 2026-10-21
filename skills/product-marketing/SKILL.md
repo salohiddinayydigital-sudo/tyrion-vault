@@ -1,9 +1,32 @@
 ---
 name: product-marketing
-description: "When the user wants to create or update their product marketing context document. Also use when the user mentions 'product context,' 'marketing context,' 'set up context,' 'positioning,' 'who is my target audience,' 'describe my product,' 'ICP,' 'ideal customer profile,' or wants to avoid repeating foundational information across marketing tasks. Use this at the start of any new project before using other marketing skills — it creates `.agents/product-marketing.md` that all other skills reference for product, audience, and positioning context."
-metadata:
-  version: 2.1.0
+description: When the user wants to create or update their product marketing context document. Also use when the user mentions 'product context,' 'marketing context,' 'set up context,' 'positioning,' 'who is my target audience,' 'describe my product,' 'ICP,' 'ideal customer profile,' or wants to avoid repeating foundational information across marketing tasks. Use this at the start of any new project before using other marketing skills — it creates `.agents/product-marketing.md` that all other skills reference for product, audience, and positioning context.
+triggers:
+- pozitsiyalash
+- positioning
+- dunford
+- raqobatbardosh ustunlik
+- value proposition
+- позиционирование
+- утп
+- бозордаги ўрни
+aliases:
+- positioning
+- uvp
+- icp-positioning
+domains:
+- strategy
+- positioning
+platforms:
+- multi-platform
 attached_agents: [positioning-strategist]
+related_skills:
+- ads-dna
+- ads-competitor
+- offers
+references: []
+risk_level: low
+output_contract: Positioning canvas (Competitive Alternatives, Unique Attributes, Value Themes, Target Market Category)
 ---
 
 # Product Marketing Context

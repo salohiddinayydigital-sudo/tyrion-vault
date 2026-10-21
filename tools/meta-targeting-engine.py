@@ -18,11 +18,12 @@ Rasmiy Meta Marketing API Endpointlari:
   - `UNAVAILABLE_OR_CONSOLIDATED` : Rasmiy API variantning eskirgani, yaroqsizligi (`valid: false`) yoki boshqa variantga birlashtirilganini bildirgan.
   - `RELATED_UNVERIFIED`          : AI/ekspert tomonidan mazmunan mos deb taklif qilingan g'oya yoki statik lug'at elementi — Meta API da tasdiqlanmagan!
   - `NOT_FOUND`                   : Bajarilgan live qidiruv urinishida rasmiy API dan natija qaytmadi (mutlaq yo'qlik isboti emas, faqat shu so'rov bo'yicha topilmadi).
-  - `API_UNAVAILABLE`             : Live qidiruvni bajarib bo'lmadi (token yo'q, 401/403 ruxsat xatosi, 429 limit, 5xx yoki tarmoq uzilishi).
+  - `API_UNAVAILABLE`             : Live qidiruvni bajarib bo'lmadi (token yo'q, 401/403 ruxsat xatosi, 429 limit, 5xx, tarmoq uzilishi yoki buzilgan API javobi).
 
 Qat'iy Qoida:
-  Live API ishlamagan (`API_UNAVAILABLE`) yoki tekshirilmagan holatda HECH QACHON statik ro'yxat (`NICHE_TAXONOMY` / `SOLVENTNOST_FILTERS`)
+  Live API ishlamagan (`API_UNAVAILABLE`), javob shakli buzilgan yoki tekshirilmagan holatda HECH QACHON statik ro'yxat (`NICHE_TAXONOMY` / `SOLVENTNOST_FILTERS`)
   yoki AI taxmini `VERIFIED_AVAILABLE` yoxud `FOUND_NOT_VALIDATED` sifatida ko'rsatilmaydi!
+  Kesilgan (`is_truncated=True`) qidiruv hech qachon to'liq tekshirilgan qidiruv sifatida ko'rsatilmaydi.
 """
 
 from __future__ import annotations
@@ -82,6 +83,8 @@ MULTILINGUAL_QUERY_SYNONYMS: dict[str, list[str]] = {
     "xonadon": ["Apartment", "Condominium", "Housing", "Interior design"],
     "novostroyka": ["Apartment", "Real estate", "New construction", "Property investment"],
     "ipoteka": ["Mortgage loan", "Home equity", "Real estate"],
+    "interyer": ["Interior design", "Home improvement", "Furniture", "Architecture"],
+    "новостройки": ["Apartment", "Real estate", "New construction", "Property investment"],
     "кўчмас мулк": ["Real estate", "Property", "Apartment", "Mortgage loan"],
     "хонадон": ["Apartment", "Housing", "Interior design"],
     "ипотека": ["Mortgage loan", "Real estate"],
@@ -99,7 +102,7 @@ MULTILINGUAL_QUERY_SYNONYMS: dict[str, list[str]] = {
     "английский язык": ["English language", "IELTS", "Language school"],
     # Medical / Tibbiyot
     "stomatologiya": ["Dentistry", "Cosmetic dentistry", "Oral hygiene", "Dental implant"],
-    "klinika": ["Healthcare", "Medicalger", "Medicine", "Physical therapy", "Wellness"],
+    "klinika": ["Healthcare", "Medicine", "Physical therapy", "Wellness"],
     "tibbiyot": ["Healthcare", "Medicine", "Wellness", "Medical specialty"],
     "стоматология": ["Dentistry", "Cosmetic dentistry", "Oral hygiene"],
     "клиника": ["Healthcare", "Medicine", "Wellness"],
@@ -298,34 +301,147 @@ def _parse_optional_bound(val: Any) -> int | None:
         return None
 
 
+def _build_cache_context(
+    product: str,
+    niche: str,
+    customer_profile: str,
+    queries: list[str],
+    ad_account_id: str,
+    special_ad_category: str,
+    country: str,
+    objective: str,
+    language: str,
+    detected_language: str,
+    locale: str,
+    api_version: str,
+    api_base_url: str,
+    validate_results: bool,
+    include_suggestions: bool,
+    limit_per_query: int,
+    max_pages_per_query: int,
+) -> tuple[str, dict[str, Any]]:
+    """Natijaga va policy cheklovlariga ta'sir qiluvchi barcha parametrlarni qamrab olgan kesh konteksti va SHA-256 kalitini yaratadi."""
+    ctx: dict[str, Any] = {
+        "product": str(product or "").strip(),
+        "niche": str(niche or "").strip(),
+        "customer_profile": str(customer_profile or "").strip(),
+        "queries": [str(q) for q in queries],
+        "ad_account_id": str(ad_account_id or "").strip(),
+        "special_ad_category": str(special_ad_category or "NONE").strip().upper(),
+        "country": str(country or "UZ").strip().upper(),
+        "objective": str(objective or "SALES").strip().upper(),
+        "language": str(language or "auto").strip(),
+        "detected_language": str(detected_language or "en").strip(),
+        "locale": str(locale or "en_US").strip(),
+        "api_version": str(api_version or DEFAULT_GRAPH_API_VERSION).strip(),
+        "api_base_url": str(api_base_url or "https://graph.facebook.com").strip().rstrip("/"),
+        "validate_results": bool(validate_results),
+        "include_suggestions": bool(include_suggestions),
+        "limit_per_query": int(limit_per_query),
+        "max_pages_per_query": int(max_pages_per_query),
+    }
+    sig_raw = json.dumps(ctx, sort_keys=True, ensure_ascii=False)
+    cache_key = hashlib.sha256(sig_raw.encode("utf-8")).hexdigest()[:32]
+    return cache_key, ctx
+
+
 def _load_valid_cache(
     cache_path: Path | None,
     cache_key: str,
-    api_version: str,
+    cache_context: dict[str, Any],
     ttl_seconds: int,
-) -> tuple[dict[str, Any] | None, str | None]:
-    if cache_path is None or not cache_path.is_file():
-        return None, None
+) -> tuple[dict[str, Any] | None, str, str | None]:
+    """Keshni tekshiradi va (payload, cache_status, warning_msg) qaytaradi."""
+    if cache_path is None:
+        return None, "DISABLED", None
+    if not cache_path.is_file():
+        return None, "MISS_NO_FILE", None
     try:
-        raw = json.loads(cache_path.read_text(encoding="utf-8"))
-        entries = raw.get("entries", {}) if isinstance(raw, dict) else {}
-        entry = entries.get(cache_key)
-        if not isinstance(entry, dict):
-            return None, None
-        cached_ver = str(entry.get("api_version", ""))
+        raw_text = cache_path.read_text(encoding="utf-8")
+        raw = json.loads(raw_text)
+    except Exception:
+        return None, "CORRUPTED", "Kesh fayli buzilgan (noto'g'ri JSON) — rad etildi va live API ga murojaat qilinadi."
+
+    if not isinstance(raw, dict) or not isinstance(raw.get("entries"), dict):
+        return None, "CORRUPTED", "Kesh fayli sxemasi yaroqsiz (`entries` ob'ekti yo'q) — rad etildi."
+
+    entries: dict[str, Any] = raw["entries"]
+    entry = entries.get(cache_key)
+
+    if not isinstance(entry, dict):
+        # Check if there is an entry for the same queries/product/niche but with a different context or api_version
+        for _k, other_entry in entries.items():
+            if not isinstance(other_entry, dict):
+                continue
+            qp = other_entry.get("query_params")
+            if isinstance(qp, dict) and qp.get("queries") == cache_context.get("queries"):
+                other_ver = str(other_entry.get("api_version") or qp.get("api_version") or "")
+                if other_ver and other_ver != cache_context["api_version"]:
+                    return (
+                        None,
+                        "VERSION_MISMATCH",
+                        f"Kesh versiyasi mos emas ({other_ver} != {cache_context['api_version']}) — yangi live so'rov talab etiladi.",
+                    )
+                diff_keys = [
+                    ck for ck in (
+                        "special_ad_category", "country", "objective", "language",
+                        "locale", "ad_account_id", "api_base_url", "validate_results", "include_suggestions"
+                    )
+                    if qp.get(ck) != cache_context.get(ck)
+                ]
+                if diff_keys:
+                    return (
+                        None,
+                        "CONTEXT_MISMATCH",
+                        f"Kesh konteksti mos emas (farqli parametrlar: {', '.join(diff_keys)}) — boshqa kontekst keshi ishlatilmaydi.",
+                    )
+        return None, "MISS_KEY_NOT_FOUND", None
+
+    cached_ver = str(entry.get("api_version", ""))
+    if cached_ver != cache_context["api_version"]:
+        return (
+            None,
+            "VERSION_MISMATCH",
+            f"Kesh versiyasi eskirgan ({cached_ver} != {cache_context['api_version']}) — yangi live so'rov talab etiladi.",
+        )
+
+    stored_params = entry.get("query_params")
+    if isinstance(stored_params, dict):
+        mismatched = [
+            ck for ck in (
+                "special_ad_category", "country", "objective", "language",
+                "locale", "ad_account_id", "api_version", "api_base_url",
+                "validate_results", "include_suggestions"
+            )
+            if ck in stored_params and stored_params.get(ck) != cache_context.get(ck)
+        ]
+        if mismatched:
+            return (
+                None,
+                "CONTEXT_MISMATCH",
+                f"Kesh yozuvi konteksti joriy so'rovga mos emas ({', '.join(mismatched)}) — rad etildi.",
+            )
+
+    try:
         fetched_epoch = float(entry.get("fetched_epoch", 0.0))
         entry_ttl = int(entry.get("ttl_seconds", ttl_seconds))
-        age = time.time() - fetched_epoch
-        if cached_ver != api_version:
-            return None, f"Kesh versiyasi eskirgan ({cached_ver} != {api_version}) — yangi live so'rov talab etiladi."
-        if age > entry_ttl:
-            return None, f"Kesh muddati tugagan (yoshi {int(age)}s > TTL {entry_ttl}s) — eskirgan kesh tasdiqlangan natija sifatida ishlatilmaydi."
-        payload = entry.get("payload")
-        if isinstance(payload, dict):
-            return payload, None
-    except Exception:
-        return None, "Kesh fayli o'qilmadi — live API ga murojaat qilinadi."
-    return None, None
+    except (ValueError, TypeError):
+        return None, "CORRUPTED", "Kesh yozuvidagi vaqt tamg'asi buzilgan — rad etildi."
+
+    effective_ttl = min(entry_ttl, int(ttl_seconds)) if ttl_seconds > 0 else 0
+    age = time.time() - fetched_epoch
+    if age > effective_ttl or effective_ttl <= 0:
+        return (
+            None,
+            "EXPIRED",
+            f"Kesh muddati tugagan (yoshi {int(age)}s > TTL {effective_ttl}s) — eskirgan kesh tasdiqlangan natija sifatida ishlatilmaydi.",
+        )
+
+    payload = entry.get("payload")
+    if not isinstance(payload, dict) or payload.get("schema") != "tyrion.detailed_targeting_accuracy/v5":
+        return None, "CORRUPTED", "Kesh payload tuzilmasi yaroqsiz — rad etildi."
+
+    return payload, "HIT_VALID", None
 
 
 def _save_cache(
@@ -336,7 +452,7 @@ def _save_cache(
     query_params: dict[str, Any],
     payload: dict[str, Any],
 ) -> None:
-    if cache_path is None:
+    if cache_path is None or ttl_seconds <= 0:
         return
     existing: dict[str, Any] = {"schema": "tyrion.targeting_cache/v5", "entries": {}}
     if cache_path.is_file():
@@ -369,11 +485,26 @@ def _fetch_paginated_endpoint(
     all_items: list[dict[str, Any]] = []
     current_url: str | None = initial_url
     pages_fetched = 0
+    raw_rows_total = 0
+    malformed_rows_total = 0
 
     while current_url and pages_fetched < max_pages:
         resp = tcore.http_get_json_with_backoff(
             current_url, headers=headers, timeout=timeout, max_retries=max_retries
         )
+        if not isinstance(resp, dict):
+            return {
+                "ok": False,
+                "error": "Meta Graph API javobi JSON ob'ekt emas.",
+                "http_status": None,
+                "error_category": "UNEXPECTED_PAYLOAD_SHAPE",
+                "retries_attempted": 0,
+                "items": all_items,
+                "pages_fetched": pages_fetched,
+                "is_truncated": False,
+                "raw_rows_total": raw_rows_total,
+                "malformed_rows_total": malformed_rows_total,
+            }
         if "error" in resp:
             return {
                 "ok": False,
@@ -383,35 +514,86 @@ def _fetch_paginated_endpoint(
                 "retries_attempted": resp.get("retries_attempted", 0),
                 "items": all_items,
                 "pages_fetched": pages_fetched,
+                "is_truncated": False,
+                "raw_rows_total": raw_rows_total,
+                "malformed_rows_total": malformed_rows_total,
             }
-        data = resp.get("data")
-        if not isinstance(data, list):
+        if "data" not in resp or not isinstance(resp.get("data"), list):
             return {
                 "ok": False,
-                "error": "Meta Graph API javobida `data` ro'yxati topilmadi.",
+                "error": "Meta Graph API javobida `data` ro'yxati topilmadi (noto'g'ri payload shakli).",
                 "http_status": 200,
                 "error_category": "UNEXPECTED_PAYLOAD_SHAPE",
                 "retries_attempted": 0,
                 "items": all_items,
                 "pages_fetched": pages_fetched,
+                "is_truncated": False,
+                "raw_rows_total": raw_rows_total,
+                "malformed_rows_total": malformed_rows_total,
             }
+
+        data = resp["data"]
+        raw_rows_total += len(data)
         for row in data:
-            if isinstance(row, dict):
-                all_items.append(row)
+            if not isinstance(row, dict):
+                malformed_rows_total += 1
+                continue
+            raw_id = row.get("id")
+            raw_name = row.get("name")
+            if raw_id is None or raw_name is None or str(raw_id).strip() == "" or str(raw_name).strip() == "":
+                malformed_rows_total += 1
+                continue
+            all_items.append(row)
+
         pages_fetched += 1
 
         paging = resp.get("paging")
         next_raw = paging.get("next") if isinstance(paging, dict) else None
         if next_raw and isinstance(next_raw, str) and next_raw.strip():
-            current_url = _validate_same_origin(next_raw.strip(), base_url)
+            try:
+                current_url = _validate_same_origin(next_raw.strip(), base_url)
+            except PermissionError as exc:
+                return {
+                    "ok": False,
+                    "error": str(exc),
+                    "http_status": 200,
+                    "error_category": "SSRF_PAGINATION_BLOCKED",
+                    "retries_attempted": 0,
+                    "items": all_items,
+                    "pages_fetched": pages_fetched,
+                    "is_truncated": True,
+                    "raw_rows_total": raw_rows_total,
+                    "malformed_rows_total": malformed_rows_total,
+                }
         else:
             current_url = None
+
+    # Critical distinction: if API returned rows in `data`, but EVERY row was malformed (missing id/name),
+    # do NOT treat this as a clean empty search (`NOT_FOUND`) — report `MALFORMED_ITEM_PAYLOAD` (`ok: False`)!
+    if raw_rows_total > 0 and len(all_items) == 0:
+        return {
+            "ok": False,
+            "error": (
+                f"Meta Graph API `data` ichida {raw_rows_total} ta element qaytardi, "
+                "biroq ularning barchasida majburiy `id` yoki `name` maydoni yo'q (buzilgan javob shakli)."
+            ),
+            "http_status": 200,
+            "error_category": "MALFORMED_ITEM_PAYLOAD",
+            "retries_attempted": 0,
+            "items": [],
+            "pages_fetched": pages_fetched,
+            "is_truncated": current_url is not None,
+            "raw_rows_total": raw_rows_total,
+            "malformed_rows_total": malformed_rows_total,
+        }
 
     return {
         "ok": True,
         "items": all_items,
         "pages_fetched": pages_fetched,
         "is_truncated": current_url is not None,
+        "raw_rows_total": raw_rows_total,
+        "malformed_rows_total": malformed_rows_total,
     }
 
 
@@ -521,6 +703,9 @@ def search_and_validate_targeting(
     if spec_cat not in SPECIAL_AD_CATEGORIES:
         raise ValueError(f"Noto'g'ri special_ad_category: {special_ad_category!r}. Ruxsat etilgan: {SPECIAL_AD_CATEGORIES}")
 
+    safe_limit = tcore.safe_int(limit_per_query, default=15, min_val=1, max_val=100, field_name="limit_per_query")
+    safe_max_pages = tcore.safe_int(max_pages_per_query, default=2, min_val=1, max_val=20, field_name="max_pages_per_query")
+
     detected_lang = detect_query_language(f"{product} {customer_profile} {' '.join(queries or [])}", explicit_lang=language)
     expanded_queries = expand_search_queries(
         product=product,
@@ -529,22 +714,37 @@ def search_and_validate_targeting(
         extra_queries=queries,
     )
 
-    cache_sig_raw = json.dumps({
-        "product": product,
-        "niche": niche,
-        "customer_profile": customer_profile,
-        "queries": [q["query"] for q in expanded_queries],
-        "acct": acct,
-        "validate": validate_results,
-        "suggestions": include_suggestions,
-        "locale": locale,
-    }, sort_keys=True)
-    cache_key = hashlib.sha256(cache_sig_raw.encode("utf-8")).hexdigest()[:24]
+    cache_key, cache_context = _build_cache_context(
+        product=product,
+        niche=niche,
+        customer_profile=customer_profile,
+        queries=[q["query"] for q in expanded_queries],
+        ad_account_id=acct,
+        special_ad_category=spec_cat,
+        country=country,
+        objective=objective,
+        language=language,
+        detected_language=detected_lang,
+        locale=locale,
+        api_version=api_version,
+        api_base_url=base_url,
+        validate_results=validate_results,
+        include_suggestions=include_suggestions,
+        limit_per_query=safe_limit,
+        max_pages_per_query=safe_max_pages,
+    )
 
-    cached_payload, cache_warning = _load_valid_cache(cache_path, cache_key, api_version, cache_ttl_seconds)
+    cached_payload, cache_status, cache_warning = _load_valid_cache(
+        cache_path=cache_path,
+        cache_key=cache_key,
+        cache_context=cache_context,
+        ttl_seconds=cache_ttl_seconds,
+    )
     if cached_payload is not None:
         cached_copy = json.loads(json.dumps(cached_payload))
         cached_copy["live_check_status"]["served_from_valid_cache"] = True
+        cached_copy["live_check_status"]["cache_status"] = cache_status
+        cached_copy["live_check_status"]["cache_key"] = cache_key
         return cached_copy
 
     # Build unverified related ideas (static niche seeds + solventnost hypotheses)
@@ -594,23 +794,33 @@ def search_and_validate_targeting(
                 "product": product,
                 "niche": niche,
                 "customer_profile": customer_profile,
-                "objective": objective,
+                "objective": objective.upper(),
                 "country": country.upper(),
+                "language": language,
                 "detected_query_language": detected_lang,
+                "locale": locale,
                 "ad_account_id": acct or None,
                 "special_ad_category": spec_cat,
                 "generated_search_queries": expanded_queries,
+                "cache_key": cache_key,
             },
             "live_check_status": {
                 "executed": False,
                 "status": STATUS_API_UNAVAILABLE,
+                "is_complete": False,
+                "is_truncated": False,
+                "total_pages_fetched": 0,
                 "error_category": "MISSING_TOKEN",
                 "http_status": None,
                 "error_message": "META_ACCESS_TOKEN muhit o'zgaruvchisi topilmadi.",
                 "api_version": api_version,
                 "checked_at": checked_at,
                 "served_from_valid_cache": False,
+                "cache_status": cache_status,
+                "cache_key": cache_key,
+                "query_diagnostics": [],
             },
+            "query_diagnostics": [],
             "verified_targeting_options": [],
             "unavailable_or_consolidated_options": [],
             "related_unverified_ideas": related_unverified_ideas,
@@ -625,11 +835,11 @@ def search_and_validate_targeting(
 
     headers = {"Authorization": f"Bearer {token}"}
     items_by_key: dict[tuple[str, str], dict[str, Any]] = {}
-    not_found_queries: list[dict[str, str]] = []
+    not_found_queries: list[dict[str, Any]] = []
     api_failures: list[dict[str, Any]] = []
-
-    safe_limit = tcore.safe_int(limit_per_query, default=15, min_val=1, max_val=100, field_name="limit_per_query")
-    safe_max_pages = tcore.safe_int(max_pages_per_query, default=2, min_val=1, max_val=20, field_name="max_pages_per_query")
+    query_diagnostics: list[dict[str, Any]] = []
+    total_pages_fetched = 0
+    any_truncated = False
 
     for q_obj in expanded_queries:
         q_str = q_obj["query"]
@@ -657,29 +867,54 @@ def search_and_validate_targeting(
             headers=headers,
             max_pages=safe_max_pages,
         )
+        q_pages = int(fetched.get("pages_fetched", 0))
+        q_truncated = bool(fetched.get("is_truncated", False))
+        q_raw_count = int(fetched.get("raw_rows_total", 0))
+        q_malformed_count = int(fetched.get("malformed_rows_total", 0))
+        total_pages_fetched += q_pages
+        if q_truncated:
+            any_truncated = True
+
         if not fetched["ok"]:
-            api_failures.append({
+            err_cat = str(fetched.get("error_category", "API_ERROR"))
+            fail_entry = {
                 "query": q_str,
                 "endpoint": endpoint_label,
+                "status": STATUS_API_UNAVAILABLE,
                 "error": fetched["error"],
                 "http_status": fetched.get("http_status"),
-                "error_category": fetched.get("error_category", "API_ERROR"),
+                "error_category": err_cat,
                 "retries_attempted": fetched.get("retries_attempted", 0),
+                "pages_fetched": q_pages,
+                "is_truncated": q_truncated,
+                "raw_results_count": q_raw_count,
+                "valid_results_count": 0,
+                "malformed_results_count": q_malformed_count,
+            }
+            api_failures.append(fail_entry)
+            query_diagnostics.append({
+                "query": q_str,
+                "endpoint": endpoint_label,
+                "status": STATUS_API_UNAVAILABLE,
+                "error_category": err_cat,
+                "pages_fetched": q_pages,
+                "is_truncated": q_truncated,
+                "results_count": 0,
+                "raw_results_count": q_raw_count,
+                "malformed_results_count": q_malformed_count,
+                "is_complete": False,
+                "note": fetched["error"],
             })
             # Stop immediately on 401/403 auth/permission failure instead of hammering the API
-            if fetched.get("error_category") in ("AUTH_401", "PERMISSION_403"):
+            if err_cat in ("AUTH_401", "PERMISSION_403"):
                 break
             continue
 
         raw_rows = fetched["items"]
-        valid_rows_for_query = 0
+        valid_rows_for_query = len(raw_rows)
         for row in raw_rows:
-            raw_id = row.get("id")
-            raw_name = row.get("name")
-            if raw_id is None or raw_name is None or str(raw_id).strip() == "" or str(raw_name).strip() == "":
-                continue
-            item_id = str(raw_id).strip()
-            item_name = str(raw_name)  # Preserve exact Meta name without translating or modifying!
+            item_id = str(row["id"]).strip()
+            item_name = str(row["name"])  # Preserve exact Meta name without translating or modifying!
             item_type = str(row.get("type") or "adinterest").strip()
             raw_path = row.get("path")
             item_path = [str(p) for p in raw_path] if isinstance(raw_path, list) else None
@@ -688,7 +923,6 @@ def search_and_validate_targeting(
             upper_bound = _parse_optional_bound(row.get("audience_size_upper_bound"))
 
             dedup_key = (item_id, item_type.lower())
-            valid_rows_for_query += 1
 
             # Check if the search payload itself marks the item as deprecated/invalid
             row_valid = row.get("valid")
@@ -719,6 +953,8 @@ def search_and_validate_targeting(
                     "source_endpoint": endpoint_label,
                     "api_version": api_version,
                     "checked_at": checked_at,
+                    "pages_fetched": q_pages,
+                    "is_truncated": q_truncated,
                     "validation_status": initial_status,
                     "validation_details": {
                         "validated_via": endpoint_label if initial_status == STATUS_UNAVAILABLE_OR_CONSOLIDATED else None,
@@ -740,51 +976,108 @@ def search_and_validate_targeting(
                 if q_str not in items_by_key[dedup_key]["matched_queries"]:
                     items_by_key[dedup_key]["matched_queries"].append(q_str)
 
-        if valid_rows_for_query == 0:
+        if valid_rows_for_query == 0 and q_raw_count == 0:
             not_found_queries.append({
                 "query": q_str,
                 "source_endpoint": endpoint_label,
                 "api_version": api_version,
                 "checked_at": checked_at,
+                "pages_fetched": q_pages,
+                "is_truncated": q_truncated,
+                "results_count": 0,
                 "validation_status": STATUS_NOT_FOUND,
                 "explanation": (
-                    f"'{q_str}' so'rovi bo'yicha {endpoint_label} javobida 0 ta rasmiy natija qaytdi. "
+                    f"'{q_str}' so'rovi bo'yicha {endpoint_label} javobida 0 ta rasmiy natija qaytdi (`data: []`). "
                     "Eslatma: NOT_FOUND bu tushuncha Meta'da umuman yo'qligining mutlaq isboti emas, balki ayni so'rov bo'yicha topilmaganini bildiradi."
                 ),
             })
+            query_diagnostics.append({
+                "query": q_str,
+                "endpoint": endpoint_label,
+                "status": STATUS_NOT_FOUND,
+                "error_category": "NONE",
+                "pages_fetched": q_pages,
+                "is_truncated": q_truncated,
+                "results_count": 0,
+                "raw_results_count": 0,
+                "malformed_results_count": 0,
+                "is_complete": not q_truncated,
+                "note": "Rasmiy API bo'sh ro'yxat (`data: []`) qaytardi.",
+            })
+        else:
+            q_diag_status = "TRUNCATED_PARTIAL_RESULTS" if q_truncated else "COMPLETE_RESULTS"
+            query_diagnostics.append({
+                "query": q_str,
+                "endpoint": endpoint_label,
+                "status": q_diag_status,
+                "error_category": "NONE",
+                "pages_fetched": q_pages,
+                "is_truncated": q_truncated,
+                "results_count": valid_rows_for_query,
+                "raw_results_count": q_raw_count,
+                "malformed_results_count": q_malformed_count,
+                "is_complete": not q_truncated,
+                "note": (
+                    f"DIQQAT: Sahifalash limiti ({safe_max_pages} sahifa) tugadi va `paging.next` qoldi — natijalar to'liq emas!"
+                    if q_truncated
+                    else f"{q_pages} ta sahifa to'liq o'qildi ({valid_rows_for_query} ta yaroqli natija)."
+                ),
+            })
+
+    if any_truncated:
+        truncated_queries = [qd["query"] for qd in query_diagnostics if qd.get("is_truncated")]
+        limitations.insert(
+            0,
+            f"DIQQAT (Pagination Truncated / Natija To'liq Emas): {len(truncated_queries)} ta so'rovda ({', '.join(repr(x) for x in truncated_queries)}) "
+            f"`max_pages_per_query={safe_max_pages}` chegarasiga yetildi va keyingi sahifalar (`paging.next`) o'qilmadi. "
+            "Kesilgan qidiruv to'liq tekshirilgan qidiruv hisoblanmaydi (`is_truncated=True`, `is_complete=False`)!",
+        )
+
+    if api_failures:
+        limitations.insert(
+            0,
+            f"DIQQAT: {len(api_failures)} ta so'rovda API yoki javob shakli xatosi yuz berdi "
+            f"({', '.join(f['query'] + ':' + f['error_category'] for f in api_failures)}). "
+            "Buzilgan API javoblari `NOT_FOUND` sifatida emas, balki `API_UNAVAILABLE` xatosi sifatida qayd etildi.",
+        )
 
     # If every query failed with an API error and 0 items were retrieved, report API_UNAVAILABLE honestly
     if api_failures and not items_by_key and not not_found_queries:
         first_fail = api_failures[0]
-        limitations.insert(
-            0,
-            f"Live Meta Graph API so'rovi xato bilan tugadi ({first_fail['error_category']}): {first_fail['error']}. "
-            "Hech qanday statik yoki AI variant tasdiqlangan (`VERIFIED_AVAILABLE`) deb belgilangani yo'q!",
-        )
         return {
             "schema": "tyrion.detailed_targeting_accuracy/v5",
             "query_context": {
                 "product": product,
                 "niche": niche,
                 "customer_profile": customer_profile,
-                "objective": objective,
+                "objective": objective.upper(),
                 "country": country.upper(),
+                "language": language,
                 "detected_query_language": detected_lang,
+                "locale": locale,
                 "ad_account_id": acct or None,
                 "special_ad_category": spec_cat,
                 "generated_search_queries": expanded_queries,
+                "cache_key": cache_key,
             },
             "live_check_status": {
                 "executed": False,
                 "status": STATUS_API_UNAVAILABLE,
+                "is_complete": False,
+                "is_truncated": any_truncated,
+                "total_pages_fetched": total_pages_fetched,
                 "error_category": first_fail["error_category"],
                 "http_status": first_fail.get("http_status"),
                 "error_message": first_fail["error"],
                 "api_version": api_version,
                 "checked_at": checked_at,
                 "served_from_valid_cache": False,
+                "cache_status": cache_status,
+                "cache_key": cache_key,
                 "api_failures": api_failures,
+                "query_diagnostics": query_diagnostics,
             },
+            "query_diagnostics": query_diagnostics,
             "verified_targeting_options": [],
             "unavailable_or_consolidated_options": [],
             "related_unverified_ideas": related_unverified_ideas,
@@ -811,15 +1104,16 @@ def search_and_validate_targeting(
                 "limit": str(safe_limit),
             })
             sug_url = f"{base_url}/{api_version}/{acct}/targetingsuggestions?{sug_params}"
-            sug_fetched = _fetch_paginated_endpoint(sug_url, base_url, headers, max_pages=1)
+            sug_fetched = _fetch_paginated_endpoint(sug_url, base_url, headers, max_pages=safe_max_pages)
+            sug_pages = int(sug_fetched.get("pages_fetched", 0))
+            sug_trunc = bool(sug_fetched.get("is_truncated", False))
+            total_pages_fetched += sug_pages
+            if sug_trunc:
+                any_truncated = True
             if sug_fetched["ok"]:
                 for row in sug_fetched["items"]:
-                    raw_id = row.get("id")
-                    raw_name = row.get("name")
-                    if not raw_id or not raw_name:
-                        continue
-                    s_id = str(raw_id).strip()
-                    s_name = str(raw_name)
+                    s_id = str(row["id"]).strip()
+                    s_name = str(row["name"])
                     s_type = str(row.get("type") or "interests").strip()
                     s_key = (s_id, s_type.lower())
                     if s_key not in items_by_key:
@@ -838,6 +1132,8 @@ def search_and_validate_targeting(
                             "source_endpoint": sug_endpoint,
                             "api_version": api_version,
                             "checked_at": checked_at,
+                            "pages_fetched": sug_pages,
+                            "is_truncated": sug_trunc,
                             "validation_status": STATUS_FOUND_NOT_VALIDATED,
                             "validation_details": {
                                 "validated_via": None,
@@ -851,6 +1147,19 @@ def search_and_validate_targeting(
                             ),
                             "relevance_is_ai_opinion_not_meta_proof": True,
                         }
+                query_diagnostics.append({
+                    "query": "targetingsuggestions_seed",
+                    "endpoint": sug_endpoint,
+                    "status": "TRUNCATED_PARTIAL_RESULTS" if sug_trunc else "COMPLETE_RESULTS",
+                    "error_category": "NONE",
+                    "pages_fetched": sug_pages,
+                    "is_truncated": sug_trunc,
+                    "results_count": len(sug_fetched["items"]),
+                    "raw_results_count": int(sug_fetched.get("raw_rows_total", len(sug_fetched["items"]))),
+                    "malformed_results_count": int(sug_fetched.get("malformed_rows_total", 0)),
+                    "is_complete": not sug_trunc,
+                    "note": "targetingsuggestions natijalari olindi.",
+                })
             else:
                 limitations.append(f"targetingsuggestions qo'shimcha so'rovi bajarilmadi: {sug_fetched['error']}")
 
@@ -932,36 +1241,69 @@ def search_and_validate_targeting(
             "combinations": [],
         }
 
+    is_complete = (not any_truncated) and (not api_failures)
+    if any_truncated:
+        overall_status = (
+            "LIVE_SEARCH_AND_VALIDATION_PARTIAL_TRUNCATED"
+            if validation_executed
+            else "LIVE_SEARCH_ONLY_PARTIAL_TRUNCATED"
+        )
+    elif api_failures:
+        overall_status = (
+            "LIVE_SEARCH_AND_VALIDATION_PARTIAL_ERRORS"
+            if validation_executed
+            else "LIVE_SEARCH_ONLY_PARTIAL_ERRORS"
+        )
+    else:
+        overall_status = (
+            "LIVE_SEARCH_AND_VALIDATION_COMPLETED"
+            if validation_executed
+            else "LIVE_SEARCH_ONLY_NO_VALIDATION"
+        )
+
     result_payload = {
         "schema": "tyrion.detailed_targeting_accuracy/v5",
         "query_context": {
             "product": product,
             "niche": niche,
             "customer_profile": customer_profile,
-            "objective": objective,
+            "objective": objective.upper(),
             "country": country.upper(),
+            "language": language,
             "detected_query_language": detected_lang,
+            "locale": locale,
             "ad_account_id": acct or None,
             "special_ad_category": spec_cat,
             "generated_search_queries": expanded_queries,
+            "cache_key": cache_key,
         },
         "live_check_status": {
             "executed": True,
-            "status": "LIVE_SEARCH_AND_VALIDATION_COMPLETED" if validation_executed else "LIVE_SEARCH_ONLY_NO_VALIDATION",
+            "status": overall_status,
+            "is_complete": is_complete,
+            "is_truncated": any_truncated,
+            "total_pages_fetched": total_pages_fetched,
             "validation_executed": validation_executed,
-            "error_category": "PARTIAL_QUERY_ERRORS" if api_failures else "NONE",
+            "error_category": "PARTIAL_QUERY_ERRORS" if api_failures else ("TRUNCATED_PAGINATION" if any_truncated else "NONE"),
             "api_version": api_version,
             "checked_at": checked_at,
             "served_from_valid_cache": False,
+            "cache_status": cache_status,
+            "cache_key": cache_key,
             "counts": {
                 "verified_available": sum(1 for x in verified_options if x["validation_status"] == STATUS_VERIFIED_AVAILABLE),
                 "found_not_validated": sum(1 for x in verified_options if x["validation_status"] == STATUS_FOUND_NOT_VALIDATED),
                 "unavailable_or_consolidated": len(unavailable_options),
                 "related_unverified": len(filtered_unverified),
                 "not_found_queries": len(not_found_queries),
+                "total_results_count": len(verified_options) + len(unavailable_options),
+                "total_pages_fetched": total_pages_fetched,
+                "truncated_queries_count": sum(1 for qd in query_diagnostics if qd.get("is_truncated")),
             },
             "partial_api_failures": api_failures,
+            "query_diagnostics": query_diagnostics,
         },
+        "query_diagnostics": query_diagnostics,
         "verified_targeting_options": verified_options,
         "unavailable_or_consolidated_options": unavailable_options,
         "related_unverified_ideas": filtered_unverified,
@@ -970,13 +1312,14 @@ def search_and_validate_targeting(
         "limitations_and_disclosures": limitations,
     }
 
-    if not api_failures:
+    # Only cache complete, non-truncated, error-free responses
+    if not api_failures and not any_truncated:
         _save_cache(
             cache_path=cache_path,
             cache_key=cache_key,
             api_version=api_version,
             ttl_seconds=cache_ttl_seconds,
-            query_params={"product": product, "niche": niche, "acct": acct},
+            query_params=cache_context,
             payload=result_payload,
         )
 
@@ -984,6 +1327,10 @@ def search_and_validate_targeting(
 
 
 def main(argv: list[str] | None = None) -> int:
+    effective_argv = list(sys.argv[1:] if argv is None else argv)
+    if effective_argv and effective_argv[0].startswith("-") and effective_argv[0] not in ("-h", "--help"):
+        effective_argv = ["search", *effective_argv]
+
     parser = argparse.ArgumentParser(
         prog="meta-targeting-engine.py",
         description="Tyrion v5.0 Meta Ads Detailed Targeting Accuracy Engine (Zero Hallucinated Interests)",
@@ -998,7 +1345,7 @@ def main(argv: list[str] | None = None) -> int:
     p_search.add_argument("--country", default="UZ")
     p_search.add_argument("--language", default="auto", choices=["auto", "uz_latin", "uz_cyrillic", "ru", "en"])
     p_search.add_argument("--query", action="append", default=[], help="Aniq qidiruv so'rovi (bir nechta berish mumkin)")
-    p_search.add_argument("--account-id", default="", help="Meta Ad Account ID (`act_...`) — targetingsearch va targetingvalidation uchun")
+    p_search.add_argument("--account-id", "--ad-account-id", dest="account_id", default="", help="Meta Ad Account ID (`act_...`) — targetingsearch va targetingvalidation uchun")
     p_search.add_argument("--special-ad-category", default="NONE", choices=list(SPECIAL_AD_CATEGORIES))
     p_search.add_argument("--suggestions", action="store_true", help="`/{act_id}/targetingsuggestions` endpointini ham chaqirish")
     p_search.add_argument("--no-validate", action="store_true", help="`targetingvalidation` qadamini o'tkazib yuborish")
@@ -1009,7 +1356,7 @@ def main(argv: list[str] | None = None) -> int:
     p_search.add_argument("--cache-ttl", type=int, default=3600, help="Kesh yaroqlilik muddati (soniya)")
     p_search.add_argument("--json", action="store_true")
 
-    args = parser.parse_args(argv)
+    args = parser.parse_args(effective_argv)
     try:
         cpath = Path(args.cache_file) if args.cache_file else None
         res = search_and_validate_targeting(
@@ -1042,9 +1389,27 @@ def main(argv: list[str] | None = None) -> int:
     print("=" * 76)
     print("  🎯 TYRION DETAILED TARGETING ACCURACY REPORT")
     print("=" * 76)
-    print(f"  1. LIVE TEKSHIRUV HOLATI : {lcs['status']} (executed={lcs['executed']}, API={lcs['api_version']}, vaqt={lcs['checked_at']})")
+    print(
+        f"  1. LIVE TEKSHIRUV HOLATI : {lcs['status']} "
+        f"(executed={lcs['executed']}, is_complete={lcs.get('is_complete')}, is_truncated={lcs.get('is_truncated')}, "
+        f"pages_fetched={lcs.get('total_pages_fetched', 0)}, API={lcs['api_version']}, vaqt={lcs['checked_at']})"
+    )
+    if lcs.get("is_truncated"):
+        print("     ⚠️ OGOHLANTIRISH      : [TRUNCATED / NATIJA TO'LIQ EMAS] Sahifalash limiti tugadi; kesilgan qidiruv to'liq tekshirilgan hisoblanmaydi!")
     if lcs.get("error_message"):
         print(f"     Sabab / Xato          : [{lcs.get('error_category')}] {lcs['error_message']}")
+
+    q_diags = res.get("query_diagnostics") or []
+    if q_diags:
+        print(f"\n  1B. SO'ROVLAR DIAGNOSTIKASI VA SAHIFALASH ({len(q_diags)} ta so'rov):")
+        for qd in q_diags:
+            trunc_badge = " [TRUNCATED / TO'LIQ EMAS]" if qd.get("is_truncated") else ""
+            print(
+                f"     • '{qd['query']}' -> status={qd['status']}{trunc_badge} | "
+                f"pages_fetched={qd['pages_fetched']} | is_truncated={qd['is_truncated']} | "
+                f"results_count={qd['results_count']}"
+            )
+
     print(f"\n  2. TASDIQLANGAN / RASMIY TOPILGAN VARIANTLAR ({len(res['verified_targeting_options'])} ta):")
     if not res["verified_targeting_options"]:
         print("     • (Rasmiy API dan tasdiqlangan variant yo'q)")
@@ -1055,7 +1420,10 @@ def main(argv: list[str] | None = None) -> int:
             else "hajm: API qaytarmagan"
         )
         print(f"     • [{it['validation_status']}] {it['name']} (id={it['id']}, type={it['type']}, {bounds})")
-        print(f"       Manba: {it['source_endpoint']} | So'rov: '{it['search_query']}'")
+        print(
+            f"       Manba: {it['source_endpoint']} | So'rov: '{it['search_query']}' | "
+            f"pages_fetched={it.get('pages_fetched', 1)}, is_truncated={it.get('is_truncated', False)}"
+        )
 
     if res["unavailable_or_consolidated_options"]:
         print(f"\n  3. ESKIRGAN YOKI BIRLASHTIRILGAN VARIANTLAR ({len(res['unavailable_or_consolidated_options'])} ta):")
@@ -1071,7 +1439,10 @@ def main(argv: list[str] | None = None) -> int:
     if res["not_found_queries"]:
         print(f"\n  5. RASMIY NATIJA TOPILMAGAN SO'ROVLAR ({len(res['not_found_queries'])} ta):")
         for nf in res["not_found_queries"]:
-            print(f"     • [{nf['validation_status']}] '{nf['query']}' ({nf['source_endpoint']})")
+            print(
+                f"     • [{nf['validation_status']}] '{nf['query']}' ({nf['source_endpoint']}) | "
+                f"pages_fetched={nf.get('pages_fetched', 1)}, is_truncated={nf.get('is_truncated', False)}, results_count=0"
+            )
 
     combo = res["recommended_audience_combinations"]
     print(f"\n  6. TAVSIYA ETILGAN AUDITORIYA KOMBINATSIYASI: {combo['status']}")

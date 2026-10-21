@@ -1,7 +1,40 @@
 ---
 name: ads-meta
-description: "Audit Meta Ads measurement, Pixel and Conversions API, attribution, Facebook and Instagram creative, audiences, placements, automation, budgets, account structure, and policy. Use for Meta Ads, Facebook Ads, Instagram Ads, Advantage+, Pixel, CAPI, Events Manager, creative fatigue, or Meta campaign optimization."
+description: Audit Meta Ads measurement, Pixel and Conversions API, attribution, Facebook and Instagram creative, audiences, placements, automation, budgets, account structure, and policy. Use for Meta Ads, Facebook Ads, Instagram Ads, Advantage+, Pixel, CAPI, Events Manager, creative fatigue, or Meta campaign optimization.
+triggers:
+- meta ads
+- facebook ads
+- instagram reklama
+- meta audit
+- lidlar sifatsiz
+- meta kampaniya
+- таргет инстаграм
+- фейсбук реклама
+- мета реклама
+- лидлар сифатсиз
+aliases:
+- facebook-ads
+- instagram-ads
+- meta-audit
+- andromeda
+domains:
+- audit
+- paid-media
+- meta
+platforms:
+- meta
 attached_agents: [audit-meta, meta-audience-architect]
+related_skills:
+- ads-meta-audience
+- ads-server-side-tracking
+- ads-creative
+- uzbekistan-market-intel
+references:
+- skills/ads/references/meta-audit.md
+- skills/ads/references/meta-ai-stack.md
+- skills/ads/references/meta-creative-specs.md
+risk_level: low
+output_contract: Schema-valid Meta Ads audit & diagnosis report (Pixel/CAPI, Andromeda structure, Lead quality, Overlap, Fatigue)
 ---
 
 # Meta Ads Audit

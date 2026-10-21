@@ -1,9 +1,37 @@
 ---
 name: seo-audit
 description: When the user wants to audit, review, or diagnose SEO issues on their site. Also use when the user mentions "SEO audit," "technical SEO," "why am I not ranking," "SEO issues," "on-page SEO," "meta tags review," "SEO health check," "my traffic dropped," "lost rankings," "not showing up in Google," "site isn't ranking," "Google update hit me," "page speed," "core web vitals," "crawl errors," or "indexing issues." Use this even if the user just says something vague like "my SEO is bad" or "help with SEO" — start with an audit. For building pages at scale to target keywords, see programmatic-seo. For adding structured data, see schema. For AI search optimization, see ai-seo.
-metadata:
-  version: 2.0.1
+triggers:
+- seo
+- seo audit
+- sayt seo
+- qidiruv tizimi
+- core web vitals
+- on-page seo
+- сео аудит
+- продвижение сайта
+- сайтни сео бўйича яхшилаш
+aliases:
+- seo
+- technical-seo
+- onpage-seo
+domains:
+- seo
+- web
+- cro
+platforms:
+- web
+- google
 attached_agents: [seo-auditor]
+related_skills:
+- cro
+- ads-landing
+- content-strategy
+references:
+- skills/seo-audit/references/international-seo.md
+- skills/seo-audit/references/ai-writing-detection.md
+risk_level: low
+output_contract: Technical & On-Page SEO Audit with prioritized fixes and keyword architecture
 ---
 
 # SEO Audit

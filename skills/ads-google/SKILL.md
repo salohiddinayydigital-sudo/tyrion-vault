@@ -1,7 +1,40 @@
 ---
 name: ads-google
-description: "Audit Google Ads measurement, Search, Shopping, Performance Max, Demand Gen, YouTube-linked inventory, keywords and search terms, negative-keyword generation or review, creative assets, bidding, budgets, settings, and policy. Use for Google Ads, AdWords, Search campaigns, search terms reports, broad negatives, Shopping, Performance Max, PMax, Demand Gen, GAQL, Google conversion tracking, or Google campaign optimization."
+description: Audit Google Ads measurement, Search, Shopping, Performance Max, Demand Gen, YouTube-linked inventory, keywords and search terms, negative-keyword generation or review, creative assets, bidding, budgets, settings, and policy. Use for Google Ads, AdWords, Search campaigns, search terms reports, broad negatives, Shopping, Performance Max, PMax, Demand Gen, GAQL, Google conversion tracking, or Google campaign optimization.
+triggers:
+- google ads
+- search ads
+- pmax
+- performance max
+- rsa
+- kalit so'zlar
+- search terms
+- negative keywords
+- контекстная реклама
+- гугл реклама
+- гугл эдс
+aliases:
+- google-search
+- pmax
+- coliseum
+- adwords
+domains:
+- audit
+- paid-media
+- search
+platforms:
+- google
 attached_agents: [audit-google]
+related_skills:
+- ads-audit
+- ads-landing
+- ads-attribution
+references:
+- skills/ads/references/google-audit.md
+- skills/ads/references/google-creative-specs.md
+- skills/ads/references/gaql-notes.md
+risk_level: low
+output_contract: Schema-valid Google Ads audit findings JSON (Search, PMax, Negative Keywords, RSA Quality, Conversions)
 ---
 
 # Google Ads Audit

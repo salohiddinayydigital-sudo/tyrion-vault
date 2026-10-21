@@ -1,7 +1,26 @@
 ---
 name: ads-x
-description: "Audit X Ads measurement, X Pixel and Conversions API, campaign objectives, keyword and conversation targeting, creative, budgets, brand safety, app measurement, and reporting. Use for X Ads, Twitter Ads, promoted posts, X Pixel, X Conversions API, conversation targeting, or paid campaigns on X."
+description: Audit X Ads measurement, X Pixel and Conversions API, campaign objectives, keyword and conversation targeting, creative, budgets, brand safety, app measurement, and reporting. Use for X Ads, Twitter Ads, promoted posts, X Pixel, X Conversions API, conversation targeting, or paid campaigns on X.
+triggers:
+- x ads
+- twitter ads
+- promoted posts x
+- твиттер реклама
+aliases:
+- twitter-ads
+- x-platform
+domains:
+- audit
+- paid-media
+platforms:
+- x
 attached_agents: [audit-x]
+related_skills:
+- ads-audit
+references:
+- skills/ads/references/x-audit.md
+risk_level: low
+output_contract: Schema-valid X (Twitter) Ads audit findings JSON
 ---
 
 # X Ads Audit

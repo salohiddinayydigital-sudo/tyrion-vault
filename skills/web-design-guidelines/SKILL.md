@@ -1,11 +1,32 @@
 ---
 name: web-design-guidelines
 description: Review UI code for Web Interface Guidelines compliance. Use when asked to "review my UI", "check accessibility", "audit design", "review UX", or "check my site against best practices".
-metadata:
-  author: vercel
-  version: "1.0.0"
-  argument-hint: <file-or-pattern>
+triggers:
+- ui dizayn
+- ux audit
+- web design
+- vizual iyerarxiya
+- accessibility
+- дизайн сайта
+- интерфейс
+aliases:
+- ui-ux
+- web-ui
+- design-system
+domains:
+- design
+- web
+- cro
+platforms:
+- web
 attached_agents: [visual-designer]
+related_skills:
+- cro
+- ads-landing
+- ads-generate
+references: []
+risk_level: low
+output_contract: UI/UX visual hierarchy, accessibility, and mobile conversion layout critique
 ---
 
 # Web Interface Guidelines

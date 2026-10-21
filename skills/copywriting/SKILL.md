@@ -1,9 +1,41 @@
 ---
 name: copywriting
 description: When the user wants to write, rewrite, or improve marketing copy for any page — including homepage, landing pages, pricing pages, feature pages, about pages, or product pages. Also use when the user says "write copy for," "improve this copy," "rewrite this page," "marketing copy," "headline help," "CTA copy," "value proposition," "tagline," "subheadline," "hero section copy," "above the fold," "this copy is weak," "make this more compelling," or "help me describe my product." Use this whenever someone is working on website text that needs to persuade or convert. For email copy, see emails. For popup copy, see popups. For editing existing copy, see copy-editing. For the offer underneath the copy (bonuses, guarantees, value framing), see offers.
-metadata:
-  version: 2.0.2
+triggers:
+- sotuv matni
+- copywriting
+- kopirayting
+- pas formula
+- aida
+- sotuvchi post
+- ad text
+- копирайтинг
+- продающий текст
+- сотув матни
+aliases:
+- sales-copy
+- direct-response-copy
+- ad-copywriting
+domains:
+- copywriting
+- creative
+platforms:
+- meta
+- telegram
+- google
+- web
+- multi-platform
 attached_agents: [copy-writer]
+related_skills:
+- ads-create
+- copy-editing
+- offers
+- uzbekistan-market-intel
+references:
+- skills/copywriting/references/copy-frameworks.md
+- skills/copywriting/references/natural-transitions.md
+risk_level: low
+output_contract: Framework-grounded (PAS/AIDA/BAB) conversion copy in requested language (UZ Latin/Cyrillic/RU/EN)
 ---
 
 # Copywriting

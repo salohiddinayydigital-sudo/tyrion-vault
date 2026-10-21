@@ -1,7 +1,33 @@
 ---
 name: longform-direct-response
 description: Turn transcripts into longform direct response storytelling copy for Facebook, Instagram, LinkedIn, Skool, or Email. Trigger when user uploads a transcript and says "make this a longform direct response copy" or similar phrases like "longform story post", "direct response post", "story copy from this transcript". Walks the user through picking a storyline, choosing a platform, then writes in a direct response storytelling style.
+triggers:
+- uzun sotuv matni
+- longform copy
+- sales letter
+- vsl skript
+- advertorial
+- лендинг текст
+- длинная продающая страница
+aliases:
+- sales-letter
+- vsl
+- advertorial
+domains:
+- copywriting
+- web
+platforms:
+- web
+- telegram
+- meta
 attached_agents: [copy-writer]
+related_skills:
+- copywriting
+- offers
+- marketing-psychology
+references: []
+risk_level: low
+output_contract: Complete long-form direct-response sales page / VSL script with objection handling
 ---
 
 # Longform Direct Response Copy Skill

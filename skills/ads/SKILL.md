@@ -1,7 +1,54 @@
 ---
 name: ads
+description: Operate professional paid advertising across Google, Meta, YouTube, LinkedIn, TikTok, Microsoft, Apple, Amazon, Reddit, Pinterest, Snapchat, and X. Use for account intake, source-grounded audits, strategy, budget and measurement planning, creative production, experiments, reporting, monitoring, and explicitly approved campaign changes. Also trigger on PPC, paid social, retail media, attribution, tracking, landing pages, cross-platform conversion totals, negative keywords or search terms, beta-feature scoring, stale platform claims, API-token or credential setup, campaign deletion, and safe Claude Ads installation or uninstall.
 standalone: true
-description: "Operate professional paid advertising across Google, Meta, YouTube, LinkedIn, TikTok, Microsoft, Apple, Amazon, Reddit, Pinterest, Snapchat, and X. Use for account intake, source-grounded audits, strategy, budget and measurement planning, creative production, experiments, reporting, monitoring, and explicitly approved campaign changes. Also trigger on PPC, paid social, retail media, attribution, tracking, landing pages, cross-platform conversion totals, negative keywords or search terms, beta-feature scoring, stale platform claims, API-token or credential setup, campaign deletion, and safe Claude Ads installation or uninstall."
+triggers:
+- reklama
+- paid media
+- kampaniya boshqaruvi
+- conductor
+- multi-platform audit
+- umumiy marketing
+- реклама
+- управление рекламой
+- рекламная кампания
+aliases:
+- conductor
+- paid-media-os
+- claude-ads
+- ads-conductor
+domains:
+- orchestration
+- audit
+- strategy
+- paid-media
+platforms:
+- meta
+- google
+- telegram
+- tiktok
+- youtube
+- linkedin
+- microsoft
+- apple
+- amazon
+- reddit
+- pinterest
+- snapchat
+- x
+related_skills:
+- ads-audit
+- ads-plan
+- ads-budget
+- tyrion
+references:
+- skills/ads/references/thinking-framework.md
+- skills/ads/references/status-contract.md
+- skills/ads/references/scoring-system.md
+- skills/ads/references/benchmarks.md
+- skills/ads/references/platform-specs.md
+risk_level: medium
+output_contract: Conductor run manifest, coordinated worker packets, and source-verified synthesis report
 ---
 
 # Claude Ads
@@ -9,6 +56,15 @@ description: "Operate professional paid advertising across Google, Meta, YouTube
 Act as the conductor for a source-grounded paid-media operating system. Keep
 internal routing concise, load only the platform and workflow material needed,
 and make every completion claim traceable to evidence produced in the run.
+
+## Universal Auto-Router & Autonomous Orchestration
+
+Operators never need to manually invoke `/skill-search`, `/agent`, or `/brief`. On every natural-language request (in Uzbek Latin, Uzbek Cyrillic, Russian, or English):
+
+1. **Automatic Intake & Routing:** Run `python3 tools/skill-search.py route "<user_request>" --load` (or MCP `tyrion_universal_router`) to resolve `primary_agent`, `supporting_agents` (only when genuinely multi-step), `required_skills`, `supporting_skills`, `references_to_load`, `rules_to_load`, and `tools_to_use`.
+2. **Actual File Loading & Session Caching:** Read only the selected agent charter(s), `SKILL.md`, and task-specific `references_to_load`. Never load all 62 skills at once, and never claim to have read or applied a skill or reference that was not actually loaded.
+3. **Dynamic Mid-Task Re-Routing:** If execution uncovers a new domain requirement (e.g., CAPI debugging during a creative or funnel audit), invoke `python3 tools/skill-search.py route "<initial_task>" --reroute-with "<emergent_need>" --load` to attach the needed specialist without duplicating work.
+4. **Universal Fallback & Spend-Guard Gate:** If no specialized skill matches, proceed via the safe general `ads` conductor workflow (`fallback_ready`) without asking the user to pick a skill or agent name. Block execution (`blocked_mutation_approval`) only when a live account mutation lacks explicit approval or critical business inputs are missing.
 
 ## Operating order
 

@@ -1,7 +1,33 @@
 ---
 name: ads-setup
-description: "Set up a paid-media client, brand, account, data-source, privacy, and mutation-guardrail profile for Claude Ads. Use for onboarding, initial configuration, brand DNA, API tokens or credential profiles, environment-variable or keychain setup, connecting exports or read adapters, safe native or verified-local installation, curl-pipe-bash install requests, declaring KPIs, or preparing a new advertising project."
+description: Set up a paid-media client, brand, account, data-source, privacy, and mutation-guardrail profile for Claude Ads. Use for onboarding, initial configuration, brand DNA, API tokens or credential profiles, environment-variable or keychain setup, connecting exports or read adapters, safe native or verified-local installation, curl-pipe-bash install requests, declaring KPIs, or preparing a new advertising project.
+triggers:
+- akkaunt sozlash
+- account setup
+- onboarding
+- utm tuzish
+- pixel o'rnatish
+- настройка аккаунта
+- онбординг клиента
+aliases:
+- onboarding
+- account-setup
+- utm-setup
+domains:
+- setup
+- tracking
+- launch
+platforms:
+- multi-platform
 attached_agents: [launch-planner, tracking-specialist]
+related_skills:
+- ads-server-side-tracking
+- ads-launch
+references:
+- skills/ads/references/compliance-requirements.md
+- skills/ads/references/conversion-tracking.md
+risk_level: medium
+output_contract: Client workspace & account setup checklist (Naming taxonomy, UTM standard, Spend-Guard caps)
 ---
 
 # Paid Media Setup

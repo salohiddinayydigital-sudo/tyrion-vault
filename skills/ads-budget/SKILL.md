@@ -1,7 +1,36 @@
 ---
 name: ads-budget
-description: "Plan and review paid-media budgets, bidding, pacing, marginal return, forecasts, CPA, ROAS, MER, LTV:CAC, constraints, and allocation across supported platforms. Use for ad budget allocation, media budget, bidding strategy, scaling, spend pacing, budget forecast, ROAS target, or investment tradeoffs."
+description: Plan and review paid-media budgets, bidding, pacing, marginal return, forecasts, CPA, ROAS, MER, LTV:CAC, constraints, and allocation across supported platforms. Use for ad budget allocation, media budget, bidding strategy, scaling, spend pacing, budget forecast, ROAS target, or investment tradeoffs.
+triggers:
+- byudjet
+- budget
+- byudjet taqsimoti
+- spend allocation
+- pacing
+- scaling budget
+- бюджет
+- распределение бюджета
+- бюджет режаси
+aliases:
+- budget-plan
+- spend-allocation
+- media-budget
+domains:
+- budget
+- finance
+- strategy
+platforms:
+- multi-platform
 attached_agents: [audit-budget, launch-planner]
+related_skills:
+- ads-math
+- ads-plan
+- ads-optimize
+references:
+- skills/ads/references/budget-allocation.md
+- skills/ads/references/bidding-strategies.md
+risk_level: high
+output_contract: 70/20/10 budget allocation model with Spend-Guard velocity limits and break-even thresholds
 ---
 
 # Budget and Bidding

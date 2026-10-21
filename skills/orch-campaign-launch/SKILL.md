@@ -1,8 +1,26 @@
 ---
 name: orch-campaign-launch
 description: Orchestrate a structured campaign launch through the 3-phase testing ladder (Sandbox -> Validation -> Scale) with 6 safety gates, spend guard verification, and a human-executable change packet with rollback instructions.
-tags: [orchestration, campaign-launch, media-buying, safety, testing-ladder, scaling]
 standalone: true
+triggers:
+- orkestr launch
+- end-to-end launch
+- to'liq kampaniya chiqarish
+- полный запуск кампании
+aliases:
+- orchestrate-launch
+domains:
+- orchestration
+- launch
+platforms:
+- multi-platform
+related_skills:
+- ads-launch
+- launch
+- ads-plan
+references: []
+risk_level: high
+output_contract: Coordinated multi-agent launch blueprint with Spend-Guard gates
 ---
 
 # 🚀 Orchestrator Recipe: Controlled Campaign Launch & Scaling

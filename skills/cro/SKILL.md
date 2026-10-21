@@ -1,9 +1,35 @@
 ---
 name: cro
-description: "When the user wants to optimize, improve, or increase conversions on any marketing page or form — including homepage, landing pages, pricing pages, feature pages, lead capture forms, or contact forms. Also use when the user says 'CRO,' 'conversion rate optimization,' 'this page isn't converting,' 'improve conversions,' 'why isn't this page working,' 'my landing page sucks,' 'form abandonment,' 'nobody's converting,' 'low conversion rate,' or 'this page needs work.' Use this even if the user just shares a URL and asks for feedback. For signup/registration flows, see signup. For post-signup activation, see onboarding. For popups/modals, see popups."
-metadata:
-  version: 2.0.0
+description: When the user wants to optimize, improve, or increase conversions on any marketing page or form — including homepage, landing pages, pricing pages, feature pages, lead capture forms, or contact forms. Also use when the user says 'CRO,' 'conversion rate optimization,' 'this page isn't converting,' 'improve conversions,' 'why isn't this page working,' 'my landing page sucks,' 'form abandonment,' 'nobody's converting,' 'low conversion rate,' or 'this page needs work.' Use this even if the user just shares a URL and asks for feedback. For signup/registration flows, see signup. For post-signup activation, see onboarding. For popups/modals, see popups.
+triggers:
+- cro
+- konversiya oshirish
+- conversion rate optimization
+- sayt konversiyasi
+- forma konversiyasi
+- лид форма
+- повышение конверсии
+- конверсияни ошириш
+aliases:
+- conversion-optimization
+- funnel-cro
+- form-optimization
+domains:
+- cro
+- seo
+- web
+platforms:
+- web
 attached_agents: [seo-auditor]
+related_skills:
+- seo-audit
+- ads-landing
+- analytics
+references:
+- skills/cro/references/experiments.md
+- skills/cro/references/form.md
+risk_level: low
+output_contract: Prioritized CRO friction audit & A/B experiment backlog (ICE/PIE scored)
 ---
 
 # Conversion Rate Optimization (CRO)

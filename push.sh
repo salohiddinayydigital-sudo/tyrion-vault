@@ -20,7 +20,7 @@ echo "[2/5] Running Vault Audit & Catalog Sync Gate..."
 "$PY_CMD" tools/catalog.py check
 "$PY_CMD" tools/catalog.py drift
 
-echo "[3/5] Running Behavioral Eval Suite (12/12)..."
+echo "[3/5] Running Behavioral Eval Suite (24/24)..."
 "$PY_CMD" tools/skill-eval.py
 
 echo "[4/5] Running System Doctor..."

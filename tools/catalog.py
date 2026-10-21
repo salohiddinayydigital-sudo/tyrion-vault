@@ -178,12 +178,14 @@ def _control_char_error(data: object) -> str | None:
     return None
 
 
+def _normalized_bytes(path: Path) -> bytes:
+    """Windows (CRLF) va Linux (LF) o'rtasida SHA-256 hamda bayt hajmi farq qilmasligi uchun \r\n -> \n normalizatsiya."""
+    raw = path.read_bytes()
+    return raw.replace(b"\r\n", b"\n")
+
+
 def _sha256(path: Path) -> str:
-    h = hashlib.sha256()
-    with path.open("rb") as fh:
-        for chunk in iter(lambda: fh.read(65536), b""):
-            h.update(chunk)
-    return h.hexdigest()
+    return hashlib.sha256(_normalized_bytes(path)).hexdigest()
 
 
 def _fallback_frontmatter(text: str) -> dict:
@@ -241,7 +243,7 @@ def _item(layer: str, path: Path) -> dict:
         "layer": layer,
         "path": path.relative_to(VAULT).as_posix(),
         "sha256": _sha256(path)[:16],
-        "bytes": stat.st_size,
+        "bytes": len(_normalized_bytes(path)),
         "updated": datetime.fromtimestamp(stat.st_mtime, timezone.utc)
         .astimezone()
         .isoformat(timespec="seconds"),

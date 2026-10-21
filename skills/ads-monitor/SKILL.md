@@ -1,7 +1,32 @@
 ---
 name: ads-monitor
-description: "Monitor paid-ad account pacing, delivery, performance, creative fatigue, tracking, policy, and data quality across supported platforms. Use for daily or weekly checks, anomaly review, budget pacing, post-launch verification, or campaign monitoring."
+description: Monitor paid-ad account pacing, delivery, performance, creative fatigue, tracking, policy, and data quality across supported platforms. Use for daily or weekly checks, anomaly review, budget pacing, post-launch verification, or campaign monitoring.
+triggers:
+- monitoring
+- kunlik nazorat
+- pacing check
+- spend anomaly
+- kpi tushib ketdi
+- мониторинг рекламы
+- кунлик назорат
+aliases:
+- pacing
+- anomaly-detection
+- daily-check
+domains:
+- monitoring
+- audit
+- budget
+platforms:
+- multi-platform
 attached_agents: [audit-budget, audit-creative]
+related_skills:
+- ads-optimize
+- ads-budget
+references:
+- skills/ads/references/scoring-system.md
+risk_level: low
+output_contract: Pacing, CPA/ROAS drift, and creative fatigue early-warning telemetry report
 ---
 
 # Paid Media Monitoring

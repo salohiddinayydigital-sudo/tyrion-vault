@@ -1,7 +1,39 @@
 ---
 name: ads-launch
-description: "Draft or explicitly apply a paid-ad campaign launch through Claude Ads capability-gated adapters. Use for campaign creation, launch plans, publishing ads, activating campaigns, uploading creative, or requests to push a campaign live."
+description: Draft or explicitly apply a paid-ad campaign launch through Claude Ads capability-gated adapters. Use for campaign creation, launch plans, publishing ads, activating campaigns, uploading creative, or requests to push a campaign live.
+triggers:
+- kampaniya yoqish
+- campaign launch
+- reklama ishga tushirish
+- sandbox launch
+- 1-5-5
+- запуск кампании
+- запуск рекламы
+- кампания бошлаш
+aliases:
+- campaign-launch
+- launch-packet
+- go-live
+domains:
+- launch
+- strategy
+- paid-media
+platforms:
+- meta
+- google
+- telegram
+- tiktok
+- multi-platform
 attached_agents: [launch-planner]
+related_skills:
+- launch
+- ads-budget
+- ads-setup
+references:
+- skills/ads/references/budget-allocation.md
+- skills/ads/references/compliance.md
+risk_level: high
+output_contract: 3-Stage Launch Packet (Sandbox -> Validation -> Scale) with Spend-Guard pre-flight checklist and rollback plan
 ---
 
 # Campaign Launch

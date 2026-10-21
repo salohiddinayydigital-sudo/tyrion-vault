@@ -1,7 +1,38 @@
 ---
 name: ads-math
-description: "Calculate and model paid-media CPA, CPL, CPC, CPM, ROAS, MER, break-even targets, contribution margin, LTV:CAC, impression-share opportunity, budgets, forecasts, and experiment economics. Use for PPC math, ad calculator, break-even analysis, ROAS calculator, CPA calculator, budget forecast, LTV CAC, or MER."
+description: Calculate and model paid-media CPA, CPL, CPC, CPM, ROAS, MER, break-even targets, contribution margin, LTV:CAC, impression-share opportunity, budgets, forecasts, and experiment economics. Use for PPC math, ad calculator, break-even analysis, ROAS calculator, CPA calculator, budget forecast, LTV CAC, or MER.
+triggers:
+- unit ekonomika
+- unit economics
+- break-even roas
+- target cpa
+- romi
+- cac
+- ltv
+- marja hisobi
+- юнит экономика
+- окупаемость
+- ҳисоб-китоб
+aliases:
+- media-math
+- breakeven
+- roas-calc
+- unit-economics
+domains:
+- budget
+- finance
+- analytics
+platforms:
+- multi-platform
 attached_agents: [audit-budget]
+related_skills:
+- ads-budget
+- ads-optimize
+references:
+- skills/ads/references/benchmarks.md
+- skills/ads/references/budget-allocation.md
+risk_level: low
+output_contract: Deterministic unit economics table (Break-even ROAS, Max CPA, Margin, Funnel CVR, Scaling Ladder)
 ---
 
 # Paid Media Financial Model

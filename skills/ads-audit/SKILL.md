@@ -1,7 +1,35 @@
 ---
 name: ads-audit
-description: "Run a source-grounded paid-advertising audit for one or more of Google, Meta, YouTube, LinkedIn, TikTok, Microsoft, Apple, Amazon, Reddit, Pinterest, Snapchat, and X. Use for full ad checks, account health reviews, paid-media diagnostics, partial audits after authentication or worker failure, missing-platform weighting, beta-feature eligibility and scoring, spend audits, tracking audits, or prioritized opportunities and risks."
+description: Run a source-grounded paid-advertising audit for one or more of Google, Meta, YouTube, LinkedIn, TikTok, Microsoft, Apple, Amazon, Reddit, Pinterest, Snapchat, and X. Use for full ad checks, account health reviews, paid-media diagnostics, partial audits after authentication or worker failure, missing-platform weighting, beta-feature eligibility and scoring, spend audits, tracking audits, or prioritized opportunities and risks.
 standalone: true
+triggers:
+- to'liq audit
+- full audit
+- akkaunt tekshiruvi
+- reklama auditi
+- 360 audit
+- аудит аккаунта
+- текширув
+- реклама таҳлили
+aliases:
+- account-audit
+- full-audit
+- audit-all
+domains:
+- audit
+- orchestration
+platforms:
+- multi-platform
+related_skills:
+- ads
+- ads-meta
+- ads-google
+- ads-telegram
+references:
+- skills/ads/references/scoring-system.md
+- skills/ads/references/status-contract.md
+risk_level: low
+output_contract: Multi-platform evidence-backed audit scorecard and prioritized remediation table
 ---
 
 # Paid Advertising Audit

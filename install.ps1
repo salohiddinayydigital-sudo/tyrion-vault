@@ -20,7 +20,7 @@ Write-Host "[1/4] Claude Code hooklar va slash buyruqlarni o'rnatish..." -Foregr
 Write-Host "[2/4] Multi-Harness (Claude / Cursor / Windsurf) sinxronizatsiyasi..." -ForegroundColor White
 & $pyCmd (Join-Path $vaultRoot "tools\harness-export.py") --target claude
 
-Write-Host "[3/4] TyrionShield (6/6) va Eval Suite (12/12) tekshiruvi..." -ForegroundColor White
+Write-Host "[3/4] TyrionShield (6/6) va Eval Suite (24/24) tekshiruvi..." -ForegroundColor White
 & $pyCmd (Join-Path $vaultRoot "tools\tyrion-shield.py") scan
 & $pyCmd (Join-Path $vaultRoot "tools\skill-eval.py")
 

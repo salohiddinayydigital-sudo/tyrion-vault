@@ -1,7 +1,40 @@
 ---
 name: ads-attribution
-description: "Audit cross-platform attribution, conversion definitions, reporting windows, GA4, AdServices and AdAttributionKit, MMPs, browser and server events, offline conversions, and platform reconciliation. Use for attribution audit, attribution models, conversion windows, requests to add or total Meta and Google conversions, incompatible reporting-window aggregation, GA4 attribution, MMP review, AppsFlyer, Adjust, Branch, Singular, or cross-platform discrepancies."
+description: Audit cross-platform attribution, conversion definitions, reporting windows, GA4, AdServices and AdAttributionKit, MMPs, browser and server events, offline conversions, and platform reconciliation. Use for attribution audit, attribution models, conversion windows, requests to add or total Meta and Google conversions, incompatible reporting-window aggregation, GA4 attribution, MMP review, AppsFlyer, Adjust, Branch, Singular, or cross-platform discrepancies.
+triggers:
+- atributsiya
+- attribution
+- attribution window
+- 7d click
+- 1d view
+- mmm
+- incrementality
+- roas farqi
+- атрибуция
+- окно атрибуции
+- атрибуция хатоси
+aliases:
+- attribution
+- mmm
+- incrementality
+- view-through
+domains:
+- tracking
+- analytics
+- attribution
+platforms:
+- meta
+- google
+- tiktok
+- multi-platform
 attached_agents: [audit-tracking, tracking-specialist]
+related_skills:
+- ads-server-side-tracking
+- analytics
+references:
+- skills/ads/references/conversion-tracking.md
+risk_level: medium
+output_contract: Attribution reconciliation matrix comparing platform-reported vs CRM/GA4 conversions
 ---
 
 # Attribution Audit

@@ -18,7 +18,8 @@
     "catalog:check": "python3 tools/catalog.py check",
     "catalog:build": "python3 tools/catalog.py build",
     "catalog:sync": "python3 tools/catalog.py sync-mirrors && python3 tools/catalog.py sync-claims",
-    "skills:check": "python3 tools/skill-search.py check"
+    "skills:check": "python3 tools/skill-search.py check",
+    "route": "python3 tools/skill-search.py route"
   },
   "keywords": [
     "marketing",

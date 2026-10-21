@@ -1,7 +1,31 @@
 ---
 name: ads-research
-description: "Refresh Claude Ads platform, API, policy, regulation, benchmark, issue, pull-request, fork, and repository evidence. Use for ads research refresh, expired refresh_due dates, stale API or platform claims, reverify-or-demote decisions, release-current claim validation, ecosystem review, current platform changes, or updating paid-media knowledge. When tools or sources are unavailable, still demote the stale claim for the current run and block dependent release-current assertions before requesting access."
+description: Refresh Claude Ads platform, API, policy, regulation, benchmark, issue, pull-request, fork, and repository evidence. Use for ads research refresh, expired refresh_due dates, stale API or platform claims, reverify-or-demote decisions, release-current claim validation, ecosystem review, current platform changes, or updating paid-media knowledge. When tools or sources are unavailable, still demote the stale claim for the current run and block dependent release-current assertions before requesting access.
+triggers:
+- platforma tadqiqoti
+- benchmark tekshirish
+- policy yangiliklari
+- fact check
+- исследование рынка
+- бенчмарки
+aliases:
+- platform-research
+- source-verify
+- fact-check
+domains:
+- research
+- verification
+platforms:
+- multi-platform
 attached_agents: [research-worker, source-verifier]
+related_skills:
+- ads-competitor
+- customer-research
+references:
+- skills/ads/references/benchmarks.md
+- skills/ads/references/platform-specs.md
+risk_level: low
+output_contract: Source-graded evidence dossier with verified URLs and freshness timestamps
 ---
 
 # Paid Media Research Refresh

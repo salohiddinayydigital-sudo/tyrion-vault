@@ -1,9 +1,34 @@
 ---
 name: copy-editing
-description: "When the user wants to edit, review, or improve existing marketing copy, or refresh outdated content. Also use when the user mentions 'edit this copy,' 'review my copy,' 'copy feedback,' 'proofread,' 'polish this,' 'make this better,' 'copy sweep,' 'tighten this up,' 'this reads awkwardly,' 'clean up this text,' 'too wordy,' 'sharpen the messaging,' 'refresh this content,' 'update this page,' 'this content is outdated,' or 'content audit.' Use this when the user already has copy and wants it improved or refreshed rather than rewritten from scratch. For writing new copy, see copywriting."
-metadata:
-  version: 2.0.0
+description: When the user wants to edit, review, or improve existing marketing copy, or refresh outdated content. Also use when the user mentions 'edit this copy,' 'review my copy,' 'copy feedback,' 'proofread,' 'polish this,' 'make this better,' 'copy sweep,' 'tighten this up,' 'this reads awkwardly,' 'clean up this text,' 'too wordy,' 'sharpen the messaging,' 'refresh this content,' 'update this page,' 'this content is outdated,' or 'content audit.' Use this when the user already has copy and wants it improved or refreshed rather than rewritten from scratch. For writing new copy, see copywriting.
+triggers:
+- matn tahrirlash
+- copy editing
+- matnni kuchaytirish
+- proofreading
+- slang tozalash
+- редактирование текста
+- вычитка текста
+- матн таҳрири
+aliases:
+- edit-copy
+- polish-text
+- rewrite
+domains:
+- copywriting
+- editing
+platforms:
+- multi-platform
 attached_agents: [copy-writer]
+related_skills:
+- copywriting
+- writing-guidelines
+references:
+- skills/copy-editing/references/checklist.md
+- skills/copy-editing/references/plain-english-alternatives.md
+- skills/copy-editing/references/content-refresh.md
+risk_level: low
+output_contract: Before/After edited copy with clarity, specificity, and proof-to-promise improvements
 ---
 
 # Copy Editing

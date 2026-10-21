@@ -1,9 +1,34 @@
 ---
 name: marketing-ideas
-description: "When the user needs marketing ideas, inspiration, or strategies for their SaaS or software product. Also use when the user asks for 'marketing ideas,' 'growth ideas,' 'how to market,' 'marketing strategies,' 'marketing tactics,' 'ways to promote,' 'ideas to grow,' 'what else can I try,' 'I don't know how to market this,' 'brainstorm marketing,' or 'what marketing should I do.' Use this as a starting point whenever someone is stuck or looking for inspiration on how to grow. For specific channel execution, see the relevant skill (ads, social, emails, etc.)."
-metadata:
-  version: 2.0.1
+description: When the user needs marketing ideas, inspiration, or strategies for their SaaS or software product. Also use when the user asks for 'marketing ideas,' 'growth ideas,' 'how to market,' 'marketing strategies,' 'marketing tactics,' 'ways to promote,' 'ideas to grow,' 'what else can I try,' 'I don't know how to market this,' 'brainstorm marketing,' or 'what marketing should I do.' Use this as a starting point whenever someone is stuck or looking for inspiration on how to grow. For specific channel execution, see the relevant skill (ads, social, emails, etc.).
+triggers:
+- marketing g'oyalar
+- kampaniya g'oyasi
+- kreativ g'oya
+- growth ideas
+- guerrilla marketing
+- маркетинговые идеи
+- идеи для продвижения
+aliases:
+- campaign-ideas
+- brainstorm
+- growth-hacks
+domains:
+- strategy
+- ideation
+- growth
+platforms:
+- multi-platform
 attached_agents: [campaign-ideator]
+related_skills:
+- offers
+- ads-plan
+- creative-strategist
+references:
+- skills/marketing-ideas/references/ideas-by-category.md
+- skills/marketing-ideas/references/guerrilla-marketing.md
+risk_level: low
+output_contract: Ranked growth & campaign concepts tailored to budget, niche, and channel constraints
 ---
 
 # Marketing Ideas for SaaS

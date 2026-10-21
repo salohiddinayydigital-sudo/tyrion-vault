@@ -1,38 +1,52 @@
 ---
 name: video-motion-graphics
-description: >
-  Animatsion (motion graphics) video ishlab chiqarish — After Effects darajasidagi sifat:
-  kinetik tipografiya, shape/logo animatsiya, qatlamli parallaks, easing va timing intizomi,
-  ovoz dizayni, kadr aniqligida (frame-accurate) render. Ishlatiladi: "animatsion video",
-  "motion graphics", "kinetik tipografiya", "matn animatsiyasi", "logo animatsiya",
-  "after effects uslubida", "explainer video", "infografika animatsiyasi", "animated ad".
-  Chiqish — ffmpeg/Remotion bilan qayta ishga tushiriladigan skript va 9:16/1:1/16:9 render.
+description: 'Animatsion (motion graphics) video ishlab chiqarish — After Effects darajasidagi sifat: kinetik tipografiya, shape/logo animatsiya, qatlamli parallaks, easing va timing intizomi, ovoz dizayni, kadr aniqligida (frame-accurate) render. Ishlatiladi: "animatsion video", "motion graphics", "kinetik tipografiya", "matn animatsiyasi", "logo animatsiya", "after effects uslubida", "explainer video", "infografika animatsiyasi", "animated ad". Chiqish — ffmpeg/Remotion bilan qayta ishga tushiriladigan skript va 9:16/1:1/16:9 render.'
 triggers:
-  - animatsion video
-  - animatsiya
-  - animatsion
-  - animatsion reels
-  - motion graphics
-  - motion
-  - kinetik tipografiya
-  - kinetik
-  - kinetic typography
-  - matn animatsiyasi
-  - logo animatsiya
-  - after effects
-  - explainer video
-  - infografika animatsiyasi
-  - animated ad
-  - text animation
-  - easing
-  - storyboard
-  - animatic
-  - sahnali video
-  - kod bilan video
-  - remotion
+- animatsion
+- animatsion video
+- animatsion reels
+- motion graphics
+- kinetik
+- kinetik tipografiya
+- kinetic typography
+- after effects
+- remotion
+- logo animatsiya
+- logo reveal
+- 2d animatsiya
+- infografika video
+- shape animation
+- text animation
+- explainer video
+- dinamik matn
+- motion design
+- noldan video
+- xom videom yo'q
+- анимационное видео
+- моушн графика
+aliases:
+- motion-design
+- kinetic-typography
+- remotion
+- after-effects
+domains:
+- video
+- animation
+- creative
+platforms:
+- instagram
+- tiktok
+- youtube
+- meta
 attached_agents: [video-editor]
-source: "ffmpeg 8.1.2 + Python 3.13 real sinovlari (2026-09-21); wiki/video-kreativ-tizimi.md; wiki/kreativ-sikl.md"
-updated: 2026-09-21
+related_skills:
+- video-editing
+- reels-scripting
+references:
+- skills/video-motion-graphics/references/code-recipes.md
+- skills/video-motion-graphics/references/qa-checklist.md
+risk_level: low
+output_contract: Motion graphics storyboard, keyframe/spring choreography, and render specification
 ---
 
 # Animatsion video (motion graphics) — professional daraja

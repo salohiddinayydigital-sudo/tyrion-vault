@@ -1,8 +1,25 @@
 ---
 name: orch-audit
 description: Orchestrate an end-to-end evidence-based paid media audit across Meta, Google, TikTok, Telegram, and other ad accounts. Delegates discovery, tracking health, creative fatigue, and budget math to specialist worker agents with strict 00-manba source discipline and 50-topshirish-dod reporting.
-tags: [orchestration, audit, paid-media, meta, google, tracking, budget]
 standalone: true
+triggers:
+- orkestr audit
+- parallel audit
+- multi-agent audit
+- комплексный аудит
+aliases:
+- orchestrate-audit
+domains:
+- orchestration
+- audit
+platforms:
+- multi-platform
+related_skills:
+- ads-audit
+- ads
+references: []
+risk_level: low
+output_contract: Orchestrated multi-agent audit plan and consolidated findings
 ---
 
 # 🎯 Orchestrator Recipe: Multi-Platform Paid Media Audit

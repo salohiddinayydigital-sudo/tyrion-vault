@@ -5,7 +5,7 @@
       "args": [
         "tools/tyrion-mcp-server.py"
       ],
-      "description": "Tyrion v5.0 built-in 0-token MCP server (9 tools: Detailed Targeting Accuracy Engine, Meta Audience, Live Meta Insights, Breakdown Effect, Creative Matrix, CAPI/UTM, Spend-Guard, Calculator, Brain Search)"
+      "description": "Tyrion v5.0 built-in 0-token MCP server (10 tools: Universal Auto-Router, Detailed Targeting Accuracy Engine, Meta Audience, Live Meta Insights, Breakdown Effect, Creative Matrix, CAPI/UTM, Spend-Guard, Calculator, Brain Search)"
     },
     "meta-ads": {
       "command": "uvx",

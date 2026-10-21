@@ -1,7 +1,33 @@
 ---
 name: ads-apple
-description: "Audit Apple Ads measurement, AdServices and AdAttributionKit, campaign and keyword structure, Search Match, App Store placements, custom product pages, bidding, budgets, MMP reconciliation, and policy. Use for Apple Ads, Apple Search Ads, App Store ads, Search Match, custom product pages, AdServices, or Apple app-install campaigns."
+description: Audit Apple Ads measurement, AdServices and AdAttributionKit, campaign and keyword structure, Search Match, App Store placements, custom product pages, bidding, budgets, MMP reconciliation, and policy. Use for Apple Ads, Apple Search Ads, App Store ads, Search Match, custom product pages, AdServices, or Apple app-install campaigns.
+triggers:
+- apple search ads
+- asa
+- app store ads
+- ios app install
+- cpt
+- ttr
+- apple реклама
+- app store reklama
+aliases:
+- asa
+- apple-search-ads
+- app-store
+domains:
+- audit
+- paid-media
+- mobile-app
+platforms:
+- apple
 attached_agents: [audit-apple]
+related_skills:
+- ads-audit
+- ads-attribution
+references:
+- skills/ads/references/apple-audit.md
+risk_level: low
+output_contract: Schema-valid Apple Search Ads audit findings JSON covering SKAdNetwork/AdAttributionKit and keyword match types
 ---
 
 # Apple Ads Audit

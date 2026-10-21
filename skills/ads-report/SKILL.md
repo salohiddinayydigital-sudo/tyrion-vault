@@ -1,7 +1,33 @@
 ---
 name: ads-report
-description: "Render Markdown, HTML, or PDF paid-advertising reports from a validated Claude Ads JSON run bundle. Use for ads report, client report, audit PDF, executive audience reporting, or exporting prior audit and plan results."
+description: Render Markdown, HTML, or PDF paid-advertising reports from a validated Claude Ads JSON run bundle. Use for ads report, client report, audit PDF, executive audience reporting, or exporting prior audit and plan results.
+triggers:
+- hisobot
+- haftalik hisobot
+- oylik hisobot
+- client report
+- executive summary
+- отчет для клиента
+- еженедельный отчет
+- ҳисобот
+aliases:
+- weekly-report
+- monthly-report
+- client-report
+domains:
+- reporting
+- analytics
+platforms:
+- multi-platform
 attached_agents: [release-verifier]
+related_skills:
+- ads-math
+- analytics
+references:
+- skills/ads/references/scoring-system.md
+- skills/ads/references/status-contract.md
+risk_level: low
+output_contract: Client-ready ROI/ROAS/MER/CAC performance report with next-week action plan
 ---
 
 # Render Paid Media Reports

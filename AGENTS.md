@@ -17,7 +17,7 @@ updated: 2026-10-20
 1. **Shu fayl (`AGENTS.md`)** — qatlamlar, 36 agent, orkestratsiya va xavfsizlik chegaralari.
 2. **`MEMORY.md`** — operator xotirasi (`<=90` qator: til qonuni, O'zbekiston bozori asoslari, aktiv Bet Ledger va saboqlar).
 3. **Vazifaga mos Kontekst va Qoida:** `contexts/` dan 1 ta ish rejimi (`audit-mode`, `launch-mode`, `scale-mode`, `creative-mode`, `uzbekistan-market`) va `rules/` dan 1–2 qoida.
-4. **0-Token Qidiruv:** Bilim kerak bo'lsa `python3 tools/brain-search.py search "<so'z>"`, skill kerak bo'lsa `python3 tools/skill-search.py brief "<vazifa>" --agent <agent>`. Butun papkani yoppasiga o'qish taqiqlanadi ([[20-token-gigiyena]]).
+4. **Universal Auto-Router va 0-Token Kontekst Yuklash:** Foydalanuvchi oddiy tilda topshiriq berganda (`/skill-search` yoki `/agent` yozishi shart emas!), `python3 tools/skill-search.py route "<vazifa>" --load` avtomatik ravishda `primary_agent`, `supporting_agents`, `required_skills`, `references_to_load`, `rules_to_load` va `tools_to_use` ni aniqlaydi hamda faqat kerakli charter va `SKILL.md` fayllarini yuklaydi ([[20-token-gigiyena]], [[70-charter-baseline]]).
 
 ## 2. Yagona Ildizli Qatlamlar (Single-Root Layers)
 

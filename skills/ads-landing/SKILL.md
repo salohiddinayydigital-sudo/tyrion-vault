@@ -1,7 +1,36 @@
 ---
 name: ads-landing
-description: "Audit paid-ad landing pages for message match, mobile experience, performance, accessibility, trust, forms, consent, tracking, security, and conversion friction. Use for landing-page audit, post-click experience, LP audit, conversion-rate optimization, form optimization, ad-to-page message match, redirects, blocked navigation, or requests involving private, loopback, link-local, or metadata IP destinations."
+description: Audit paid-ad landing pages for message match, mobile experience, performance, accessibility, trust, forms, consent, tracking, security, and conversion friction. Use for landing-page audit, post-click experience, LP audit, conversion-rate optimization, form optimization, ad-to-page message match, redirects, blocked navigation, or requests involving private, loopback, link-local, or metadata IP destinations.
+triggers:
+- landing page
+- lending
+- sotuv sahifasi
+- landing audit
+- konversiya past
+- sahifa tezligi
+- лендинг
+- посадочная страница
+- сайт конверсияси
+aliases:
+- landing-audit
+- lp-cro
+- landing
+domains:
+- cro
+- seo
+- copywriting
+platforms:
+- web
+- multi-platform
 attached_agents: [copy-writer, seo-auditor]
+related_skills:
+- cro
+- seo-audit
+- copywriting
+references:
+- skills/ads/references/conversion-tracking.md
+risk_level: low
+output_contract: Landing page message-match, speed, offer clarity, and form friction audit report
 ---
 
 # Landing-Page Audit

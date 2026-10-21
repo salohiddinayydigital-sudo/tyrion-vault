@@ -71,7 +71,7 @@
     {
       "id": "E10_mcp_protocol_tools",
       "type": "mcp_list",
-      "min_tools": 7
+      "min_tools": 10
     },
     {
       "id": "E11_detailed_targeting_no_hallucination",
@@ -84,6 +84,162 @@
       "id": "E12_mcp_detailed_targeting_registered",
       "type": "mcp_tool_present",
       "tool_name": "tyrion_meta_detailed_targeting"
+    },
+    {
+      "id": "R01_meta_low_quality_leads_uz_lat",
+      "type": "universal_route",
+      "language": "uz_latin",
+      "query": "Meta reklamamdan kelayotgan lidlar sifatsiz, sababini top.",
+      "expected_primary_agent": "audit-meta",
+      "expected_skills": ["ads-meta"],
+      "forbidden_agents": ["video-editor", "audit-amazon", "audit-apple"],
+      "forbidden_skills": ["video-editing", "ads-amazon", "ads-apple"],
+      "expected_rules": ["rules/00-manba.md", "rules/70-charter-baseline.md", "rules/30-ozbekiston-konteksti.md"],
+      "expected_status": "ready",
+      "expected_fallback_triggered": false
+    },
+    {
+      "id": "R02_full_marketing_strategy_multistep",
+      "type": "universal_route",
+      "language": "uz_latin",
+      "query": "Yangi mijoz uchun to'liq marketing strategiyasi tuz.",
+      "expected_primary_agent": "launch-planner",
+      "expected_skills": ["ads-plan"],
+      "forbidden_agents": ["audit-snapchat", "audit-reddit"],
+      "forbidden_skills": ["ads-snapchat", "video-editing"],
+      "expected_rules": ["rules/00-manba.md", "rules/70-charter-baseline.md", "rules/40-xavfsizlik-va-hisob.md", "rules/50-topshirish-dod.md"],
+      "expected_status": "ready",
+      "expected_fallback_triggered": false
+    },
+    {
+      "id": "R03_instagram_monthly_content_plan",
+      "type": "universal_route",
+      "language": "uz_latin",
+      "query": "Instagram uchun bir oylik kontent reja tayyorla.",
+      "expected_primary_agent": "social-content-writer",
+      "expected_skills": ["social"],
+      "forbidden_agents": ["audit-tracking", "audit-amazon"],
+      "forbidden_skills": ["ads-server-side-tracking", "ads-amazon"],
+      "expected_rules": ["rules/00-manba.md", "rules/70-charter-baseline.md"],
+      "expected_status": "ready",
+      "expected_fallback_triggered": false
+    },
+    {
+      "id": "R04_capi_debugging_check",
+      "type": "universal_route",
+      "language": "uz_latin",
+      "query": "CAPI ishlashini tekshir, xatolarni top.",
+      "expected_primary_agent": "tracking-specialist",
+      "expected_skills": ["ads-server-side-tracking"],
+      "forbidden_agents": ["video-editor", "social-content-writer"],
+      "forbidden_skills": ["video-motion-graphics", "social"],
+      "expected_rules": ["rules/00-manba.md", "rules/70-charter-baseline.md", "rules/40-xavfsizlik-va-hisob.md"],
+      "expected_status": "ready",
+      "expected_fallback_triggered": false
+    },
+    {
+      "id": "R05_competitor_research_and_strategy",
+      "type": "universal_route",
+      "language": "uz_latin",
+      "query": "Raqobatchilarimni o'rganib, menga reklama strategiyasi tuz.",
+      "expected_primary_agent": "positioning-strategist",
+      "expected_skills": ["ads-competitor"],
+      "forbidden_agents": ["video-editor", "audit-apple"],
+      "forbidden_skills": ["video-editing", "ads-apple"],
+      "expected_rules": ["rules/00-manba.md", "rules/70-charter-baseline.md", "rules/50-topshirish-dod.md"],
+      "expected_status": "ready",
+      "expected_fallback_triggered": false
+    },
+    {
+      "id": "R06_seo_and_cro_website_improvement",
+      "type": "universal_route",
+      "language": "uz_latin",
+      "query": "Saytimni SEO va konversiya bo'yicha yaxshila.",
+      "expected_primary_agent": "seo-auditor",
+      "expected_skills": ["seo-audit", "cro"],
+      "forbidden_agents": ["audit-telegram", "video-editor"],
+      "forbidden_skills": ["ads-telegram", "video-editing"],
+      "expected_rules": ["rules/00-manba.md", "rules/70-charter-baseline.md"],
+      "expected_status": "ready",
+      "expected_fallback_triggered": false
+    },
+    {
+      "id": "R07_uzbek_cyrillic_capi_and_leads",
+      "type": "universal_route",
+      "language": "uz_cyrillic",
+      "query": "Мета рекламада CAPI ишлашини текшир ва пиксель хатоларини топ",
+      "expected_primary_agent": "tracking-specialist",
+      "expected_skills": ["ads-server-side-tracking"],
+      "forbidden_agents": ["video-editor", "social-content-writer"],
+      "forbidden_skills": ["video-editing", "social"],
+      "expected_rules": ["rules/00-manba.md", "rules/70-charter-baseline.md", "rules/40-xavfsizlik-va-hisob.md", "rules/30-ozbekiston-konteksti.md"],
+      "expected_status": "ready",
+      "expected_fallback_triggered": false
+    },
+    {
+      "id": "R08_russian_detailed_targeting_query",
+      "type": "universal_route",
+      "language": "ru",
+      "query": "Подбери детальный таргетинг и интересы в Мета для недвижимости в Ташкенте",
+      "expected_primary_agent": "meta-audience-architect",
+      "expected_skills": ["ads-meta-audience"],
+      "forbidden_agents": ["audit-google", "video-editor"],
+      "forbidden_skills": ["ads-google", "video-editing"],
+      "expected_rules": ["rules/00-manba.md", "rules/70-charter-baseline.md", "rules/30-ozbekiston-konteksti.md"],
+      "expected_status": "ready",
+      "expected_fallback_triggered": false
+    },
+    {
+      "id": "R09_english_google_pmax_audit",
+      "type": "universal_route",
+      "language": "en",
+      "query": "Audit my Google Ads Performance Max and search terms negative keywords",
+      "expected_primary_agent": "audit-google",
+      "expected_skills": ["ads-google"],
+      "forbidden_agents": ["audit-tiktok", "video-editor"],
+      "forbidden_skills": ["ads-tiktok", "video-editing"],
+      "expected_rules": ["rules/00-manba.md", "rules/70-charter-baseline.md"],
+      "expected_status": "ready",
+      "expected_fallback_triggered": false
+    },
+    {
+      "id": "R10_missing_skill_universal_fallback",
+      "type": "universal_route",
+      "language": "en",
+      "query": "zzz qqq unknown holographic billboard telemetry xyz",
+      "expected_primary_agent": "positioning-strategist",
+      "expected_skills": ["ads"],
+      "forbidden_agents": ["audit-amazon", "video-editor"],
+      "forbidden_skills": ["ads-amazon", "video-editing"],
+      "expected_rules": ["rules/00-manba.md", "rules/70-charter-baseline.md"],
+      "expected_status": "fallback_ready",
+      "expected_fallback_triggered": true
+    },
+    {
+      "id": "R11_unapproved_live_mutation_blocked",
+      "type": "universal_route",
+      "language": "uz_latin",
+      "query": "Meta kampaniyamda byudjetni 300% oshir va eski reklamalarni hoziroq o'chir",
+      "expected_primary_agent": "audit-budget",
+      "expected_skills": ["ads-optimize"],
+      "forbidden_agents": ["video-editor", "seo-auditor"],
+      "forbidden_skills": ["video-editing", "seo-audit"],
+      "expected_rules": ["rules/00-manba.md", "rules/70-charter-baseline.md", "rules/40-xavfsizlik-va-hisob.md"],
+      "expected_status": "blocked_mutation_approval",
+      "expected_fallback_triggered": false
+    },
+    {
+      "id": "R12_telegram_ads_funnel_audit",
+      "type": "universal_route",
+      "language": "uz_latin",
+      "query": "Telegram Ads kampaniyam va Telegram bot voronkasini tekshir",
+      "expected_primary_agent": "audit-telegram",
+      "expected_skills": ["ads-telegram"],
+      "forbidden_agents": ["audit-apple", "video-editor"],
+      "forbidden_skills": ["ads-apple", "video-motion-graphics"],
+      "expected_rules": ["rules/00-manba.md", "rules/70-charter-baseline.md", "rules/30-ozbekiston-konteksti.md"],
+      "expected_status": "ready",
+      "expected_fallback_triggered": false
     }
   ]
 }

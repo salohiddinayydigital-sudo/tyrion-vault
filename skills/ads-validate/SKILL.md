@@ -1,7 +1,34 @@
 ---
 name: ads-validate
-description: "Validate Claude Ads contracts, scoring inputs, run bundles, capabilities, source freshness, safety, installation, uninstall, or release readiness. Use for ads validate, ads status, ads next, stale claims with missing tool access, maturity checks, ownership-manifest uninstall, preserving unrelated ads-* skills, checksum verification, preflight, QA, or release audits. Missing access must demote stale evidence for the run and block dependent release-current claims before recovery guidance."
+description: Validate Claude Ads contracts, scoring inputs, run bundles, capabilities, source freshness, safety, installation, uninstall, or release readiness. Use for ads validate, ads status, ads next, stale claims with missing tool access, maturity checks, ownership-manifest uninstall, preserving unrelated ads-* skills, checksum verification, preflight, QA, or release audits. Missing access must demote stale evidence for the run and block dependent release-current claims before recovery guidance.
+triggers:
+- policy tekshiruvi
+- reklama qoidalari
+- blokirovka
+- ad rejected
+- special ad category
+- compliance
+- модерация рекламы
+- блокировка рекламного кабинета
+aliases:
+- policy-check
+- compliance
+- ad-moderation
+domains:
+- compliance
+- policy
+- validation
+platforms:
+- multi-platform
 attached_agents: [audit-policy-compliance, audit-regulatory-compliance, release-verifier, skill-reviewer]
+related_skills:
+- ads-audit
+- ads-report
+references:
+- skills/ads/references/compliance.md
+- skills/ads/references/compliance-requirements.md
+risk_level: medium
+output_contract: Policy & regulatory compliance verdict with exact violation citations and compliant rewrite options
 ---
 
 # Validate Claude Ads

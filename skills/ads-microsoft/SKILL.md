@@ -1,7 +1,30 @@
 ---
 name: ads-microsoft
-description: "Audit Microsoft Advertising measurement, UET, search and audience campaigns, Google imports, syndication, keywords, creative, bidding, budgets, Copilot inventory, and policy. Use for Microsoft Ads, Bing Ads, UET, Microsoft Audience Network, Google Ads import, or Microsoft campaign optimization."
+description: Audit Microsoft Advertising measurement, UET, search and audience campaigns, Google imports, syndication, keywords, creative, bidding, budgets, Copilot inventory, and policy. Use for Microsoft Ads, Bing Ads, UET, Microsoft Audience Network, Google Ads import, or Microsoft campaign optimization.
+triggers:
+- microsoft ads
+- bing ads
+- bing search
+- майкрософт реклама
+- бинг реклама
+aliases:
+- bing-ads
+- microsoft-advertising
+domains:
+- audit
+- paid-media
+- search
+platforms:
+- microsoft
 attached_agents: [audit-microsoft]
+related_skills:
+- ads-google
+- ads-audit
+references:
+- skills/ads/references/microsoft-audit.md
+- skills/ads/references/microsoft-creative-specs.md
+risk_level: low
+output_contract: Schema-valid Microsoft Advertising audit findings JSON
 ---
 
 # Microsoft Advertising Audit

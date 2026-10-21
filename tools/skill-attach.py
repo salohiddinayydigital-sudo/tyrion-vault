@@ -71,7 +71,8 @@ def write_list(block: str, key: str, values: list[str]) -> tuple[str, str]:
         return block[:inline.start()] + line + block[inline.end():], "~"
     block_form = re.search(rf"^{key}:\s*\n((?:\s*-\s*.+\n?)+)", block, re.M)
     if block_form:
-        return block[:block_form.start()] + line + block[block_form.end():], "~"
+        suffix = "\n" if block_form.group(0).endswith("\n") else ""
+        return block[:block_form.start()] + line + suffix + block[block_form.end():], "~"
     sep = "" if block.endswith("\n") else "\n"
     return f"{block}{sep}{line}", "+"
 

@@ -1,7 +1,35 @@
 ---
 name: ads-generate
-description: "Generate paid-ad image assets from a validated creative brief and brand profile using an explicitly configured image provider. Triggers on: generate ads, generate ad images, create ad creatives, create ad images, make ad images, generate visuals, make campaign visuals, generate images from campaign brief."
+description: 'Generate paid-ad image assets from a validated creative brief and brand profile using an explicitly configured image provider. Triggers on: generate ads, generate ad images, create ad creatives, create ad images, make ad images, generate visuals, make campaign visuals, generate images from campaign brief.'
+triggers:
+- banner generatsiya
+- visual generation
+- rasm prompt
+- image prompt
+- ad visual
+- генерация баннеров
+- визуал для рекламы
+aliases:
+- image-gen
+- visual-prompt
+- banner-spec
+domains:
+- creative
+- design
+platforms:
+- meta
+- google
+- tiktok
+- multi-platform
 attached_agents: [format-adapter, visual-designer]
+related_skills:
+- ads-photoshoot
+- web-design-guidelines
+references:
+- skills/ads/references/image-providers.md
+- skills/ads/references/platform-specs.md
+risk_level: low
+output_contract: Aspect-ratio-verified visual generation specs (9:16, 4:5, 1:1, 1.91:1) with safe-zone overlays
 ---
 
 # Generate Ad Images

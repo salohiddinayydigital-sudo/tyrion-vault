@@ -1,7 +1,40 @@
 ---
 name: ads-optimize
-description: "Diagnose and draft or explicitly apply paid-ad optimizations using evidence, financial constraints, experiments, and capability-gated adapters. Use for campaign optimization, budget reallocation, bid changes, pausing or archiving ads, requests to delete campaigns, search-term or negative-keyword actions, creative rotation, or improving CPA and ROAS."
+description: Diagnose and draft or explicitly apply paid-ad optimizations using evidence, financial constraints, experiments, and capability-gated adapters. Use for campaign optimization, budget reallocation, bid changes, pausing or archiving ads, requests to delete campaigns, search-term or negative-keyword actions, creative rotation, or improving CPA and ROAS.
+triggers:
+- optimizatsiya
+- optimize
+- kill keep scale
+- byudjet oshirish
+- masshtablash
+- scaling
+- оптимизация кампании
+- масштабирование
+- бюджетни ошириш
+aliases:
+- scale
+- kill-keep-scale
+- campaign-optimization
+domains:
+- optimization
+- budget
+- scaling
+platforms:
+- meta
+- google
+- telegram
+- tiktok
+- multi-platform
 attached_agents: [audit-budget, audit-creative]
+related_skills:
+- ads-budget
+- ads-math
+- ads-monitor
+references:
+- skills/ads/references/bidding-strategies.md
+- skills/ads/references/budget-allocation.md
+risk_level: high
+output_contract: Kill / Keep / Scale decision matrix with +20%/48h Spend-Guard check and rollback trigger
 ---
 
 # Paid Media Optimization

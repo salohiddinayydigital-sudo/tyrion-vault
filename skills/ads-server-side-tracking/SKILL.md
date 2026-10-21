@@ -1,7 +1,43 @@
 ---
 name: ads-server-side-tracking
-description: "Audit server-side paid-media measurement including server-side tag management, platform conversion APIs, event taxonomy, browser/server deduplication, consent, hashing, data quality, observability, and privacy. Use for server-side tracking, sGTM, server-side tagging, CAPI, Events API, event_id, pixel debugging, first-party measurement, or conversion data loss."
+description: Audit server-side paid-media measurement including server-side tag management, platform conversion APIs, event taxonomy, browser/server deduplication, consent, hashing, data quality, observability, and privacy. Use for server-side tracking, sGTM, server-side tagging, CAPI, Events API, event_id, pixel debugging, first-party measurement, or conversion data loss.
+triggers:
+- capi
+- conversions api
+- pixel
+- event_id
+- emq
+- event match quality
+- server-side tracking
+- sgtm
+- deduplikatsiya
+- пиксель
+- конверсии апи
+- capi текшириш
+aliases:
+- capi
+- meta-capi
+- sgtm
+- pixel-debug
+- emq
+domains:
+- tracking
+- analytics
+- technical
+platforms:
+- meta
+- google
+- tiktok
+- web
 attached_agents: [audit-tracking, tracking-specialist]
+related_skills:
+- ads-attribution
+- analytics
+- ads-setup
+references:
+- skills/ads/references/conversion-tracking.md
+risk_level: medium
+output_contract: CAPI v26.0 / sGTM audit & payload specification (EMQ score, SHA-256 PII normalization, event_id deduplication)
 ---
 
 # Server-Side Tracking Audit

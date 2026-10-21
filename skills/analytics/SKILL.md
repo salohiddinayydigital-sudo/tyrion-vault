@@ -1,9 +1,39 @@
 ---
 name: analytics
 description: When the user wants to set up, improve, or audit analytics tracking and measurement. Also use when the user mentions "set up tracking," "GA4," "Google Analytics," "conversion tracking," "event tracking," "UTM parameters," "tag manager," "GTM," "analytics implementation," "tracking plan," "how do I measure this," "track conversions," "Mixpanel," "Segment," "are my events firing," or "analytics isn't working." Use this whenever someone asks how to know if something is working or wants to measure marketing results. For choosing attribution models, comparing multi-touch/MMM/incrementality, or reconciling conflicting numbers across tools, see attribution. For A/B test measurement, see ab-testing.
-metadata:
-  version: 2.0.1
+triggers:
+- ga4
+- google analytics
+- gtm
+- google tag manager
+- dataLayer
+- analitika
+- voronka analitikasi
+- аналитика сайта
+- гугл аналитика
+aliases:
+- ga4
+- gtm
+- web-analytics
+- datalayer
+domains:
+- analytics
+- tracking
+platforms:
+- web
+- google
+- multi-platform
 attached_agents: [tracking-specialist]
+related_skills:
+- ads-server-side-tracking
+- ads-attribution
+- cro
+references:
+- skills/analytics/references/ga4-implementation.md
+- skills/analytics/references/gtm-implementation.md
+- skills/analytics/references/event-library.md
+risk_level: medium
+output_contract: GA4 / GTM event taxonomy, dataLayer schema, and funnel drop-off diagnostic report
 ---
 
 # Analytics Tracking

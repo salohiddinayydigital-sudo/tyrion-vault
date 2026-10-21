@@ -3,6 +3,7 @@
 
 Ishlatish:
   python3 tools/tyrion.py status
+  python3 tools/tyrion.py route "<topshiriq>" [--json]
   python3 tools/tyrion.py doctor [--quick]
   python3 tools/tyrion.py shield
   python3 tools/tyrion.py audience <subcommand> [args...]
@@ -38,6 +39,7 @@ for _stream in (sys.stdout, sys.stderr):
 VERSION = "5.0.0"
 
 ROUTES = {
+    "route": ("skill-search.py", ["route"]),
     "doctor": ("doctor.py", []),
     "shield": ("tyrion-shield.py", ["scan"]),
     "eval": ("skill-eval.py", []),

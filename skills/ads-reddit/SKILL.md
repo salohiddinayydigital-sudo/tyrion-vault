@@ -1,7 +1,25 @@
 ---
 name: ads-reddit
-description: "Audit Reddit Ads measurement, campaign structure, community and interest targeting, creative-native fit, catalog advertising, budgets, brand safety, and reporting. Use for Reddit Ads, promoted posts, conversation ads, community targeting, Reddit Pixel, Reddit Conversions API, or Reddit dynamic product ads."
+description: Audit Reddit Ads measurement, campaign structure, community and interest targeting, creative-native fit, catalog advertising, budgets, brand safety, and reporting. Use for Reddit Ads, promoted posts, conversation ads, community targeting, Reddit Pixel, Reddit Conversions API, or Reddit dynamic product ads.
+triggers:
+- reddit ads
+- subreddit targeting
+- reddit promoted
+- реддит реклама
+aliases:
+- reddit
+domains:
+- audit
+- paid-media
+platforms:
+- reddit
 attached_agents: [audit-reddit]
+related_skills:
+- ads-audit
+references:
+- skills/ads/references/reddit-audit.md
+risk_level: low
+output_contract: Schema-valid Reddit Ads audit findings JSON
 ---
 
 # Reddit Ads Audit

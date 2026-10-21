@@ -1,11 +1,28 @@
 ---
 name: writing-guidelines
 description: Review docs/prose for Writing Guidelines compliance. Use when asked to "review my docs", "check writing style", "audit prose", "review docs voice and tone", or "check this page against the writing handbook".
-metadata:
-  author: vercel
-  version: "1.0.0"
-  argument-hint: <file-or-pattern>
+triggers:
+- yozish uslubi
+- writing style
+- aniq matn
+- tone of voice
+- стиль текста
+- правила письма
+aliases:
+- style-guide
+- clarity-rules
+domains:
+- copywriting
+- editing
+platforms:
+- multi-platform
 attached_agents: [copy-writer]
+related_skills:
+- copy-editing
+- copywriting
+references: []
+risk_level: low
+output_contract: Style-checked, fluff-free professional marketing prose
 ---
 
 # Writing Guidelines

@@ -1,8 +1,36 @@
 ---
 name: reels-scripting
-description: >
-  Turn a reference Instagram Reel into a script for your own Reel, tuned to your voice and repurposed from your newsletter content. Takes a Reel URL or Notion reference link, uses Apify to scrape the video, sends it to Gemini 2.5 Flash for full transcript + hook + structure analysis, then writes a new script applying the same patterns to your newsletter topic. Use this skill whenever the user says "script a reel", "reels scripting", "turn this into a reel", pastes an Instagram Reel URL, or references their Notion outlier reels database. Requires APIFY_API_TOKEN and GOOGLE_AI_API_KEY environment variables.
+description: Turn a reference Instagram Reel into a script for your own Reel, tuned to your voice and repurposed from your newsletter content. Takes a Reel URL or Notion reference link, uses Apify to scrape the video, sends it to Gemini 2.5 Flash for full transcript + hook + structure analysis, then writes a new script applying the same patterns to your newsletter topic. Use this skill whenever the user says "script a reel", "reels scripting", "turn this into a reel", pastes an Instagram Reel URL, or references their Notion outlier reels database. Requires APIFY_API_TOKEN and GOOGLE_AI_API_KEY environment variables.
+triggers:
+- reels skript
+- reels ssenariy
+- tiktok skript
+- shorts skript
+- 3 soniyalik hook
+- сценарий рилс
+- рилс сценарий
+- видео скрипт
+aliases:
+- reels-script
+- short-form-script
+- ugc-script
+domains:
+- creative
+- video
+- copywriting
+platforms:
+- instagram
+- meta
+- tiktok
+- youtube
 attached_agents: [reels-scriptwriter]
+related_skills:
+- ads-creative
+- video-editing
+- social
+references: []
+risk_level: low
+output_contract: Time-coded Reels/Shorts script (0-3s Hook, Body, Proof, CTA, Visual & Audio cues)
 ---
 
 # Reels Scripting

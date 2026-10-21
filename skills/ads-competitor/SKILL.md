@@ -1,7 +1,40 @@
 ---
 name: ads-competitor
-description: "Research competitor paid-ad presence, messaging, creative, formats, landing pages, keyword and auction signals, transparent ad libraries, and strategic gaps across supported platforms. Use for competitor ads, ad libraries, ad spy, competitive PPC analysis, competitor creative, Google Ads Transparency, Meta Ad Library, or paid-media competitor research."
+description: Research competitor paid-ad presence, messaging, creative, formats, landing pages, keyword and auction signals, transparent ad libraries, and strategic gaps across supported platforms. Use for competitor ads, ad libraries, ad spy, competitive PPC analysis, competitor creative, Google Ads Transparency, Meta Ad Library, or paid-media competitor research.
+triggers:
+- raqobatchi
+- raqobatchilar
+- competitor analysis
+- meta ads library
+- ad library
+- raqobatchilarni o'rganish
+- конкуренты
+- анализ конкурентов
+- рақобатчилар
+aliases:
+- competitor
+- ads-library
+- spy
+- competitive-intel
+domains:
+- research
+- strategy
+- competitor
+platforms:
+- meta
+- google
+- tiktok
+- telegram
+- multi-platform
 attached_agents: [positioning-strategist, research-worker, source-verifier]
+related_skills:
+- product-marketing
+- customer-research
+- ads-creative
+references:
+- skills/ads/references/thinking-framework.md
+risk_level: low
+output_contract: Competitor teardown matrix (Hooks, Offers, Funnels, Longevity Signals, and Counter-Positioning)
 ---
 
 # Competitor Ad Intelligence

@@ -1,7 +1,39 @@
 ---
 name: ads-create
-description: "Create source-grounded paid-ad campaign concepts, messaging, copy, creative briefs, and production plans from a validated brand profile, campaign objective, platform requirements, and optional audit evidence. Triggers on: campaign brief, campaign concepts, create a campaign, ad concepts, ad copy, ad messaging, creative brief, headlines, descriptions."
+description: 'Create source-grounded paid-ad campaign concepts, messaging, copy, creative briefs, and production plans from a validated brand profile, campaign objective, platform requirements, and optional audit evidence. Triggers on: campaign brief, campaign concepts, create a campaign, ad concepts, ad copy, ad messaging, creative brief, headlines, descriptions.'
+triggers:
+- reklama yozish
+- ad creation
+- reklama matni
+- ad copy
+- headline
+- primary text
+- создать рекламу
+- рекламный текст
+- эълон ёзиш
+aliases:
+- ad-copy
+- ad-builder
+- create-ads
+domains:
+- copywriting
+- creative
+platforms:
+- meta
+- google
+- tiktok
+- telegram
+- multi-platform
 attached_agents: [campaign-ideator, copy-writer, format-adapter]
+related_skills:
+- copywriting
+- ads-creative
+- uzbekistan-market-intel
+references:
+- skills/ads/references/copy-frameworks.md
+- skills/ads/references/platform-specs.md
+risk_level: low
+output_contract: Spec-validated ad copy variants (Primary Text, Headline, Description, CTA) with character counts
 ---
 
 # Campaign Concepts and Copy

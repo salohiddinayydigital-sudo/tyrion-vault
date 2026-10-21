@@ -1,4 +1,4 @@
-name: Tyrion CI (Doctor, TyrionShield, Eval Suite, MCP & 137 Unit Tests)
+name: Tyrion CI (Doctor, TyrionShield, Eval Suite, MCP & 160 Unit Tests)
 
 on:
   push:
@@ -50,7 +50,7 @@ jobs:
           python tools/catalog.py check
           python tools/catalog.py drift
 
-      - name: Run Behavioral & Deterministic Eval Suite (12/12 Scenarios)
+      - name: Run Behavioral & Deterministic Eval Suite (24/24 Scenarios & 7 Router Metrics)
         run: python tools/skill-eval.py
 
       - name: Verify Native STDIO MCP Server & Multi-Harness Exporter
@@ -58,7 +58,7 @@ jobs:
           python tools/tyrion-mcp-server.py --list-tools
           python tools/harness-export.py --target all --dry-run
 
-      - name: Run Full Unit Test Suite (137 Tests)
+      - name: Run Full Unit Test Suite (160 Tests)
         run: python -m unittest discover -s tests -t . -v
 
       - name: Run System Doctor (--quick)
